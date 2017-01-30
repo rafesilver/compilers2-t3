@@ -30,23 +30,47 @@ COMENTARIO_ERRADO
         ;
 
 ENTIDADE
-		:		'Entidade' | 'entidade' 
+		:		'Entidade' | 'entidade' | 'ENTIDADE'
 		;
 
 RELACIONAMENTO	
-		:		'Relacionamento' | 'relacionamento'
+		:		'Relacionamento' | 'relacionamento' | 'RELACIONAMENTO'
 		;
 
 ALTERA
-		:		'Altera'
+		:		'Altera' | 'altera' | 'ALTERA'
+                                | 'Altere | 'altere' |  'ALTERE'
+                                | 'Alterar' | 'alterar' | 'ALTERAR'
 		;
 
 EXCLUI		
-		:		'Exclui'
+		:		'Exclui' | 'exclui' | 'EXCLUI'
+                                | 'Exclua' | 'exclua' | 'EXCLUA'
+                                | 'Excluir' | 'excluir' | 'EXCLUIR'
 		;
 
+INSERE          :               'Insire' | 'insere' | 'INSERE'
+                                | 'Insira' | 'insira' | 'INSIRA'
+                                | 'Inserir' | 'inserir' | 'INSERIR'
+                ;
+
+// SELECIONA _____ DE _____ AONDE _____ = _____
+
+SELECIONA       :               'Seleciona' | 'seleciona' | 'SELECIONA'
+                                | 'Selecione' | 'selecione' | 'SELECIONE'
+                                | 'Selecionar' | 'selecionar' | 'SELECIONAR'
+                ;
+
+DE              :               'De' | 'de' | 'DE'
+                ;
+
+AONDE           :               'Aonde' | 'aonde' | 'AONDE'
+                ;
+
 EXIBE			
-		:		'Exibe'
+		:		'Exibe' | 'exibe' | 'EXIBE'
+                                | 'Exiba' | 'exiba' | 'EXIBA'
+                                | 'Exibir' | 'exibir' | 'EXIBIR'
 		;
 
 TIPO
@@ -103,6 +127,7 @@ DIGITO
 		:		'0'..'9'
 		;
 
+OP              :               '=' | '>' | '<' | '>=' | '<=';
 
 // Parser
 
@@ -255,3 +280,10 @@ exibe
 		;
 
 
+insrt           :               NOME_ENTIDADE INSERE (valor)*;
+
+valor           :               IDENT (',' IDENT)*;
+
+slct            :               SELECIONA valor DE (NOME_ENTIDADE)+ (AONDE expressao)?;
+
+expressao       :               IDENT OP IDENT ;
