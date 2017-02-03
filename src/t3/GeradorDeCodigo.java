@@ -30,7 +30,7 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
         switch (tipo) {
             case "exclui": 
                     String novaLinha = "\n";
-                    tempOutput.getUltimaEntrada().append(novaLinha+"DROP ");
+                    tempOutput.getUltimaEntrada().append(novaLinha+"DROP TABLE ");
                     break;
             case "nome-ent": 
                     tempOutput.getUltimaEntrada().append(aux+" ");
@@ -43,7 +43,7 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
         switch (tipo) {
             case "altera": 
                     String novaLinha = "\n";
-                    tempOutput.getUltimaEntrada().append(novaLinha+"ALTER ");                    
+                    tempOutput.getUltimaEntrada().append(novaLinha+"ALTER TABLE ");                    
                     break;
             case "nome-ent":                      
                     tempOutput.getUltimaEntrada().append(aux+" ");
