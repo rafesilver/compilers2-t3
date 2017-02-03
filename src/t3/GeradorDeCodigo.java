@@ -25,6 +25,32 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
         this.out = out;
     }
     
+    // NEW: Cria o Exclui no buffer
+    public static void geradorExclui(String tipo, String aux){
+        switch (tipo) {
+            case "exclui": 
+                    String novaLinha = "\n";
+                    tempOutput.getUltimaEntrada().append(novaLinha+"DROP ");
+                    break;
+            case "nome-ent": 
+                    tempOutput.getUltimaEntrada().append(aux+" ");
+                    break;             
+        }
+    }
+    
+     // NEW: Cria o Altera no buffer
+    public static void geradorAltera(String tipo, String aux){
+        switch (tipo) {
+            case "altera": 
+                    String novaLinha = "\n";
+                    tempOutput.getUltimaEntrada().append(novaLinha+"ALTER ");                    
+                    break;
+            case "nome-ent":                      
+                    tempOutput.getUltimaEntrada().append(aux+" ");
+                    break;             
+        }
+    }
+    
     // Cria uma entidade no buffer tempOut
     public static void demarcador(String tipo, String aux){
          switch (tipo) {
