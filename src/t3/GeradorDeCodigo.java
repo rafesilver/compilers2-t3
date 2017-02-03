@@ -33,7 +33,7 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
                     tempOutput.getUltimaEntrada().append(novaLinha+"DROP TABLE ");
                     break;
             case "nome-ent": 
-                    tempOutput.getUltimaEntrada().append(aux+" ");
+                    tempOutput.getUltimaEntrada().append(aux+";");
                     break;             
         }
     }
@@ -46,7 +46,7 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
                     tempOutput.getUltimaEntrada().append(novaLinha+"ALTER TABLE ");                    
                     break;
             case "nome-ent":                      
-                    tempOutput.getUltimaEntrada().append(aux+" ");
+                    tempOutput.getUltimaEntrada().append(aux+";");
                     break;             
         }
     }
