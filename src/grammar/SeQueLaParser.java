@@ -23,32 +23,35 @@ public class SeQueLaParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, COMENTARIO=6, COMENTARIO_ERRADO=7, 
-		ENTIDADE=8, RELACIONAMENTO=9, ALTERA=10, EXCLUI=11, INSERE=12, SELECIONA=13, 
-		DE=14, AONDE=15, EXIBE=16, TIPO=17, COMPOSTO=18, RESTRICAO=19, TIPO_MAPEAMENTO=20, 
-		CARDINALIDADE=21, NOME_ENTIDADE=22, IDENT=23, TABULACAO=24, WS=25, OP=26;
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, COMENTARIO=7, COMENTARIO_ERRADO=8, 
+		ENTIDADE=9, RELACIONAMENTO=10, ALTERA=11, EXCLUI=12, INSERE=13, SELECIONA=14, 
+		DE=15, ONDE=16, EXIBE=17, TIPO=18, COMPOSTO=19, RESTRICAO=20, TIPO_MAPEAMENTO=21, 
+		CARDINALIDADE=22, IDENT=23, TABULACAO=24, WS=25, OP=26, LITERAL=27, INTEIRO=28, 
+		REAL=29, VERDADEIRO=30, FALSO=31, DATA=32, SEP1=33, HORA=34, SEP2=35;
 	public static final int
-		RULE_programa = 0, RULE_ent = 1, RULE_modificador_ent = 2, RULE_atributos = 3, 
-		RULE_mais_declaracao = 4, RULE_declaracao = 5, RULE_dec_composto = 6, 
-		RULE_rel = 7, RULE_rel_binaria = 8, RULE_rel_n = 9, RULE_rel_esq = 10, 
-		RULE_rel_dir = 11, RULE_participacao = 12, RULE_alt = 13, RULE_excl = 14, 
-		RULE_exibe = 15, RULE_insrt = 16, RULE_valor = 17, RULE_slct = 18, RULE_expressao = 19;
+		RULE_booleano = 0, RULE_valor = 1, RULE_valores = 2, RULE_programa = 3, 
+		RULE_ent = 4, RULE_modificador_ent = 5, RULE_atributos = 6, RULE_mais_declaracao = 7, 
+		RULE_declaracao = 8, RULE_dec_composto = 9, RULE_rel = 10, RULE_rel_binaria = 11, 
+		RULE_rel_n = 12, RULE_rel_esq = 13, RULE_rel_dir = 14, RULE_participacao = 15, 
+		RULE_alt = 16, RULE_excl = 17, RULE_exibe = 18, RULE_insrt = 19, RULE_colunas = 20, 
+		RULE_coluna = 21, RULE_from = 22, RULE_slct = 23, RULE_expressao = 24;
 	public static final String[] ruleNames = {
-		"programa", "ent", "modificador_ent", "atributos", "mais_declaracao", 
-		"declaracao", "dec_composto", "rel", "rel_binaria", "rel_n", "rel_esq", 
-		"rel_dir", "participacao", "alt", "excl", "exibe", "insrt", "valor", "slct", 
-		"expressao"
+		"booleano", "valor", "valores", "programa", "ent", "modificador_ent", 
+		"atributos", "mais_declaracao", "declaracao", "dec_composto", "rel", "rel_binaria", 
+		"rel_n", "rel_esq", "rel_dir", "participacao", "alt", "excl", "exibe", 
+		"insrt", "colunas", "coluna", "from", "slct", "expressao"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'fraca'", "'forte'", "','", "'parcial'", "'total'", null, null, 
-		null, null, null, null, null, null, null, null, null, null, "'composto'"
+		null, "','", "'fraca'", "'forte'", "'parcial'", "'total'", "'.'", null, 
+		null, null, null, null, null, null, null, null, null, null, null, "'composto'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, null, null, null, null, null, "COMENTARIO", "COMENTARIO_ERRADO", 
+		null, null, null, null, null, null, null, "COMENTARIO", "COMENTARIO_ERRADO", 
 		"ENTIDADE", "RELACIONAMENTO", "ALTERA", "EXCLUI", "INSERE", "SELECIONA", 
-		"DE", "AONDE", "EXIBE", "TIPO", "COMPOSTO", "RESTRICAO", "TIPO_MAPEAMENTO", 
-		"CARDINALIDADE", "NOME_ENTIDADE", "IDENT", "TABULACAO", "WS", "OP"
+		"DE", "ONDE", "EXIBE", "TIPO", "COMPOSTO", "RESTRICAO", "TIPO_MAPEAMENTO", 
+		"CARDINALIDADE", "IDENT", "TABULACAO", "WS", "OP", "LITERAL", "INTEIRO", 
+		"REAL", "VERDADEIRO", "FALSO", "DATA", "SEP1", "HORA", "SEP2"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -102,6 +105,198 @@ public class SeQueLaParser extends Parser {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
+	public static class BooleanoContext extends ParserRuleContext {
+		public TerminalNode VERDADEIRO() { return getToken(SeQueLaParser.VERDADEIRO, 0); }
+		public TerminalNode FALSO() { return getToken(SeQueLaParser.FALSO, 0); }
+		public BooleanoContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_booleano; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).enterBooleano(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).exitBooleano(this);
+		}
+	}
+
+	public final BooleanoContext booleano() throws RecognitionException {
+		BooleanoContext _localctx = new BooleanoContext(_ctx, getState());
+		enterRule(_localctx, 0, RULE_booleano);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(50);
+			_la = _input.LA(1);
+			if ( !(_la==VERDADEIRO || _la==FALSO) ) {
+			_errHandler.recoverInline(this);
+			} else {
+				consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class ValorContext extends ParserRuleContext {
+		public TerminalNode LITERAL() { return getToken(SeQueLaParser.LITERAL, 0); }
+		public TerminalNode INTEIRO() { return getToken(SeQueLaParser.INTEIRO, 0); }
+		public TerminalNode REAL() { return getToken(SeQueLaParser.REAL, 0); }
+		public BooleanoContext booleano() {
+			return getRuleContext(BooleanoContext.class,0);
+		}
+		public TerminalNode DATA() { return getToken(SeQueLaParser.DATA, 0); }
+		public TerminalNode HORA() { return getToken(SeQueLaParser.HORA, 0); }
+		public ValorContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_valor; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).enterValor(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).exitValor(this);
+		}
+	}
+
+	public final ValorContext valor() throws RecognitionException {
+		ValorContext _localctx = new ValorContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_valor);
+		try {
+			setState(58);
+			switch (_input.LA(1)) {
+			case LITERAL:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(52);
+				match(LITERAL);
+				}
+				break;
+			case INTEIRO:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(53);
+				match(INTEIRO);
+				}
+				break;
+			case REAL:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(54);
+				match(REAL);
+				}
+				break;
+			case VERDADEIRO:
+			case FALSO:
+				enterOuterAlt(_localctx, 4);
+				{
+				setState(55);
+				booleano();
+				}
+				break;
+			case DATA:
+				enterOuterAlt(_localctx, 5);
+				{
+				setState(56);
+				match(DATA);
+				}
+				break;
+			case HORA:
+				enterOuterAlt(_localctx, 6);
+				{
+				setState(57);
+				match(HORA);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class ValoresContext extends ParserRuleContext {
+		public List<ValorContext> valor() {
+			return getRuleContexts(ValorContext.class);
+		}
+		public ValorContext valor(int i) {
+			return getRuleContext(ValorContext.class,i);
+		}
+		public ValoresContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_valores; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).enterValores(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).exitValores(this);
+		}
+	}
+
+	public final ValoresContext valores() throws RecognitionException {
+		ValoresContext _localctx = new ValoresContext(_ctx, getState());
+		enterRule(_localctx, 4, RULE_valores);
+		try {
+			int _alt;
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(60);
+			valor();
+			setState(65);
+			_errHandler.sync(this);
+			_alt = getInterpreter().adaptivePredict(_input,1,_ctx);
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+				if ( _alt==1 ) {
+					{
+					{
+					setState(61);
+					match(T__0);
+					setState(62);
+					valor();
+					}
+					} 
+				}
+				setState(67);
+				_errHandler.sync(this);
+				_alt = getInterpreter().adaptivePredict(_input,1,_ctx);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
 	public static class ProgramaContext extends ParserRuleContext {
 		public List<EntContext> ent() {
 			return getRuleContexts(EntContext.class);
@@ -133,6 +328,18 @@ public class SeQueLaParser extends Parser {
 		public ExibeContext exibe(int i) {
 			return getRuleContext(ExibeContext.class,i);
 		}
+		public List<InsrtContext> insrt() {
+			return getRuleContexts(InsrtContext.class);
+		}
+		public InsrtContext insrt(int i) {
+			return getRuleContext(InsrtContext.class,i);
+		}
+		public List<SlctContext> slct() {
+			return getRuleContexts(SlctContext.class);
+		}
+		public SlctContext slct(int i) {
+			return getRuleContext(SlctContext.class,i);
+		}
 		public ProgramaContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -149,53 +356,64 @@ public class SeQueLaParser extends Parser {
 
 	public final ProgramaContext programa() throws RecognitionException {
 		ProgramaContext _localctx = new ProgramaContext(_ctx, getState());
-		enterRule(_localctx, 0, RULE_programa);
+		enterRule(_localctx, 6, RULE_programa);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(47);
+			setState(77);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ENTIDADE) | (1L << ALTERA) | (1L << EXCLUI) | (1L << EXIBE) | (1L << NOME_ENTIDADE))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ENTIDADE) | (1L << ALTERA) | (1L << EXCLUI) | (1L << SELECIONA) | (1L << EXIBE) | (1L << IDENT))) != 0)) {
 				{
-				setState(45);
-				switch (_input.LA(1)) {
-				case ENTIDADE:
+				setState(75);
+				_errHandler.sync(this);
+				switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
+				case 1:
 					{
-					setState(40);
+					setState(68);
 					ent();
 					}
 					break;
-				case NOME_ENTIDADE:
+				case 2:
 					{
-					setState(41);
+					setState(69);
 					rel();
 					}
 					break;
-				case ALTERA:
+				case 3:
 					{
-					setState(42);
+					setState(70);
 					alt();
 					}
 					break;
-				case EXCLUI:
+				case 4:
 					{
-					setState(43);
+					setState(71);
 					excl();
 					}
 					break;
-				case EXIBE:
+				case 5:
 					{
-					setState(44);
+					setState(72);
 					exibe();
 					}
 					break;
-				default:
-					throw new NoViableAltException(this);
+				case 6:
+					{
+					setState(73);
+					insrt();
+					}
+					break;
+				case 7:
+					{
+					setState(74);
+					slct();
+					}
+					break;
 				}
 				}
-				setState(49);
+				setState(79);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -214,10 +432,10 @@ public class SeQueLaParser extends Parser {
 	}
 
 	public static class EntContext extends ParserRuleContext {
-		public Token NOME_ENTIDADE;
+		public Token IDENT;
 		public AtributosContext atributos;
 		public TerminalNode ENTIDADE() { return getToken(SeQueLaParser.ENTIDADE, 0); }
-		public TerminalNode NOME_ENTIDADE() { return getToken(SeQueLaParser.NOME_ENTIDADE, 0); }
+		public TerminalNode IDENT() { return getToken(SeQueLaParser.IDENT, 0); }
 		public Modificador_entContext modificador_ent() {
 			return getRuleContext(Modificador_entContext.class,0);
 		}
@@ -240,26 +458,26 @@ public class SeQueLaParser extends Parser {
 
 	public final EntContext ent() throws RecognitionException {
 		EntContext _localctx = new EntContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_ent);
+		enterRule(_localctx, 8, RULE_ent);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(52);
+			setState(82);
 			match(ENTIDADE);
-			setState(53);
-			((EntContext)_localctx).NOME_ENTIDADE = match(NOME_ENTIDADE);
-			if(!(tabela.existeSimbolo((((EntContext)_localctx).NOME_ENTIDADE!=null?((EntContext)_localctx).NOME_ENTIDADE.getText():null)))){
-			                                    tabela.adicionarSimbolo((((EntContext)_localctx).NOME_ENTIDADE!=null?((EntContext)_localctx).NOME_ENTIDADE.getText():null), "ENTIDADE");
+			setState(83);
+			((EntContext)_localctx).IDENT = match(IDENT);
+			if(!(tabela.existeSimbolo((((EntContext)_localctx).IDENT!=null?((EntContext)_localctx).IDENT.getText():null)))){
+			                                    tabela.adicionarSimbolo((((EntContext)_localctx).IDENT!=null?((EntContext)_localctx).IDENT.getText():null), "ENTIDADE");
 			                                }
 			                                else{
-			                                    MyErrorListener.erroSemantico1((((EntContext)_localctx).NOME_ENTIDADE!=null?((EntContext)_localctx).NOME_ENTIDADE.getText():null), ((EntContext)_localctx).NOME_ENTIDADE.getLine());
+			                                    MyErrorListener.erroSemantico1((((EntContext)_localctx).IDENT!=null?((EntContext)_localctx).IDENT.getText():null), ((EntContext)_localctx).IDENT.getLine());
 			                                }
-			String aux=(((EntContext)_localctx).NOME_ENTIDADE!=null?((EntContext)_localctx).NOME_ENTIDADE.getText():null);
+			String aux=(((EntContext)_localctx).IDENT!=null?((EntContext)_localctx).IDENT.getText():null);
 			                                 demarcador("nome-ent",aux);
-			setState(56);
+			setState(86);
 			modificador_ent();
 			demarcador("abre-parent","");
-			setState(58);
+			setState(88);
 			((EntContext)_localctx).atributos = atributos();
 			demarcador("atributos",((EntContext)_localctx).atributos.atrib);
 			}
@@ -293,24 +511,24 @@ public class SeQueLaParser extends Parser {
 
 	public final Modificador_entContext modificador_ent() throws RecognitionException {
 		Modificador_entContext _localctx = new Modificador_entContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_modificador_ent);
+		enterRule(_localctx, 10, RULE_modificador_ent);
 		try {
-			setState(65);
+			setState(95);
 			switch (_input.LA(1)) {
-			case T__0:
+			case T__1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(61);
-				match(T__0);
-				setState(62);
+				setState(91);
+				match(T__1);
+				setState(92);
 				match(IDENT);
 				}
 				break;
-			case T__1:
+			case T__2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(63);
-				match(T__1);
+				setState(93);
+				match(T__2);
 				}
 				break;
 			case TABULACAO:
@@ -359,13 +577,13 @@ public class SeQueLaParser extends Parser {
 
 	public final AtributosContext atributos() throws RecognitionException {
 		AtributosContext _localctx = new AtributosContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_atributos);
+		enterRule(_localctx, 12, RULE_atributos);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(67);
+			setState(97);
 			((AtributosContext)_localctx).declaracao = declaracao();
-			setState(68);
+			setState(98);
 			((AtributosContext)_localctx).mais_declaracao = mais_declaracao();
 
 			                    ((AtributosContext)_localctx).atrib =  ((AtributosContext)_localctx).declaracao.dec + ((AtributosContext)_localctx).mais_declaracao.mais_dec;
@@ -405,15 +623,15 @@ public class SeQueLaParser extends Parser {
 
 	public final Mais_declaracaoContext mais_declaracao() throws RecognitionException {
 		Mais_declaracaoContext _localctx = new Mais_declaracaoContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_mais_declaracao);
+		enterRule(_localctx, 14, RULE_mais_declaracao);
 		((Mais_declaracaoContext)_localctx).mais_dec =  new ArrayList<>();
 		try {
-			setState(75);
+			setState(105);
 			switch (_input.LA(1)) {
 			case TABULACAO:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(71);
+				setState(101);
 				((Mais_declaracaoContext)_localctx).atributos = atributos();
 
 				                    _localctx.mais_dec.add(((Mais_declaracaoContext)_localctx).atributos.atrib);
@@ -424,8 +642,9 @@ public class SeQueLaParser extends Parser {
 			case ENTIDADE:
 			case ALTERA:
 			case EXCLUI:
+			case SELECIONA:
 			case EXIBE:
-			case NOME_ENTIDADE:
+			case IDENT:
 				enterOuterAlt(_localctx, 2);
 				{
 				}
@@ -477,32 +696,32 @@ public class SeQueLaParser extends Parser {
 
 	public final DeclaracaoContext declaracao() throws RecognitionException {
 		DeclaracaoContext _localctx = new DeclaracaoContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_declaracao);
+		enterRule(_localctx, 16, RULE_declaracao);
 		int _la;
 		try {
-			setState(91);
+			setState(121);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(77);
+				setState(107);
 				match(TABULACAO);
-				setState(78);
+				setState(108);
 				((DeclaracaoContext)_localctx).IDENT = match(IDENT);
-				setState(79);
+				setState(109);
 				((DeclaracaoContext)_localctx).TIPO = match(TIPO);
-				setState(83);
+				setState(113);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==RESTRICAO) {
 					{
 					{
-					setState(80);
+					setState(110);
 					((DeclaracaoContext)_localctx).RESTRICAO = match(RESTRICAO);
 					}
 					}
-					setState(85);
+					setState(115);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -521,13 +740,13 @@ public class SeQueLaParser extends Parser {
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(87);
+				setState(117);
 				match(TABULACAO);
-				setState(88);
+				setState(118);
 				match(IDENT);
-				setState(89);
+				setState(119);
 				match(COMPOSTO);
-				setState(90);
+				setState(120);
 				dec_composto();
 				}
 				break;
@@ -561,7 +780,7 @@ public class SeQueLaParser extends Parser {
 
 	public final Dec_compostoContext dec_composto() throws RecognitionException {
 		Dec_compostoContext _localctx = new Dec_compostoContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_dec_composto);
+		enterRule(_localctx, 18, RULE_dec_composto);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -601,22 +820,22 @@ public class SeQueLaParser extends Parser {
 
 	public final RelContext rel() throws RecognitionException {
 		RelContext _localctx = new RelContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_rel);
+		enterRule(_localctx, 20, RULE_rel);
 		try {
-			setState(97);
+			setState(127);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(95);
+				setState(125);
 				rel_binaria();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(96);
+				setState(126);
 				rel_n();
 				}
 				break;
@@ -665,24 +884,24 @@ public class SeQueLaParser extends Parser {
 
 	public final Rel_binariaContext rel_binaria() throws RecognitionException {
 		Rel_binariaContext _localctx = new Rel_binariaContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_rel_binaria);
+		enterRule(_localctx, 22, RULE_rel_binaria);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(99);
+			setState(129);
 			((Rel_binariaContext)_localctx).rel_esq = rel_esq();
-			setState(100);
+			setState(130);
 			((Rel_binariaContext)_localctx).IDENT = match(IDENT);
-			setState(101);
+			setState(131);
 			((Rel_binariaContext)_localctx).rel_dir = rel_dir();
-			setState(102);
+			setState(132);
 			((Rel_binariaContext)_localctx).TIPO_MAPEAMENTO = match(TIPO_MAPEAMENTO);
-			setState(104);
+			setState(134);
 			_la = _input.LA(1);
 			if (_la==TABULACAO) {
 				{
-				setState(103);
+				setState(133);
 				atributos();
 				}
 			}
@@ -739,8 +958,8 @@ public class SeQueLaParser extends Parser {
 	}
 
 	public static class Rel_nContext extends ParserRuleContext {
-		public Token NOME_ENTIDADE;
-		public TerminalNode NOME_ENTIDADE() { return getToken(SeQueLaParser.NOME_ENTIDADE, 0); }
+		public Token IDENT;
+		public TerminalNode IDENT() { return getToken(SeQueLaParser.IDENT, 0); }
 		public List<Rel_esqContext> rel_esq() {
 			return getRuleContexts(Rel_esqContext.class);
 		}
@@ -766,40 +985,40 @@ public class SeQueLaParser extends Parser {
 
 	public final Rel_nContext rel_n() throws RecognitionException {
 		Rel_nContext _localctx = new Rel_nContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_rel_n);
+		enterRule(_localctx, 24, RULE_rel_n);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(108);
-			((Rel_nContext)_localctx).NOME_ENTIDADE = match(NOME_ENTIDADE);
+			setState(138);
+			((Rel_nContext)_localctx).IDENT = match(IDENT);
 
-			                    if(!(tabela.existeSimbolo((((Rel_nContext)_localctx).NOME_ENTIDADE!=null?((Rel_nContext)_localctx).NOME_ENTIDADE.getText():null))))
-			                        MyErrorListener.erroSemantico2((((Rel_nContext)_localctx).NOME_ENTIDADE!=null?((Rel_nContext)_localctx).NOME_ENTIDADE.getText():null), ((Rel_nContext)_localctx).NOME_ENTIDADE.getLine());
+			                    if(!(tabela.existeSimbolo((((Rel_nContext)_localctx).IDENT!=null?((Rel_nContext)_localctx).IDENT.getText():null))))
+			                        MyErrorListener.erroSemantico2((((Rel_nContext)_localctx).IDENT!=null?((Rel_nContext)_localctx).IDENT.getText():null), ((Rel_nContext)_localctx).IDENT.getLine());
 			                    
-			setState(110);
+			setState(140);
 			rel_esq();
-			setState(115);
+			setState(145);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__2) {
+			while (_la==T__0) {
 				{
 				{
-				setState(111);
-				match(T__2);
-				setState(112);
+				setState(141);
+				match(T__0);
+				setState(142);
 				rel_esq();
 				}
 				}
-				setState(117);
+				setState(147);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(119);
+			setState(149);
 			_la = _input.LA(1);
 			if (_la==TABULACAO) {
 				{
-				setState(118);
+				setState(148);
 				atributos();
 				}
 			}
@@ -820,9 +1039,9 @@ public class SeQueLaParser extends Parser {
 	public static class Rel_esqContext extends ParserRuleContext {
 		public String card;
 		public String nomeEnt;
-		public Token NOME_ENTIDADE;
+		public Token IDENT;
 		public Token CARDINALIDADE;
-		public TerminalNode NOME_ENTIDADE() { return getToken(SeQueLaParser.NOME_ENTIDADE, 0); }
+		public TerminalNode IDENT() { return getToken(SeQueLaParser.IDENT, 0); }
 		public TerminalNode CARDINALIDADE() { return getToken(SeQueLaParser.CARDINALIDADE, 0); }
 		public ParticipacaoContext participacao() {
 			return getRuleContext(ParticipacaoContext.class,0);
@@ -843,21 +1062,21 @@ public class SeQueLaParser extends Parser {
 
 	public final Rel_esqContext rel_esq() throws RecognitionException {
 		Rel_esqContext _localctx = new Rel_esqContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_rel_esq);
+		enterRule(_localctx, 26, RULE_rel_esq);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(121);
-			((Rel_esqContext)_localctx).NOME_ENTIDADE = match(NOME_ENTIDADE);
+			setState(151);
+			((Rel_esqContext)_localctx).IDENT = match(IDENT);
 
-			                    ((Rel_esqContext)_localctx).nomeEnt =  (((Rel_esqContext)_localctx).NOME_ENTIDADE!=null?((Rel_esqContext)_localctx).NOME_ENTIDADE.getText():null);
-			                    if(!(tabela.existeSimbolo((((Rel_esqContext)_localctx).NOME_ENTIDADE!=null?((Rel_esqContext)_localctx).NOME_ENTIDADE.getText():null))))
-			                        MyErrorListener.erroSemantico2((((Rel_esqContext)_localctx).NOME_ENTIDADE!=null?((Rel_esqContext)_localctx).NOME_ENTIDADE.getText():null), ((Rel_esqContext)_localctx).NOME_ENTIDADE.getLine());
+			                    ((Rel_esqContext)_localctx).nomeEnt =  (((Rel_esqContext)_localctx).IDENT!=null?((Rel_esqContext)_localctx).IDENT.getText():null);
+			                    if(!(tabela.existeSimbolo((((Rel_esqContext)_localctx).IDENT!=null?((Rel_esqContext)_localctx).IDENT.getText():null))))
+			                        MyErrorListener.erroSemantico2((((Rel_esqContext)_localctx).IDENT!=null?((Rel_esqContext)_localctx).IDENT.getText():null), ((Rel_esqContext)_localctx).IDENT.getLine());
 			                
-			setState(123);
+			setState(153);
 			((Rel_esqContext)_localctx).CARDINALIDADE = match(CARDINALIDADE);
 			((Rel_esqContext)_localctx).card =  (((Rel_esqContext)_localctx).CARDINALIDADE!=null?((Rel_esqContext)_localctx).CARDINALIDADE.getText():null);
-			setState(125);
+			setState(155);
 			participacao();
 			}
 		}
@@ -876,12 +1095,12 @@ public class SeQueLaParser extends Parser {
 		public String card;
 		public String nomeEnt;
 		public Token CARDINALIDADE;
-		public Token NOME_ENTIDADE;
+		public Token IDENT;
 		public ParticipacaoContext participacao() {
 			return getRuleContext(ParticipacaoContext.class,0);
 		}
 		public TerminalNode CARDINALIDADE() { return getToken(SeQueLaParser.CARDINALIDADE, 0); }
-		public TerminalNode NOME_ENTIDADE() { return getToken(SeQueLaParser.NOME_ENTIDADE, 0); }
+		public TerminalNode IDENT() { return getToken(SeQueLaParser.IDENT, 0); }
 		public Rel_dirContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -898,21 +1117,21 @@ public class SeQueLaParser extends Parser {
 
 	public final Rel_dirContext rel_dir() throws RecognitionException {
 		Rel_dirContext _localctx = new Rel_dirContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_rel_dir);
+		enterRule(_localctx, 28, RULE_rel_dir);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(127);
+			setState(157);
 			participacao();
-			setState(128);
+			setState(158);
 			((Rel_dirContext)_localctx).CARDINALIDADE = match(CARDINALIDADE);
 			((Rel_dirContext)_localctx).card =  (((Rel_dirContext)_localctx).CARDINALIDADE!=null?((Rel_dirContext)_localctx).CARDINALIDADE.getText():null);
-			setState(130);
-			((Rel_dirContext)_localctx).NOME_ENTIDADE = match(NOME_ENTIDADE);
+			setState(160);
+			((Rel_dirContext)_localctx).IDENT = match(IDENT);
 
-			                    ((Rel_dirContext)_localctx).nomeEnt =  (((Rel_dirContext)_localctx).NOME_ENTIDADE!=null?((Rel_dirContext)_localctx).NOME_ENTIDADE.getText():null);
-			                    if(!(tabela.existeSimbolo((((Rel_dirContext)_localctx).NOME_ENTIDADE!=null?((Rel_dirContext)_localctx).NOME_ENTIDADE.getText():null))))
-			                        MyErrorListener.erroSemantico2((((Rel_dirContext)_localctx).NOME_ENTIDADE!=null?((Rel_dirContext)_localctx).NOME_ENTIDADE.getText():null), ((Rel_dirContext)_localctx).NOME_ENTIDADE.getLine());
+			                    ((Rel_dirContext)_localctx).nomeEnt =  (((Rel_dirContext)_localctx).IDENT!=null?((Rel_dirContext)_localctx).IDENT.getText():null);
+			                    if(!(tabela.existeSimbolo((((Rel_dirContext)_localctx).IDENT!=null?((Rel_dirContext)_localctx).IDENT.getText():null))))
+			                        MyErrorListener.erroSemantico2((((Rel_dirContext)_localctx).IDENT!=null?((Rel_dirContext)_localctx).IDENT.getText():null), ((Rel_dirContext)_localctx).IDENT.getLine());
 			                
 			}
 		}
@@ -944,32 +1163,32 @@ public class SeQueLaParser extends Parser {
 
 	public final ParticipacaoContext participacao() throws RecognitionException {
 		ParticipacaoContext _localctx = new ParticipacaoContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_participacao);
+		enterRule(_localctx, 30, RULE_participacao);
 		try {
-			setState(136);
+			setState(166);
 			switch (_input.LA(1)) {
 			case T__3:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(133);
+				setState(163);
 				match(T__3);
 				}
 				break;
 			case T__4:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(134);
+				setState(164);
 				match(T__4);
 				}
 				break;
 			case EOF:
-			case T__2:
+			case T__0:
 			case ENTIDADE:
 			case ALTERA:
 			case EXCLUI:
+			case SELECIONA:
 			case EXIBE:
 			case CARDINALIDADE:
-			case NOME_ENTIDADE:
 			case IDENT:
 			case TABULACAO:
 				enterOuterAlt(_localctx, 3);
@@ -993,7 +1212,7 @@ public class SeQueLaParser extends Parser {
 
 	public static class AltContext extends ParserRuleContext {
 		public TerminalNode ALTERA() { return getToken(SeQueLaParser.ALTERA, 0); }
-		public TerminalNode NOME_ENTIDADE() { return getToken(SeQueLaParser.NOME_ENTIDADE, 0); }
+		public TerminalNode IDENT() { return getToken(SeQueLaParser.IDENT, 0); }
 		public AltContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1010,14 +1229,14 @@ public class SeQueLaParser extends Parser {
 
 	public final AltContext alt() throws RecognitionException {
 		AltContext _localctx = new AltContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_alt);
+		enterRule(_localctx, 32, RULE_alt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(138);
+			setState(168);
 			match(ALTERA);
-			setState(139);
-			match(NOME_ENTIDADE);
+			setState(169);
+			match(IDENT);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1033,7 +1252,7 @@ public class SeQueLaParser extends Parser {
 
 	public static class ExclContext extends ParserRuleContext {
 		public TerminalNode EXCLUI() { return getToken(SeQueLaParser.EXCLUI, 0); }
-		public TerminalNode NOME_ENTIDADE() { return getToken(SeQueLaParser.NOME_ENTIDADE, 0); }
+		public TerminalNode IDENT() { return getToken(SeQueLaParser.IDENT, 0); }
 		public ExclContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1050,14 +1269,14 @@ public class SeQueLaParser extends Parser {
 
 	public final ExclContext excl() throws RecognitionException {
 		ExclContext _localctx = new ExclContext(_ctx, getState());
-		enterRule(_localctx, 28, RULE_excl);
+		enterRule(_localctx, 34, RULE_excl);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(141);
+			setState(171);
 			match(EXCLUI);
-			setState(142);
-			match(NOME_ENTIDADE);
+			setState(172);
+			match(IDENT);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1073,7 +1292,7 @@ public class SeQueLaParser extends Parser {
 
 	public static class ExibeContext extends ParserRuleContext {
 		public TerminalNode EXIBE() { return getToken(SeQueLaParser.EXIBE, 0); }
-		public TerminalNode NOME_ENTIDADE() { return getToken(SeQueLaParser.NOME_ENTIDADE, 0); }
+		public TerminalNode IDENT() { return getToken(SeQueLaParser.IDENT, 0); }
 		public ExibeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1090,14 +1309,14 @@ public class SeQueLaParser extends Parser {
 
 	public final ExibeContext exibe() throws RecognitionException {
 		ExibeContext _localctx = new ExibeContext(_ctx, getState());
-		enterRule(_localctx, 30, RULE_exibe);
+		enterRule(_localctx, 36, RULE_exibe);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(144);
+			setState(174);
 			match(EXIBE);
-			setState(145);
-			match(NOME_ENTIDADE);
+			setState(175);
+			match(IDENT);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1112,13 +1331,13 @@ public class SeQueLaParser extends Parser {
 	}
 
 	public static class InsrtContext extends ParserRuleContext {
-		public TerminalNode NOME_ENTIDADE() { return getToken(SeQueLaParser.NOME_ENTIDADE, 0); }
+		public TerminalNode IDENT() { return getToken(SeQueLaParser.IDENT, 0); }
 		public TerminalNode INSERE() { return getToken(SeQueLaParser.INSERE, 0); }
-		public List<ValorContext> valor() {
-			return getRuleContexts(ValorContext.class);
+		public List<ValoresContext> valores() {
+			return getRuleContexts(ValoresContext.class);
 		}
-		public ValorContext valor(int i) {
-			return getRuleContext(ValorContext.class,i);
+		public ValoresContext valores(int i) {
+			return getRuleContext(ValoresContext.class,i);
 		}
 		public InsrtContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1136,26 +1355,26 @@ public class SeQueLaParser extends Parser {
 
 	public final InsrtContext insrt() throws RecognitionException {
 		InsrtContext _localctx = new InsrtContext(_ctx, getState());
-		enterRule(_localctx, 32, RULE_insrt);
+		enterRule(_localctx, 38, RULE_insrt);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(147);
-			match(NOME_ENTIDADE);
-			setState(148);
+			setState(177);
+			match(IDENT);
+			setState(178);
 			match(INSERE);
-			setState(152);
+			setState(182);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==IDENT) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LITERAL) | (1L << INTEIRO) | (1L << REAL) | (1L << VERDADEIRO) | (1L << FALSO) | (1L << DATA) | (1L << HORA))) != 0)) {
 				{
 				{
-				setState(149);
-				valor();
+				setState(179);
+				valores();
 				}
 				}
-				setState(154);
+				setState(184);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1172,47 +1391,158 @@ public class SeQueLaParser extends Parser {
 		return _localctx;
 	}
 
-	public static class ValorContext extends ParserRuleContext {
-		public List<TerminalNode> IDENT() { return getTokens(SeQueLaParser.IDENT); }
-		public TerminalNode IDENT(int i) {
-			return getToken(SeQueLaParser.IDENT, i);
+	public static class ColunasContext extends ParserRuleContext {
+		public List<ColunaContext> coluna() {
+			return getRuleContexts(ColunaContext.class);
 		}
-		public ValorContext(ParserRuleContext parent, int invokingState) {
+		public ColunaContext coluna(int i) {
+			return getRuleContext(ColunaContext.class,i);
+		}
+		public ColunasContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_valor; }
+		@Override public int getRuleIndex() { return RULE_colunas; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).enterValor(this);
+			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).enterColunas(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).exitValor(this);
+			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).exitColunas(this);
 		}
 	}
 
-	public final ValorContext valor() throws RecognitionException {
-		ValorContext _localctx = new ValorContext(_ctx, getState());
-		enterRule(_localctx, 34, RULE_valor);
+	public final ColunasContext colunas() throws RecognitionException {
+		ColunasContext _localctx = new ColunasContext(_ctx, getState());
+		enterRule(_localctx, 40, RULE_colunas);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(155);
-			match(IDENT);
-			setState(160);
+			setState(185);
+			coluna();
+			setState(190);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__2) {
+			while (_la==T__0) {
 				{
 				{
-				setState(156);
-				match(T__2);
-				setState(157);
+				setState(186);
+				match(T__0);
+				setState(187);
+				coluna();
+				}
+				}
+				setState(192);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class ColunaContext extends ParserRuleContext {
+		public List<TerminalNode> IDENT() { return getTokens(SeQueLaParser.IDENT); }
+		public TerminalNode IDENT(int i) {
+			return getToken(SeQueLaParser.IDENT, i);
+		}
+		public ColunaContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_coluna; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).enterColuna(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).exitColuna(this);
+		}
+	}
+
+	public final ColunaContext coluna() throws RecognitionException {
+		ColunaContext _localctx = new ColunaContext(_ctx, getState());
+		enterRule(_localctx, 42, RULE_coluna);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(193);
+			match(IDENT);
+			setState(196);
+			_la = _input.LA(1);
+			if (_la==T__5) {
+				{
+				setState(194);
+				match(T__5);
+				setState(195);
+				match(IDENT);
+				}
+			}
+
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class FromContext extends ParserRuleContext {
+		public List<TerminalNode> IDENT() { return getTokens(SeQueLaParser.IDENT); }
+		public TerminalNode IDENT(int i) {
+			return getToken(SeQueLaParser.IDENT, i);
+		}
+		public FromContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_from; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).enterFrom(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).exitFrom(this);
+		}
+	}
+
+	public final FromContext from() throws RecognitionException {
+		FromContext _localctx = new FromContext(_ctx, getState());
+		enterRule(_localctx, 44, RULE_from);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(198);
+			match(IDENT);
+			setState(203);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			while (_la==T__0) {
+				{
+				{
+				setState(199);
+				match(T__0);
+				setState(200);
 				match(IDENT);
 				}
 				}
-				setState(162);
+				setState(205);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1231,15 +1561,14 @@ public class SeQueLaParser extends Parser {
 
 	public static class SlctContext extends ParserRuleContext {
 		public TerminalNode SELECIONA() { return getToken(SeQueLaParser.SELECIONA, 0); }
-		public ValorContext valor() {
-			return getRuleContext(ValorContext.class,0);
+		public ColunasContext colunas() {
+			return getRuleContext(ColunasContext.class,0);
 		}
 		public TerminalNode DE() { return getToken(SeQueLaParser.DE, 0); }
-		public List<TerminalNode> NOME_ENTIDADE() { return getTokens(SeQueLaParser.NOME_ENTIDADE); }
-		public TerminalNode NOME_ENTIDADE(int i) {
-			return getToken(SeQueLaParser.NOME_ENTIDADE, i);
+		public FromContext from() {
+			return getRuleContext(FromContext.class,0);
 		}
-		public TerminalNode AONDE() { return getToken(SeQueLaParser.AONDE, 0); }
+		public TerminalNode ONDE() { return getToken(SeQueLaParser.ONDE, 0); }
 		public ExpressaoContext expressao() {
 			return getRuleContext(ExpressaoContext.class,0);
 		}
@@ -1259,38 +1588,26 @@ public class SeQueLaParser extends Parser {
 
 	public final SlctContext slct() throws RecognitionException {
 		SlctContext _localctx = new SlctContext(_ctx, getState());
-		enterRule(_localctx, 36, RULE_slct);
+		enterRule(_localctx, 46, RULE_slct);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(163);
+			setState(206);
 			match(SELECIONA);
-			setState(164);
-			valor();
-			setState(165);
+			setState(207);
+			colunas();
+			setState(208);
 			match(DE);
-			setState(167); 
-			_errHandler.sync(this);
+			setState(209);
+			from();
+			setState(212);
 			_la = _input.LA(1);
-			do {
+			if (_la==ONDE) {
 				{
-				{
-				setState(166);
-				match(NOME_ENTIDADE);
-				}
-				}
-				setState(169); 
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-			} while ( _la==NOME_ENTIDADE );
-			setState(173);
-			_la = _input.LA(1);
-			if (_la==AONDE) {
-				{
-				setState(171);
-				match(AONDE);
-				setState(172);
+				setState(210);
+				match(ONDE);
+				setState(211);
 				expressao();
 				}
 			}
@@ -1309,13 +1626,21 @@ public class SeQueLaParser extends Parser {
 	}
 
 	public static class ExpressaoContext extends ParserRuleContext {
-		public List<TerminalNode> IDENT() { return getTokens(SeQueLaParser.IDENT); }
-		public TerminalNode IDENT(int i) {
-			return getToken(SeQueLaParser.IDENT, i);
+		public List<ColunaContext> coluna() {
+			return getRuleContexts(ColunaContext.class);
+		}
+		public ColunaContext coluna(int i) {
+			return getRuleContext(ColunaContext.class,i);
 		}
 		public List<TerminalNode> OP() { return getTokens(SeQueLaParser.OP); }
 		public TerminalNode OP(int i) {
 			return getToken(SeQueLaParser.OP, i);
+		}
+		public List<ValoresContext> valores() {
+			return getRuleContexts(ValoresContext.class);
+		}
+		public ValoresContext valores(int i) {
+			return getRuleContext(ValoresContext.class,i);
 		}
 		public ExpressaoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1333,34 +1658,76 @@ public class SeQueLaParser extends Parser {
 
 	public final ExpressaoContext expressao() throws RecognitionException {
 		ExpressaoContext _localctx = new ExpressaoContext(_ctx, getState());
-		enterRule(_localctx, 38, RULE_expressao);
+		enterRule(_localctx, 48, RULE_expressao);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(175);
-			match(IDENT);
-			setState(176);
+			setState(214);
+			coluna();
+			setState(215);
 			match(OP);
-			setState(177);
-			match(IDENT);
-			setState(184);
+			setState(218);
+			switch (_input.LA(1)) {
+			case IDENT:
+				{
+				setState(216);
+				coluna();
+				}
+				break;
+			case LITERAL:
+			case INTEIRO:
+			case REAL:
+			case VERDADEIRO:
+			case FALSO:
+			case DATA:
+			case HORA:
+				{
+				setState(217);
+				valores();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+			setState(229);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__2) {
+			while (_la==T__0) {
 				{
 				{
-				setState(178);
-				match(T__2);
-				setState(179);
-				match(IDENT);
-				setState(180);
+				setState(220);
+				match(T__0);
+				setState(221);
+				coluna();
+				setState(222);
 				match(OP);
-				setState(181);
-				match(IDENT);
+				setState(225);
+				switch (_input.LA(1)) {
+				case IDENT:
+					{
+					setState(223);
+					coluna();
+					}
+					break;
+				case LITERAL:
+				case INTEIRO:
+				case REAL:
+				case VERDADEIRO:
+				case FALSO:
+				case DATA:
+				case HORA:
+					{
+					setState(224);
+					valores();
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
 				}
 				}
-				setState(186);
+				}
+				setState(231);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1378,61 +1745,80 @@ public class SeQueLaParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\34\u00be\4\2\t\2"+
-		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
-		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
-		"\4\23\t\23\4\24\t\24\4\25\t\25\3\2\3\2\3\2\3\2\3\2\7\2\60\n\2\f\2\16\2"+
-		"\63\13\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\4\3\4\3\4\3\4\5"+
-		"\4D\n\4\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\5\6N\n\6\3\7\3\7\3\7\3\7\7\7T"+
-		"\n\7\f\7\16\7W\13\7\3\7\3\7\3\7\3\7\3\7\5\7^\n\7\3\b\3\b\3\t\3\t\5\td"+
-		"\n\t\3\n\3\n\3\n\3\n\3\n\5\nk\n\n\3\n\3\n\3\13\3\13\3\13\3\13\3\13\7\13"+
-		"t\n\13\f\13\16\13w\13\13\3\13\5\13z\n\13\3\f\3\f\3\f\3\f\3\f\3\f\3\r\3"+
-		"\r\3\r\3\r\3\r\3\r\3\16\3\16\3\16\5\16\u008b\n\16\3\17\3\17\3\17\3\20"+
-		"\3\20\3\20\3\21\3\21\3\21\3\22\3\22\3\22\7\22\u0099\n\22\f\22\16\22\u009c"+
-		"\13\22\3\23\3\23\3\23\7\23\u00a1\n\23\f\23\16\23\u00a4\13\23\3\24\3\24"+
-		"\3\24\3\24\6\24\u00aa\n\24\r\24\16\24\u00ab\3\24\3\24\5\24\u00b0\n\24"+
-		"\3\25\3\25\3\25\3\25\3\25\3\25\3\25\7\25\u00b9\n\25\f\25\16\25\u00bc\13"+
-		"\25\3\25\2\2\26\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(\2\2\u00be"+
-		"\2\61\3\2\2\2\4\66\3\2\2\2\6C\3\2\2\2\bE\3\2\2\2\nM\3\2\2\2\f]\3\2\2\2"+
-		"\16_\3\2\2\2\20c\3\2\2\2\22e\3\2\2\2\24n\3\2\2\2\26{\3\2\2\2\30\u0081"+
-		"\3\2\2\2\32\u008a\3\2\2\2\34\u008c\3\2\2\2\36\u008f\3\2\2\2 \u0092\3\2"+
-		"\2\2\"\u0095\3\2\2\2$\u009d\3\2\2\2&\u00a5\3\2\2\2(\u00b1\3\2\2\2*\60"+
-		"\5\4\3\2+\60\5\20\t\2,\60\5\34\17\2-\60\5\36\20\2.\60\5 \21\2/*\3\2\2"+
-		"\2/+\3\2\2\2/,\3\2\2\2/-\3\2\2\2/.\3\2\2\2\60\63\3\2\2\2\61/\3\2\2\2\61"+
-		"\62\3\2\2\2\62\64\3\2\2\2\63\61\3\2\2\2\64\65\b\2\1\2\65\3\3\2\2\2\66"+
-		"\67\7\n\2\2\678\7\30\2\289\b\3\1\29:\b\3\1\2:;\5\6\4\2;<\b\3\1\2<=\5\b"+
-		"\5\2=>\b\3\1\2>\5\3\2\2\2?@\7\3\2\2@D\7\31\2\2AD\7\4\2\2BD\3\2\2\2C?\3"+
-		"\2\2\2CA\3\2\2\2CB\3\2\2\2D\7\3\2\2\2EF\5\f\7\2FG\5\n\6\2GH\b\5\1\2H\t"+
-		"\3\2\2\2IJ\5\b\5\2JK\b\6\1\2KN\3\2\2\2LN\3\2\2\2MI\3\2\2\2ML\3\2\2\2N"+
-		"\13\3\2\2\2OP\7\32\2\2PQ\7\31\2\2QU\7\23\2\2RT\7\25\2\2SR\3\2\2\2TW\3"+
-		"\2\2\2US\3\2\2\2UV\3\2\2\2VX\3\2\2\2WU\3\2\2\2X^\b\7\1\2YZ\7\32\2\2Z["+
-		"\7\31\2\2[\\\7\24\2\2\\^\5\16\b\2]O\3\2\2\2]Y\3\2\2\2^\r\3\2\2\2_`\3\2"+
-		"\2\2`\17\3\2\2\2ad\5\22\n\2bd\5\24\13\2ca\3\2\2\2cb\3\2\2\2d\21\3\2\2"+
-		"\2ef\5\26\f\2fg\7\31\2\2gh\5\30\r\2hj\7\26\2\2ik\5\b\5\2ji\3\2\2\2jk\3"+
-		"\2\2\2kl\3\2\2\2lm\b\n\1\2m\23\3\2\2\2no\7\30\2\2op\b\13\1\2pu\5\26\f"+
-		"\2qr\7\5\2\2rt\5\26\f\2sq\3\2\2\2tw\3\2\2\2us\3\2\2\2uv\3\2\2\2vy\3\2"+
-		"\2\2wu\3\2\2\2xz\5\b\5\2yx\3\2\2\2yz\3\2\2\2z\25\3\2\2\2{|\7\30\2\2|}"+
-		"\b\f\1\2}~\7\27\2\2~\177\b\f\1\2\177\u0080\5\32\16\2\u0080\27\3\2\2\2"+
-		"\u0081\u0082\5\32\16\2\u0082\u0083\7\27\2\2\u0083\u0084\b\r\1\2\u0084"+
-		"\u0085\7\30\2\2\u0085\u0086\b\r\1\2\u0086\31\3\2\2\2\u0087\u008b\7\6\2"+
-		"\2\u0088\u008b\7\7\2\2\u0089\u008b\3\2\2\2\u008a\u0087\3\2\2\2\u008a\u0088"+
-		"\3\2\2\2\u008a\u0089\3\2\2\2\u008b\33\3\2\2\2\u008c\u008d\7\f\2\2\u008d"+
-		"\u008e\7\30\2\2\u008e\35\3\2\2\2\u008f\u0090\7\r\2\2\u0090\u0091\7\30"+
-		"\2\2\u0091\37\3\2\2\2\u0092\u0093\7\22\2\2\u0093\u0094\7\30\2\2\u0094"+
-		"!\3\2\2\2\u0095\u0096\7\30\2\2\u0096\u009a\7\16\2\2\u0097\u0099\5$\23"+
-		"\2\u0098\u0097\3\2\2\2\u0099\u009c\3\2\2\2\u009a\u0098\3\2\2\2\u009a\u009b"+
-		"\3\2\2\2\u009b#\3\2\2\2\u009c\u009a\3\2\2\2\u009d\u00a2\7\31\2\2\u009e"+
-		"\u009f\7\5\2\2\u009f\u00a1\7\31\2\2\u00a0\u009e\3\2\2\2\u00a1\u00a4\3"+
-		"\2\2\2\u00a2\u00a0\3\2\2\2\u00a2\u00a3\3\2\2\2\u00a3%\3\2\2\2\u00a4\u00a2"+
-		"\3\2\2\2\u00a5\u00a6\7\17\2\2\u00a6\u00a7\5$\23\2\u00a7\u00a9\7\20\2\2"+
-		"\u00a8\u00aa\7\30\2\2\u00a9\u00a8\3\2\2\2\u00aa\u00ab\3\2\2\2\u00ab\u00a9"+
-		"\3\2\2\2\u00ab\u00ac\3\2\2\2\u00ac\u00af\3\2\2\2\u00ad\u00ae\7\21\2\2"+
-		"\u00ae\u00b0\5(\25\2\u00af\u00ad\3\2\2\2\u00af\u00b0\3\2\2\2\u00b0\'\3"+
-		"\2\2\2\u00b1\u00b2\7\31\2\2\u00b2\u00b3\7\34\2\2\u00b3\u00ba\7\31\2\2"+
-		"\u00b4\u00b5\7\5\2\2\u00b5\u00b6\7\31\2\2\u00b6\u00b7\7\34\2\2\u00b7\u00b9"+
-		"\7\31\2\2\u00b8\u00b4\3\2\2\2\u00b9\u00bc\3\2\2\2\u00ba\u00b8\3\2\2\2"+
-		"\u00ba\u00bb\3\2\2\2\u00bb)\3\2\2\2\u00bc\u00ba\3\2\2\2\22/\61CMU]cju"+
-		"y\u008a\u009a\u00a2\u00ab\u00af\u00ba";
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3%\u00eb\4\2\t\2\4"+
+		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
+		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
+		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
+		"\4\32\t\32\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\5\3=\n\3\3\4\3\4\3\4\7\4B\n"+
+		"\4\f\4\16\4E\13\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\7\5N\n\5\f\5\16\5Q\13\5"+
+		"\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\5\7b\n\7"+
+		"\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\5\tl\n\t\3\n\3\n\3\n\3\n\7\nr\n\n\f\n"+
+		"\16\nu\13\n\3\n\3\n\3\n\3\n\3\n\5\n|\n\n\3\13\3\13\3\f\3\f\5\f\u0082\n"+
+		"\f\3\r\3\r\3\r\3\r\3\r\5\r\u0089\n\r\3\r\3\r\3\16\3\16\3\16\3\16\3\16"+
+		"\7\16\u0092\n\16\f\16\16\16\u0095\13\16\3\16\5\16\u0098\n\16\3\17\3\17"+
+		"\3\17\3\17\3\17\3\17\3\20\3\20\3\20\3\20\3\20\3\20\3\21\3\21\3\21\5\21"+
+		"\u00a9\n\21\3\22\3\22\3\22\3\23\3\23\3\23\3\24\3\24\3\24\3\25\3\25\3\25"+
+		"\7\25\u00b7\n\25\f\25\16\25\u00ba\13\25\3\26\3\26\3\26\7\26\u00bf\n\26"+
+		"\f\26\16\26\u00c2\13\26\3\27\3\27\3\27\5\27\u00c7\n\27\3\30\3\30\3\30"+
+		"\7\30\u00cc\n\30\f\30\16\30\u00cf\13\30\3\31\3\31\3\31\3\31\3\31\3\31"+
+		"\5\31\u00d7\n\31\3\32\3\32\3\32\3\32\5\32\u00dd\n\32\3\32\3\32\3\32\3"+
+		"\32\3\32\5\32\u00e4\n\32\7\32\u00e6\n\32\f\32\16\32\u00e9\13\32\3\32\2"+
+		"\2\33\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\2\3\3\2 !"+
+		"\u00f1\2\64\3\2\2\2\4<\3\2\2\2\6>\3\2\2\2\bO\3\2\2\2\nT\3\2\2\2\fa\3\2"+
+		"\2\2\16c\3\2\2\2\20k\3\2\2\2\22{\3\2\2\2\24}\3\2\2\2\26\u0081\3\2\2\2"+
+		"\30\u0083\3\2\2\2\32\u008c\3\2\2\2\34\u0099\3\2\2\2\36\u009f\3\2\2\2 "+
+		"\u00a8\3\2\2\2\"\u00aa\3\2\2\2$\u00ad\3\2\2\2&\u00b0\3\2\2\2(\u00b3\3"+
+		"\2\2\2*\u00bb\3\2\2\2,\u00c3\3\2\2\2.\u00c8\3\2\2\2\60\u00d0\3\2\2\2\62"+
+		"\u00d8\3\2\2\2\64\65\t\2\2\2\65\3\3\2\2\2\66=\7\35\2\2\67=\7\36\2\28="+
+		"\7\37\2\29=\5\2\2\2:=\7\"\2\2;=\7$\2\2<\66\3\2\2\2<\67\3\2\2\2<8\3\2\2"+
+		"\2<9\3\2\2\2<:\3\2\2\2<;\3\2\2\2=\5\3\2\2\2>C\5\4\3\2?@\7\3\2\2@B\5\4"+
+		"\3\2A?\3\2\2\2BE\3\2\2\2CA\3\2\2\2CD\3\2\2\2D\7\3\2\2\2EC\3\2\2\2FN\5"+
+		"\n\6\2GN\5\26\f\2HN\5\"\22\2IN\5$\23\2JN\5&\24\2KN\5(\25\2LN\5\60\31\2"+
+		"MF\3\2\2\2MG\3\2\2\2MH\3\2\2\2MI\3\2\2\2MJ\3\2\2\2MK\3\2\2\2ML\3\2\2\2"+
+		"NQ\3\2\2\2OM\3\2\2\2OP\3\2\2\2PR\3\2\2\2QO\3\2\2\2RS\b\5\1\2S\t\3\2\2"+
+		"\2TU\7\13\2\2UV\7\31\2\2VW\b\6\1\2WX\b\6\1\2XY\5\f\7\2YZ\b\6\1\2Z[\5\16"+
+		"\b\2[\\\b\6\1\2\\\13\3\2\2\2]^\7\4\2\2^b\7\31\2\2_b\7\5\2\2`b\3\2\2\2"+
+		"a]\3\2\2\2a_\3\2\2\2a`\3\2\2\2b\r\3\2\2\2cd\5\22\n\2de\5\20\t\2ef\b\b"+
+		"\1\2f\17\3\2\2\2gh\5\16\b\2hi\b\t\1\2il\3\2\2\2jl\3\2\2\2kg\3\2\2\2kj"+
+		"\3\2\2\2l\21\3\2\2\2mn\7\32\2\2no\7\31\2\2os\7\24\2\2pr\7\26\2\2qp\3\2"+
+		"\2\2ru\3\2\2\2sq\3\2\2\2st\3\2\2\2tv\3\2\2\2us\3\2\2\2v|\b\n\1\2wx\7\32"+
+		"\2\2xy\7\31\2\2yz\7\25\2\2z|\5\24\13\2{m\3\2\2\2{w\3\2\2\2|\23\3\2\2\2"+
+		"}~\3\2\2\2~\25\3\2\2\2\177\u0082\5\30\r\2\u0080\u0082\5\32\16\2\u0081"+
+		"\177\3\2\2\2\u0081\u0080\3\2\2\2\u0082\27\3\2\2\2\u0083\u0084\5\34\17"+
+		"\2\u0084\u0085\7\31\2\2\u0085\u0086\5\36\20\2\u0086\u0088\7\27\2\2\u0087"+
+		"\u0089\5\16\b\2\u0088\u0087\3\2\2\2\u0088\u0089\3\2\2\2\u0089\u008a\3"+
+		"\2\2\2\u008a\u008b\b\r\1\2\u008b\31\3\2\2\2\u008c\u008d\7\31\2\2\u008d"+
+		"\u008e\b\16\1\2\u008e\u0093\5\34\17\2\u008f\u0090\7\3\2\2\u0090\u0092"+
+		"\5\34\17\2\u0091\u008f\3\2\2\2\u0092\u0095\3\2\2\2\u0093\u0091\3\2\2\2"+
+		"\u0093\u0094\3\2\2\2\u0094\u0097\3\2\2\2\u0095\u0093\3\2\2\2\u0096\u0098"+
+		"\5\16\b\2\u0097\u0096\3\2\2\2\u0097\u0098\3\2\2\2\u0098\33\3\2\2\2\u0099"+
+		"\u009a\7\31\2\2\u009a\u009b\b\17\1\2\u009b\u009c\7\30\2\2\u009c\u009d"+
+		"\b\17\1\2\u009d\u009e\5 \21\2\u009e\35\3\2\2\2\u009f\u00a0\5 \21\2\u00a0"+
+		"\u00a1\7\30\2\2\u00a1\u00a2\b\20\1\2\u00a2\u00a3\7\31\2\2\u00a3\u00a4"+
+		"\b\20\1\2\u00a4\37\3\2\2\2\u00a5\u00a9\7\6\2\2\u00a6\u00a9\7\7\2\2\u00a7"+
+		"\u00a9\3\2\2\2\u00a8\u00a5\3\2\2\2\u00a8\u00a6\3\2\2\2\u00a8\u00a7\3\2"+
+		"\2\2\u00a9!\3\2\2\2\u00aa\u00ab\7\r\2\2\u00ab\u00ac\7\31\2\2\u00ac#\3"+
+		"\2\2\2\u00ad\u00ae\7\16\2\2\u00ae\u00af\7\31\2\2\u00af%\3\2\2\2\u00b0"+
+		"\u00b1\7\23\2\2\u00b1\u00b2\7\31\2\2\u00b2\'\3\2\2\2\u00b3\u00b4\7\31"+
+		"\2\2\u00b4\u00b8\7\17\2\2\u00b5\u00b7\5\6\4\2\u00b6\u00b5\3\2\2\2\u00b7"+
+		"\u00ba\3\2\2\2\u00b8\u00b6\3\2\2\2\u00b8\u00b9\3\2\2\2\u00b9)\3\2\2\2"+
+		"\u00ba\u00b8\3\2\2\2\u00bb\u00c0\5,\27\2\u00bc\u00bd\7\3\2\2\u00bd\u00bf"+
+		"\5,\27\2\u00be\u00bc\3\2\2\2\u00bf\u00c2\3\2\2\2\u00c0\u00be\3\2\2\2\u00c0"+
+		"\u00c1\3\2\2\2\u00c1+\3\2\2\2\u00c2\u00c0\3\2\2\2\u00c3\u00c6\7\31\2\2"+
+		"\u00c4\u00c5\7\b\2\2\u00c5\u00c7\7\31\2\2\u00c6\u00c4\3\2\2\2\u00c6\u00c7"+
+		"\3\2\2\2\u00c7-\3\2\2\2\u00c8\u00cd\7\31\2\2\u00c9\u00ca\7\3\2\2\u00ca"+
+		"\u00cc\7\31\2\2\u00cb\u00c9\3\2\2\2\u00cc\u00cf\3\2\2\2\u00cd\u00cb\3"+
+		"\2\2\2\u00cd\u00ce\3\2\2\2\u00ce/\3\2\2\2\u00cf\u00cd\3\2\2\2\u00d0\u00d1"+
+		"\7\20\2\2\u00d1\u00d2\5*\26\2\u00d2\u00d3\7\21\2\2\u00d3\u00d6\5.\30\2"+
+		"\u00d4\u00d5\7\22\2\2\u00d5\u00d7\5\62\32\2\u00d6\u00d4\3\2\2\2\u00d6"+
+		"\u00d7\3\2\2\2\u00d7\61\3\2\2\2\u00d8\u00d9\5,\27\2\u00d9\u00dc\7\34\2"+
+		"\2\u00da\u00dd\5,\27\2\u00db\u00dd\5\6\4\2\u00dc\u00da\3\2\2\2\u00dc\u00db"+
+		"\3\2\2\2\u00dd\u00e7\3\2\2\2\u00de\u00df\7\3\2\2\u00df\u00e0\5,\27\2\u00e0"+
+		"\u00e3\7\34\2\2\u00e1\u00e4\5,\27\2\u00e2\u00e4\5\6\4\2\u00e3\u00e1\3"+
+		"\2\2\2\u00e3\u00e2\3\2\2\2\u00e4\u00e6\3\2\2\2\u00e5\u00de\3\2\2\2\u00e6"+
+		"\u00e9\3\2\2\2\u00e7\u00e5\3\2\2\2\u00e7\u00e8\3\2\2\2\u00e8\63\3\2\2"+
+		"\2\u00e9\u00e7\3\2\2\2\27<CMOaks{\u0081\u0088\u0093\u0097\u00a8\u00b8"+
+		"\u00c0\u00c6\u00cd\u00d6\u00dc\u00e3\u00e7";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

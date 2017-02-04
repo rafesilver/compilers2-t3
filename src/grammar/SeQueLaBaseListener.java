@@ -22,6 +22,42 @@ public class SeQueLaBaseListener implements SeQueLaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterBooleano(SeQueLaParser.BooleanoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBooleano(SeQueLaParser.BooleanoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterValor(SeQueLaParser.ValorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitValor(SeQueLaParser.ValorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterValores(SeQueLaParser.ValoresContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitValores(SeQueLaParser.ValoresContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterPrograma(SeQueLaParser.ProgramaContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -226,13 +262,37 @@ public class SeQueLaBaseListener implements SeQueLaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterValor(SeQueLaParser.ValorContext ctx) { }
+	@Override public void enterColunas(SeQueLaParser.ColunasContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitValor(SeQueLaParser.ValorContext ctx) { }
+	@Override public void exitColunas(SeQueLaParser.ColunasContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterColuna(SeQueLaParser.ColunaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitColuna(SeQueLaParser.ColunaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFrom(SeQueLaParser.FromContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFrom(SeQueLaParser.FromContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
