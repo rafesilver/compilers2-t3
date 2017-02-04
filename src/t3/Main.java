@@ -28,6 +28,15 @@ public class Main {
 
     
     public static void main(String[] args) throws IOException {
+        if(args.length==0){  
+            String path = "src\\testcases\\";
+            // nome do arquivo de entrada para teste
+            String name = "entidade";
+            
+            args = new String[]{"", ""};
+            args[0] = path + name + ".txt";
+            args[1] = path + "output_" + name + ".txt";
+        }
         Saida o = new Saida();
         ANTLRInputStream input = new ANTLRInputStream(new FileInputStream(args[0]));
         SeQueLaLexer lexer = new SeQueLaLexer(input);
