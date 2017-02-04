@@ -184,6 +184,36 @@ public interface SeQueLaListener extends ParseTreeListener {
 	 */
 	void exitAlt(SeQueLaParser.AltContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#alt_alt}.
+	 * @param ctx the parse tree
+	 */
+	void enterAlt_alt(SeQueLaParser.Alt_altContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#alt_alt}.
+	 * @param ctx the parse tree
+	 */
+	void exitAlt_alt(SeQueLaParser.Alt_altContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#alt_add}.
+	 * @param ctx the parse tree
+	 */
+	void enterAlt_add(SeQueLaParser.Alt_addContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#alt_add}.
+	 * @param ctx the parse tree
+	 */
+	void exitAlt_add(SeQueLaParser.Alt_addContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#alt_drop}.
+	 * @param ctx the parse tree
+	 */
+	void enterAlt_drop(SeQueLaParser.Alt_dropContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#alt_drop}.
+	 * @param ctx the parse tree
+	 */
+	void exitAlt_drop(SeQueLaParser.Alt_dropContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SeQueLaParser#excl}.
 	 * @param ctx the parse tree
 	 */

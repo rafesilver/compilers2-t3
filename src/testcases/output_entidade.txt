@@ -1,2 +1,4 @@
-Linha 2: erro sintatico proximo a cpf_empregado
-Fim da compilacao
+CREATE TABLE EMPREGADO( 
+	cpf_empregado INTEGER PRIMARY KEY,
+	nome_empregado VARCHAR(255) 
+);
