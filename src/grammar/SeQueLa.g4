@@ -60,7 +60,7 @@ INSERE          :               'Insire' | 'insere' | 'INSERE'
                                 | 'Inserir' | 'inserir' | 'INSERIR'
                 ;
 
-// SELECIONA _____ DE _____ AONDE _____ = _____
+// SELECIONA _____ DE _____ ONDE _____ = _____
 
 SELECIONA       :               'Seleciona' | 'seleciona' | 'SELECIONA'
                                 | 'Selecione' | 'selecione' | 'SELECIONE'
@@ -70,7 +70,7 @@ SELECIONA       :               'Seleciona' | 'seleciona' | 'SELECIONA'
 DE              :               'De' | 'de' | 'DE'
                 ;
 
-AONDE           :               'Aonde' | 'aonde' | 'AONDE'
+ONDE           :               'Onde' | 'onde' | 'ONDE'
                 ;
 
 EXIBE			
@@ -101,12 +101,9 @@ CARDINALIDADE
 		;
                    
  //Nome de entidade sempre maisculo, seguindo notacao de Navathe, Elmasri
-NOME_ENTIDADE
-		:		(LETRA_MAI)+ (LETRA_MAI | '_' | DIGITO)*
-		;
 
 IDENT
-		:		(LETRA_MIN | '_')+ (LETRA_MIN | '_' | DIGITO)*
+		:		(LETRA_MIN | LETRA_MAI | '_')+ (LETRA_MIN | LETRA_MAI | '_' | DIGITO)*
 		;
 
 
@@ -135,22 +132,51 @@ DIGITO
 
 OP              :               '=' | '>' | '<' | '>=' | '<=';
 
+//--------------------------------------------------
+// Tipos de valores
+
+LITERAL : '"' ~('\r' | '\n' | '"')* '"' ;
+
+INTEIRO : (DIGITO)+;
+          
+REAL : (DIGITO)+ (('.'|',') (DIGITO)+)?;
+
+booleano : VERDADEIRO | FALSO ;
+
+VERDADEIRO : 'verdadeiro' | 'Verdadeiro' | 'VERDADEIRO';
+
+FALSO : 'falso' | 'Falso' | 'FALSO';
+
+DATA : DIGITO DIGITO SEP1 DIGITO DIGITO SEP1 DIGITO DIGITO DIGITO DIGITO;
+
+SEP1 : '-' | '/' | ' ';
+
+HORA : DIGITO DIGITO SEP2 DIGITO DIGITO SEP2 DIGITO DIGITO DIGITO DIGITO;
+
+SEP2 : ':' | '-';
+
+valor : LITERAL | INTEIRO | REAL | booleano | DATA | HORA ;
+
+valores : valor (',' valor)* ;
+
+//--------------------------------------------------
+
 // Parser
 
 programa
-		:		( ent | rel | alt | excl | exibe )* {demarcador("fim", "");}
+		:		( ent | rel | alt | excl | exibe | insrt | slct )* {demarcador("fim", "");}
 		;
 
 ent
 		:		ENTIDADE //{demarcador("entidade","");} 
-		        	NOME_ENTIDADE 
-                                {if(!(tabela.existeSimbolo($NOME_ENTIDADE.text))){
-                                    tabela.adicionarSimbolo($NOME_ENTIDADE.text, "ENTIDADE");
+		        	IDENT 
+                                {if(!(tabela.existeSimbolo($IDENT.text))){
+                                    tabela.adicionarSimbolo($IDENT.text, "ENTIDADE");
                                 }
                                 else{
-                                    MyErrorListener.erroSemantico1($NOME_ENTIDADE.text, $NOME_ENTIDADE.getLine());
+                                    MyErrorListener.erroSemantico1($IDENT.text, $IDENT.getLine());
                                 }}
-                                {String aux=$NOME_ENTIDADE.text;
+                                {String aux=$IDENT.text;
                                  demarcador("nome-ent",aux);}
 		        	modificador_ent {demarcador("abre-parent","");} 
 		        	atributos {demarcador("atributos",$atributos.atrib);}
@@ -242,26 +268,26 @@ rel_binaria
 		;
 
 rel_n
-		:		NOME_ENTIDADE {
-                    if(!(tabela.existeSimbolo($NOME_ENTIDADE.text)))
-                        MyErrorListener.erroSemantico2($NOME_ENTIDADE.text, $NOME_ENTIDADE.getLine());
+		:		IDENT {
+                    if(!(tabela.existeSimbolo($IDENT.text)))
+                        MyErrorListener.erroSemantico2($IDENT.text, $IDENT.getLine());
                     } rel_esq (',' rel_esq)* (atributos)?
 		;
 
 rel_esq returns[String card, String nomeEnt]
-		:		NOME_ENTIDADE {
-                    $nomeEnt = $NOME_ENTIDADE.text;
-                    if(!(tabela.existeSimbolo($NOME_ENTIDADE.text)))
-                        MyErrorListener.erroSemantico2($NOME_ENTIDADE.text, $NOME_ENTIDADE.getLine());
+		:		IDENT {
+                    $nomeEnt = $IDENT.text;
+                    if(!(tabela.existeSimbolo($IDENT.text)))
+                        MyErrorListener.erroSemantico2($IDENT.text, $IDENT.getLine());
                 } 
                 CARDINALIDADE {$card = $CARDINALIDADE.text;} participacao
 		;
 
 rel_dir returns[String card, String nomeEnt]
-		:		participacao CARDINALIDADE {$card = $CARDINALIDADE.text;} NOME_ENTIDADE {
-                    $nomeEnt = $NOME_ENTIDADE.text;
-                    if(!(tabela.existeSimbolo($NOME_ENTIDADE.text)))
-                        MyErrorListener.erroSemantico2($NOME_ENTIDADE.text, $NOME_ENTIDADE.getLine());
+		:		participacao CARDINALIDADE {$card = $CARDINALIDADE.text;} IDENT {
+                    $nomeEnt = $IDENT.text;
+                    if(!(tabela.existeSimbolo($IDENT.text)))
+                        MyErrorListener.erroSemantico2($IDENT.text, $IDENT.getLine());
                 } 
 		;
 
@@ -274,22 +300,26 @@ participacao
 		;
 
 alt 	
-		:		ALTERA NOME_ENTIDADE
+		:		ALTERA IDENT
 		;
 
 excl 	
-		:		EXCLUI NOME_ENTIDADE
+		:		EXCLUI IDENT
 		;	
 
 exibe	
-		:		EXIBE NOME_ENTIDADE
+		:		EXIBE IDENT
 		;
 
 
-insrt           :               NOME_ENTIDADE INSERE (valor)*;
+insrt           :               IDENT '(' colunas ')' INSERE '(' valores ')' (',' '(' valores ')')*;
 
-valor           :               IDENT (',' IDENT)*;
+colunas           :               coluna (',' coluna)*;
 
-slct            :               SELECIONA valor DE (NOME_ENTIDADE)+ (AONDE expressao)?;
+coluna          :               IDENT ('.' IDENT)?;
 
-expressao       :               IDENT OP IDENT (',' IDENT OP IDENT)*;
+from            :               IDENT (',' IDENT)*;
+
+slct            :               SELECIONA colunas DE from (ONDE expressao)?;
+
+expressao       :               coluna OP (coluna | valores) (',' coluna OP (coluna | valores))*;

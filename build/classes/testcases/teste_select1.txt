@@ -1,0 +1,1 @@
+SELECIONA nome DE EMPREGADO ONDE sexo = "sim", salario > 1200

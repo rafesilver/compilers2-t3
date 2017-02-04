@@ -14,6 +14,36 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface SeQueLaListener extends ParseTreeListener {
 	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#booleano}.
+	 * @param ctx the parse tree
+	 */
+	void enterBooleano(SeQueLaParser.BooleanoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#booleano}.
+	 * @param ctx the parse tree
+	 */
+	void exitBooleano(SeQueLaParser.BooleanoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#valor}.
+	 * @param ctx the parse tree
+	 */
+	void enterValor(SeQueLaParser.ValorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#valor}.
+	 * @param ctx the parse tree
+	 */
+	void exitValor(SeQueLaParser.ValorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#valores}.
+	 * @param ctx the parse tree
+	 */
+	void enterValores(SeQueLaParser.ValoresContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#valores}.
+	 * @param ctx the parse tree
+	 */
+	void exitValores(SeQueLaParser.ValoresContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SeQueLaParser#programa}.
 	 * @param ctx the parse tree
 	 */
@@ -184,15 +214,35 @@ public interface SeQueLaListener extends ParseTreeListener {
 	 */
 	void exitInsrt(SeQueLaParser.InsrtContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SeQueLaParser#valor}.
+	 * Enter a parse tree produced by {@link SeQueLaParser#colunas}.
 	 * @param ctx the parse tree
 	 */
-	void enterValor(SeQueLaParser.ValorContext ctx);
+	void enterColunas(SeQueLaParser.ColunasContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SeQueLaParser#valor}.
+	 * Exit a parse tree produced by {@link SeQueLaParser#colunas}.
 	 * @param ctx the parse tree
 	 */
-	void exitValor(SeQueLaParser.ValorContext ctx);
+	void exitColunas(SeQueLaParser.ColunasContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#coluna}.
+	 * @param ctx the parse tree
+	 */
+	void enterColuna(SeQueLaParser.ColunaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#coluna}.
+	 * @param ctx the parse tree
+	 */
+	void exitColuna(SeQueLaParser.ColunaContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#from}.
+	 * @param ctx the parse tree
+	 */
+	void enterFrom(SeQueLaParser.FromContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#from}.
+	 * @param ctx the parse tree
+	 */
+	void exitFrom(SeQueLaParser.FromContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SeQueLaParser#slct}.
 	 * @param ctx the parse tree
