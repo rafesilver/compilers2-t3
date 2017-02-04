@@ -20,7 +20,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 /**
  *
- * @author Felipe
+ * @author Felipe + G10
  */
 
 public class Main {

@@ -1,5 +1,9 @@
 grammar SeQueLa;
 
+// PARA RODAR ESSE TREM
+//Na Pasta: C:\Users\Fuler\Desktop\compilers2-t3\src\grammar
+//Comando: java -jar c:\Users\Fuler\Desktop\antlr-4.5.3-complete.jar -package grammar SeQueLa.g4
+
 // Analisador Lexico
 @lexer::members
 {
@@ -16,8 +20,10 @@ grammar SeQueLa;
 
 //Setando o pacote para todos os arquivos gerados pelo ANTLR
 @header{
-    package trabalho3;
-      import static trabalho3.GeradorDeCodigo.*;
+    import t3.*;
+      import static t3.TabelaDeSimbolos.*;
+      import static t3.MyErrorListener.*;
+      import static t3.GeradorDeCodigo.*;
 }
 
 COMENTARIO
@@ -39,7 +45,7 @@ RELACIONAMENTO
 
 ALTERA
 		:		'Altera' | 'altera' | 'ALTERA'
-                                | 'Altere | 'altere' |  'ALTERE'
+                                | 'Altere' | 'altere' |  'ALTERE'
                                 | 'Alterar' | 'alterar' | 'ALTERAR'
 		;
 
@@ -286,4 +292,4 @@ valor           :               IDENT (',' IDENT)*;
 
 slct            :               SELECIONA valor DE (NOME_ENTIDADE)+ (AONDE expressao)?;
 
-expressao       :               IDENT OP IDENT ;
+expressao       :               IDENT OP IDENT (',' IDENT OP IDENT)*;
