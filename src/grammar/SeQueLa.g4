@@ -312,7 +312,7 @@ exibe
 		;
 
 
-insrt           :               IDENT INSERE (valores)*;
+insrt           :               IDENT '(' colunas ')' INSERE '(' valores ')' (',' '(' valores ')')*;
 
 colunas           :               coluna (',' coluna)*;
 
