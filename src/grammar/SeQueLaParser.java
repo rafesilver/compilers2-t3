@@ -1,4 +1,4 @@
-// Generated from SeQueLa.g4 by ANTLR 4.5.3
+// Generated from C:\Users\Gabriel\Documents\NetBeansProjects\compilers2-t3\src\grammar\SeQueLa.g4 by ANTLR 4.5.3
 package grammar;
 
     import t3.*;
