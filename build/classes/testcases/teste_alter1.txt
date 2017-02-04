@@ -1,0 +1,4 @@
+ALTERAR presunto
+	ALTERA COLUNA peso real
+	EXCLUI COLUNA marca
+	ADICIONA fabricante literal

@@ -60,6 +60,13 @@ INSERE          :               'Insire' | 'insere' | 'INSERE'
                                 | 'Inserir' | 'inserir' | 'INSERIR'
                 ;
 
+ADD             :               'Adicione' | 'adicione' | 'ADICIONE'
+                                | 'Adiciona' | 'adiciona' | 'ADICIONA'
+                                | 'Adicionar' | 'adicionar' | 'ADICIONAR'
+                ;
+
+COLUMN          :               'Coluna' | 'coluna' | 'COLUNA' ;
+
 // SELECIONA _____ DE _____ ONDE _____ = _____
 
 SELECIONA       :               'Seleciona' | 'seleciona' | 'SELECIONA'
@@ -300,8 +307,12 @@ participacao
 		;
 
 alt 	
-		:		ALTERA IDENT
+		:		ALTERA IDENT (TABULACAO (alt_alt | alt_add | alt_drop))+
 		;
+
+    alt_alt : ALTERA (COLUMN)? IDENT TIPO ;
+    alt_add : ADD IDENT TIPO ;    
+    alt_drop : EXCLUI (COLUMN)? IDENT ;
 
 excl 	
 		:		EXCLUI IDENT
