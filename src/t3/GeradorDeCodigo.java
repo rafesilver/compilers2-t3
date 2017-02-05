@@ -28,6 +28,29 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
         this.out = out;
     }
     
+     public static void geradorIndice(String tipo, String ent, ArrayList<String> colunas){
+        String novaLinha;
+        switch (tipo) {
+            case "indice":
+                novaLinha = "\n";
+		otherOutput.adicionarTabela("CREATE INDEX");
+                otherOutput.getUltimaEntrada().append(novaLinha+"CREATE INDEX ");
+                otherOutput.getUltimaEntrada().append(ent);
+                break;
+            case "em":
+                novaLinha = "\n";
+                otherOutput.getUltimaEntrada().append(novaLinha+"ON ");
+                otherOutput.getUltimaEntrada().append(ent+ "( ");
+                for(int i = 0; i < colunas.size(); i++){
+                    if(i > 0)
+                        otherOutput.getUltimaEntrada().append(", ");
+                    otherOutput.getUltimaEntrada().append(colunas.get(i));
+                }
+                otherOutput.getUltimaEntrada().append(" )");
+                break;
+        }
+    }
+    
     // NEW: Cria o Exclui no buffer
     
     public static String whatType(String text){

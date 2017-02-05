@@ -65,6 +65,10 @@ ADD             :               'Adicione' | 'adicione' | 'ADICIONE'
                                 | 'Adicionar' | 'adicionar' | 'ADICIONAR'
                 ;
 
+INDICE          :               'Indice' | 'indice' | 'INDICE'
+                                | 'Índice' | 'índice' | 'ÍNDICE'
+                ;
+
 COLUMN          :               'Coluna' | 'coluna' | 'COLUNA' ;
 
 TUDO            :               '*' | 'Tudo' | 'tudo' | 'TUDO' ;
@@ -77,6 +81,9 @@ SELECIONA       :               'Seleciona' | 'seleciona' | 'SELECIONA'
                 ;
 
 DE              :               'De' | 'de' | 'DE'
+                ;
+
+EM              :               'Em' | 'em' | 'EM'
                 ;
 
 ONDE           :               'Onde' | 'onde' | 'ONDE'
@@ -198,7 +205,7 @@ logico returns[String text] :
 // Parser
 
 programa
-		:		( ent | rel | alt | excl | exibe | insrt | slct | view )* {demarcador("fim", "");}
+		:		( ent | rel | alt | excl | exibe | insrt | slct | view | indce )* {demarcador("fim", "");}
 		;
 
 ent
@@ -357,6 +364,14 @@ excl
 exibe	
 		:		EXIBE IDENT
 		;
+
+indce           :               INDICE IDENT 
+                                {geradorIndice("indice",$IDENT.text, null);}
+                                EM IDENT {if(!(tabela.existeSimbolo($IDENT.text))){MyErrorListener.erroSemantico2($IDENT.text, $IDENT.getLine());}}
+                                '(' colunas ')'  
+                                {geradorIndice("em",$IDENT.text, $colunas.text);}
+                ;
+
 
 
 insrt           :               IDENT {if(!(tabela.existeSimbolo($IDENT.text))){MyErrorListener.erroSemantico2($IDENT.text, $IDENT.getLine());}}
