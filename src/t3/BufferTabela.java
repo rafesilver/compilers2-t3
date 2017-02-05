@@ -74,7 +74,6 @@ public class BufferTabela {
             }
         }
         return -1; // Retorna -1 se não achar a entidade pelo nome
-    }
-    
+    } 
     
 }

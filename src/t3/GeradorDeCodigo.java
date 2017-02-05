@@ -44,29 +44,30 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
     }
     
      // NEW: Cria o Altera no buffer
-    public static void geradorAltera(String tipo, String ent, String aux){
-        String novaLinha;
+    public static void geradorAltera(String tipo, String ent, String aux, int line){
+        String novaLinha = "\n\t"; 
         switch (tipo) {
             case "altera": 
-                    novaLinha = "\n";
                     otherOutput.adicionarTabela("ALTER TABLE");
-                    otherOutput.getUltimaEntrada().append(novaLinha+"ALTER TABLE ");  
+                    otherOutput.getUltimaEntrada().append("ALTER TABLE ");
+                    otherOutput.getUltimaEntrada().setNomePK(ent);
                     otherOutput.getUltimaEntrada().append(ent);                    
                     break;
-            case "coluna":
-                    novaLinha = "\n\t";                    
+            case "coluna":  
+                    if(!tempOutput.getEntrada(tempOutput.getIndex(otherOutput.getUltimaEntrada().getNomePK())).checkCol(ent))
+                        out.printlnSemantico("Linha "+line+": Nao existe coluna chamada '"+ent+"' na entidade.");
                     otherOutput.getUltimaEntrada().append(novaLinha+"ALTER COLUMN ");  
-                    otherOutput.getUltimaEntrada().append(ent+" ");   
-                    otherOutput.getUltimaEntrada().append(aux);   
+                    otherOutput.getUltimaEntrada().append(ent+" "+aux);
                 break;
             case "adiciona":
-                    novaLinha = "\n\t";
+                    if(tempOutput.getEntrada(tempOutput.getIndex(otherOutput.getUltimaEntrada().getNomePK())).checkCol(ent))
+                        out.printlnSemantico("Linha "+line+": Ja existe coluna chamada '"+ent+"' na entidade.");
                     otherOutput.getUltimaEntrada().append(novaLinha+"ADD ");  
-                    otherOutput.getUltimaEntrada().append(ent+" ");   
-                    otherOutput.getUltimaEntrada().append(aux);   
+                    otherOutput.getUltimaEntrada().append(ent+" "+aux);  
                     break;
             case "exclui":
-                     novaLinha = "\n\t"; 
+                    if(!tempOutput.getEntrada(tempOutput.getIndex(otherOutput.getUltimaEntrada().getNomePK())).checkCol(ent))
+                        out.printlnSemantico("Linha "+line+": Nao existe coluna chamada '"+ent+"' na entidade.");
                      otherOutput.getUltimaEntrada().append(novaLinha+"DROP COLUMN ");
                      otherOutput.getUltimaEntrada().append(ent); 
                     break;
@@ -95,8 +96,14 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
                 int tam = aux2.length;
                 aux2[tam-1] = aux2[tam-1].replace(",","");
                    
-                for(String o:aux2)
+                for(String o:aux2){
+                    if(!tempOutput.getUltimaEntrada().checkCol(o.split(" ")[0]))
+                        tempOutput.getUltimaEntrada().setColunas(o.split(" ")[0],o.split(" ")[1]);
+                    else
+                        out.printlnSemantico("Erro Semantico: Ja existe uma coluna chamada '"+o.split(" ")[0]+"' na entidade.");
+                        
                     tempOutput.getUltimaEntrada().append("\n\t"+o);
+                    }
                 tempOutput.getUltimaEntrada().append(")");
                 break;
                           

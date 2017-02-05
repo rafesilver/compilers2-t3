@@ -31,7 +31,7 @@ public class Main {
         if(args.length==0){  
             String path = "src\\testcases\\";
             // nome do arquivo de entrada para teste
-            String name = "teste_geracao_select3";
+            String name = "teste_erro_semantico2";
             
             args = new String[]{"", ""};
             args[0] = path + name + ".txt";

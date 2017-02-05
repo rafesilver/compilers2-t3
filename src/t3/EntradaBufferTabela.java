@@ -6,6 +6,8 @@
 
 package t3;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Guilherme
@@ -19,9 +21,14 @@ public class EntradaBufferTabela {
     private String entidade;
     private String nomePK;
     private String tipoPK;
+    
+    private ArrayList<String> colunas;
+    private ArrayList<String> colType;
 
     public EntradaBufferTabela(String entidade) {
         this.entidade = entidade;
+        colunas = new ArrayList<String>();
+        colType = new ArrayList<String>();
     }
 
     public String getEntidade() {
@@ -48,6 +55,30 @@ public class EntradaBufferTabela {
         return textoCodigo;
     }
 
+    public void setColunas(String col, String type){
+        colunas.add(col);
+        colType.add(type);
+    }
+    
+    public ArrayList<String> getColunas(){
+        return colunas;
+    }
+    
+    public Boolean checkCol(String col){
+        for(String o:colunas)
+            if(o.equals(col))
+                return true;
+        return false; 
+    }
+    
+    public String getColType(String col){
+        for(int i = 0; i < colunas.size(); i++){
+            if(col == colunas.get(i))
+                return colType.get(i);
+        }
+        return null;
+    }
+    
     public void setEntidade(String entidade) {
         this.entidade = entidade;
     }

@@ -1340,7 +1340,7 @@ public class SeQueLaParser extends Parser {
 			setState(202);
 			((AltContext)_localctx).IDENT = match(IDENT);
 			if(!(tabela.existeSimbolo((((AltContext)_localctx).IDENT!=null?((AltContext)_localctx).IDENT.getText():null)))){MyErrorListener.erroSemantico2((((AltContext)_localctx).IDENT!=null?((AltContext)_localctx).IDENT.getText():null), ((AltContext)_localctx).IDENT.getLine());}
-			geradorAltera("altera",(((AltContext)_localctx).IDENT!=null?((AltContext)_localctx).IDENT.getText():null),"");
+			geradorAltera("altera",(((AltContext)_localctx).IDENT!=null?((AltContext)_localctx).IDENT.getText():null),"",((AltContext)_localctx).IDENT.getLine());
 			setState(211); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
@@ -1434,7 +1434,7 @@ public class SeQueLaParser extends Parser {
 			((Alt_altContext)_localctx).IDENT = match(IDENT);
 			setState(220);
 			((Alt_altContext)_localctx).TIPO = match(TIPO);
-			geradorAltera("coluna",(((Alt_altContext)_localctx).IDENT!=null?((Alt_altContext)_localctx).IDENT.getText():null),(((Alt_altContext)_localctx).TIPO!=null?((Alt_altContext)_localctx).TIPO.getText():null));
+			geradorAltera("coluna",(((Alt_altContext)_localctx).IDENT!=null?((Alt_altContext)_localctx).IDENT.getText():null),(((Alt_altContext)_localctx).TIPO!=null?((Alt_altContext)_localctx).TIPO.getText():null),((Alt_altContext)_localctx).IDENT.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -1480,7 +1480,7 @@ public class SeQueLaParser extends Parser {
 			((Alt_addContext)_localctx).IDENT = match(IDENT);
 			setState(225);
 			((Alt_addContext)_localctx).TIPO = match(TIPO);
-			geradorAltera("adiciona",(((Alt_addContext)_localctx).IDENT!=null?((Alt_addContext)_localctx).IDENT.getText():null),(((Alt_addContext)_localctx).TIPO!=null?((Alt_addContext)_localctx).TIPO.getText():null));
+			geradorAltera("adiciona",(((Alt_addContext)_localctx).IDENT!=null?((Alt_addContext)_localctx).IDENT.getText():null),(((Alt_addContext)_localctx).TIPO!=null?((Alt_addContext)_localctx).TIPO.getText():null),((Alt_addContext)_localctx).IDENT.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -1533,7 +1533,7 @@ public class SeQueLaParser extends Parser {
 
 			setState(232);
 			((Alt_dropContext)_localctx).IDENT = match(IDENT);
-			geradorAltera("exclui",(((Alt_dropContext)_localctx).IDENT!=null?((Alt_dropContext)_localctx).IDENT.getText():null),null);
+			geradorAltera("exclui",(((Alt_dropContext)_localctx).IDENT!=null?((Alt_dropContext)_localctx).IDENT.getText():null),null,((Alt_dropContext)_localctx).IDENT.getLine());
 			}
 		}
 		catch (RecognitionException re) {
