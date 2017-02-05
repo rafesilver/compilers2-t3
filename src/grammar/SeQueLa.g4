@@ -318,15 +318,24 @@ participacao
 		;
 
 alt 	
-		:		ALTERA IDENT (TABULACAO (alt_alt | alt_add | alt_drop))+
+		:		ALTERA IDENT {if(!(tabela.existeSimbolo($IDENT.text))){MyErrorListener.erroSemantico2($IDENT.text, $IDENT.getLine());}}
+                                {geradorAltera("altera",$IDENT.text,"");}
+                                (TABULACAO (alt_alt | alt_add | alt_drop))+
 		;
 
-    alt_alt : ALTERA (COLUMN)? IDENT TIPO ;
-    alt_add : ADD IDENT TIPO ;    
-    alt_drop : EXCLUI (COLUMN)? IDENT ;
+    alt_alt : ALTERA (COLUMN)? IDENT TIPO               
+              {geradorAltera("coluna",$IDENT.text,$TIPO.text);}
+            ;
+    alt_add : ADD IDENT TIPO 
+            {geradorAltera("adiciona",$IDENT.text,$TIPO.text);}
+            ;    
+    alt_drop : EXCLUI (COLUMN)? IDENT            
+            {geradorAltera("exclui",$IDENT.text,null);}
+            ;
 
 excl 	
-		:		EXCLUI IDENT
+		:		EXCLUI IDENT {if(!(tabela.existeSimbolo($IDENT.text))){MyErrorListener.erroSemantico2($IDENT.text, $IDENT.getLine());}}
+                                {geradorExclui("exclui",$IDENT.text);}
 		;	
 
 exibe	

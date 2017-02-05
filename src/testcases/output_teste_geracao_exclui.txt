@@ -1,0 +1,9 @@
+CREATE TABLE presunto( 
+	peso REAL ,
+	marca VARCHAR(255) 
+);
+
+
+DROP TABLE presunto
+;
+
