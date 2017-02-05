@@ -67,6 +67,8 @@ ADD             :               'Adicione' | 'adicione' | 'ADICIONE'
 
 COLUMN          :               'Coluna' | 'coluna' | 'COLUNA' ;
 
+TUDO            :               '*' | 'Tudo' | 'tudo' | 'TUDO' ;
+
 // SELECIONA _____ DE _____ ONDE _____ = _____
 
 SELECIONA       :               'Seleciona' | 'seleciona' | 'SELECIONA'
@@ -102,7 +104,7 @@ RESTRICAO
 TIPO_MAPEAMENTO 
         :       'map1' | 'map2' | 'map3' | 'map4' | 'map5' | 'map6'
         ;
-
+LOGICO          :               'E' | 'e' | 'OU' | 'Ou' | 'ou';
 CARDINALIDADE
 		:		'0' | '1' | 'n' | 'm' | 'N' | 'M'
 		;
@@ -138,6 +140,8 @@ DIGITO
 		;
 
 OP              :               '=' | '>' | '<' | '>=' | '<=';
+
+ARITMETICO      :               '+' | '-' | '/' | '*';
 
 //--------------------------------------------------
 // Tipos de valores
@@ -331,6 +335,6 @@ coluna          :               IDENT ('.' IDENT)?;
 
 from            :               IDENT (',' IDENT)*;
 
-slct            :               SELECIONA colunas DE from (ONDE expressao)?;
+slct            :               SELECIONA (colunas | TUDO) DE from (ONDE expressao)?;
 
-expressao       :               coluna OP (coluna | valores) (',' coluna OP (coluna | valores))*;
+expressao       :               coluna OP (coluna | valores) ((LOGICO) coluna OP (coluna | valores))*;
