@@ -54,7 +54,7 @@ public class BufferTabela {
     }
     
     
-    public StringBuffer getStringBuffer(){
+    public StringBuffer getStringBuffer(String end){
         StringBuffer buffer = new StringBuffer();
         int i;
         
@@ -62,7 +62,7 @@ public class BufferTabela {
         for(i = 0; i<tabelas.size(); i++){
             buffer.append(tabelas.get(i).getTextoCodigo());
             // Fecha as tabelas com );
-            buffer.append("\n);\n\n");
+            buffer.append("\n"+end+"\n\n");
         }
         return buffer;
     }

@@ -104,7 +104,10 @@ RESTRICAO
 TIPO_MAPEAMENTO 
         :       'map1' | 'map2' | 'map3' | 'map4' | 'map5' | 'map6'
         ;
-LOGICO          :               'E' | 'e' | 'OU' | 'Ou' | 'ou';
+
+LOGICO_E        :   'E' | 'e';
+LOGICO_OU       :   'Ou' | 'OU' | 'ou';
+
 CARDINALIDADE
 		:		'0' | '1' | 'n' | 'm' | 'N' | 'M'
 		;
@@ -171,6 +174,10 @@ valor : LITERAL | INTEIRO | REAL | booleano | DATA | HORA ;
 valores : valor (',' valor)* ;
 
 //--------------------------------------------------
+
+logico returns[String text] :              
+                        LOGICO_E {$text = "AND";}
+                        | LOGICO_OU {$text = "OR";};
 
 // Parser
 
@@ -329,23 +336,8 @@ exibe
 
 insrt           :               IDENT {if(!(tabela.existeSimbolo($IDENT.text))){MyErrorListener.erroSemantico2($IDENT.text, $IDENT.getLine());}}
                                 '(' colunas ')' INSERE valores1
-                                { geradorInsertCabesalho($IDENT.text, $colunas.text, $valores1.text);}
+                                { geradorInsert($IDENT.text, $colunas.text, $valores1.text);}
                 ;
-
-valores1 returns[ArrayList<String> text] : (TABULACAO)? '(' valores ')'
-                                        {$text = new ArrayList<>();
-                                        $text.add($valores.text);}
-                                        (',' valores2
-                                        {$text.addAll($valores2.text);}
-                                        )?;
-
-
-valores2 returns[ArrayList<String> text] : (TABULACAO)? '(' valores ')'
-                                        {$text = new ArrayList<>();
-                                        $text.add($valores.text);}
-                                        (',' valores1
-                                        {$text.addAll($valores1.text);}
-                                        )?;
 
 colunas returns[ArrayList<String> text]
                 :               IDENT 
@@ -365,10 +357,68 @@ colunas2 returns[ArrayList<String> text]
                                 )?
                 ;
 
-coluna          :               IDENT ('.' IDENT)?;
+valores1 returns[ArrayList<String> text] : (TABULACAO)? '(' valores ')'
+                                        {$text = new ArrayList<>();
+                                        $text.add($valores.text);}
+                                        (',' valores2
+                                        {$text.addAll($valores2.text);}
+                                        )?;
 
-from            :               IDENT (',' IDENT)*;
 
-slct            :               SELECIONA (colunas | TUDO) DE from (ONDE expressao)?;
+valores2 returns[ArrayList<String> text] : (TABULACAO)? '(' valores ')'
+                                        {$text = new ArrayList<>();
+                                        $text.add($valores.text);}
+                                        (',' valores1
+                                        {$text.addAll($valores1.text);}
+                                        )?;
 
-expressao       :               coluna OP (coluna | valores) ((LOGICO) coluna OP (coluna | valores))*;
+coluna returns[String text] :
+                                IDENT {$text = $IDENT.text;}
+                                ('.' atr {$text += "." + $atr.text;})?;
+
+atr returns[String text] : IDENT {$text = $IDENT.text;};
+
+from returns[ArrayList<String> text] :
+                                IDENT {if(!(tabela.existeSimbolo($IDENT.text))){MyErrorListener.erroSemantico2($IDENT.text, $IDENT.getLine());}}
+                                {$text = new ArrayList<>();
+                                $text.add($IDENT.text);}
+                                (',' from2
+                                {$text.addAll($from2.text);}
+                                )?;
+
+from2 returns[ArrayList<String> text] :
+                                IDENT {if(!(tabela.existeSimbolo($IDENT.text))){MyErrorListener.erroSemantico2($IDENT.text, $IDENT.getLine());}}
+                                {$text = new ArrayList<>();
+                                $text.add($IDENT.text);}
+                                (',' from
+                                {$text.addAll($from.text);}
+                                )?;
+
+slct            :               SELECIONA
+                                (colunas {geradorSelectCabesalho($colunas.text);}
+                                | TUDO {geradorSelectCabesalho(new ArrayList<>());})
+                                DE from {geradorSelectFrom($from.text);}
+                                (ONDE expressao {geradorSelectWhere($expressao.text);})?
+                                ;
+
+expressao returns[ArrayList<String> text] :
+                                coluna OP algo
+                                {$text = new ArrayList<String>();
+                                $text.add($coluna.text +" "+ $OP.text +" "+ $algo.text);}
+                                (expressao1 {$text.addAll($expressao1.text);})?;
+
+expressao1 returns[ArrayList<String> text] :
+                                 (logico) coluna OP algo
+                                 {$text = new ArrayList<String>();
+                                 $text.add($logico.text +" "+ $coluna.text +" "+ $OP.text + " " + $algo.text);}
+                                 (expressao2 {$text.addAll($expressao2.text);})?;
+
+expressao2 returns[ArrayList<String> text] :
+                                 (logico) coluna OP algo
+                                 {$text = new ArrayList<String>();
+                                 $text.add($logico.text +" "+ $coluna.text +" "+ $OP.text + " " + $algo.text);}
+                                 (expressao1 {$text.addAll($expressao1.text);})?;
+
+algo returns[String text] :
+                            (coluna {$text = $coluna.text;}
+                            | valores {$text = $valores.text;});
