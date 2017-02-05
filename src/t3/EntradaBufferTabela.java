@@ -73,7 +73,7 @@ public class EntradaBufferTabela {
     
     public String getColType(String col){
         for(int i = 0; i < colunas.size(); i++){
-            if(col == colunas.get(i))
+            if(col.equals(colunas.get(i)))
                 return colType.get(i);
         }
         return null;

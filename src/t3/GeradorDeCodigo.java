@@ -30,6 +30,42 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
     
     // NEW: Cria o Exclui no buffer
     
+    public static String whatType(String text){
+        if(text.matches("[0-9]+"))
+            return "INTEGER";
+        if(text.matches("[0-9]+(\\.[0-9]+)?"))
+            return "REAL";
+        if(text.matches("\"(.)+\""))
+            return "VARCHAR(255)";
+        if(text.equals("TRUE") || text.equals("FALSE"))
+            return "BOOLEAN";
+        if(text.matches("([0-9]{2}(:|-)){2}[0-9]{2}"))
+            return "TIME";
+        if(text.matches("([0-9]{2}( |-|\\/)){2}[0-9]{4}"))
+            return "DATE";
+        
+        return null;
+    }
+    
+    public static Boolean compareType(String type1, String type2){
+        if(type1.equals(type2))
+            return true;
+        else
+            if(type1.equals("REAL") && type2.equals("INTEGER"))
+                return true;
+
+        return false;
+    }
+    
+    public static String f(String text){
+        text = text.replace("verdadeiro", "TRUE");
+        text = text.replace("Verdadeiro", "TRUE");
+        text = text.replace("VERDADEIRO", "TRUE");
+        text = text.replace("falso", "FALSE");
+        text = text.replace("Falso", "FALSE");
+        text = text.replace("FALSO", "FALSE");
+        return text;
+    }
  
     public static void geradorExclui(String tipo, String ent){
         switch (tipo) {
@@ -98,7 +134,8 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
                    
                 for(String o:aux2){
                     if(!tempOutput.getUltimaEntrada().checkCol(o.split(" ")[0]))
-                        tempOutput.getUltimaEntrada().setColunas(o.split(" ")[0],o.split(" ")[1]);
+                        if(o.split(" ").length > 1)
+                            tempOutput.getUltimaEntrada().setColunas(o.split(" ")[0],o.split(" ")[1]);
                     else
                         out.printlnSemantico("Erro Semantico: Ja existe uma coluna chamada '"+o.split(" ")[0]+"' na entidade.");
                         
@@ -180,6 +217,10 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
                 return "REAL";
             case "data":
                 return "DATE";
+            case "booleano":
+                return "BOOLEAN";
+            case "hora":
+                return "TIME";
             
         }
         
@@ -213,10 +254,12 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
         tempOutput.getUltimaEntrada().setTipoPK(tipo);
     }
 
-    public static void geradorInsert(String ent, ArrayList<String> colunas, ArrayList<String> valores){
+    public static void geradorInsert(String ent, ArrayList<String> colunas, ArrayList<String> valores, int line){
         otherOutput.adicionarTabela("INSERT");
         otherOutput.getUltimaEntrada().append("INSERT INTO " + ent + "(");
         for(int i = 0; i < colunas.size(); i++){
+            if(!tempOutput.getEntrada(tempOutput.getIndex(ent)).checkCol(colunas.get(i)))
+                out.printlnSemantico("Linha "+line+": Nao existe coluna chamada '"+colunas.get(i)+"' na entidade.");
             if(i > 0)
                 otherOutput.getUltimaEntrada().append(", ");
             otherOutput.getUltimaEntrada().append(colunas.get(i));
@@ -224,6 +267,17 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
         otherOutput.getUltimaEntrada().append(")");
         
         for(int i = 0; i < valores.size(); i++){
+            
+            // Checar se o número de colunas/valores bate
+            if(valores.get(i).split(",").length != colunas.size())
+                out.printlnSemantico("Linha "+line+": Numero incompativel de colunas e valores.");
+            else
+                // Checar se o tipo dos valores é compatível com o da coluna
+                for(int j = 0; j < valores.get(i).split(",").length; j++)
+                    if(!compareType(tempOutput.getEntrada(tempOutput.getIndex(ent)).getColType(colunas.get(j)),whatType(valores.get(i).split(",")[j])))
+                        out.printlnSemantico("Linha "+line+": O valor " + valores.get(i).split(",")[j]
+                        +" nao eh compativel com "+colunas.get(j)+" ("+tempOutput.getEntrada(tempOutput.getIndex(ent)).getColType(colunas.get(j))+").");
+            
             if(i > 0)
                 otherOutput.getUltimaEntrada().append(", ");
             otherOutput.getUltimaEntrada().append("\n\t(" + valores.get(i) + ")");

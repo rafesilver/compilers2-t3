@@ -1,3 +1,4 @@
 Linha 7: Nao existe coluna chamada 'fabricante' na entidade.
 Linha 8: Nao existe coluna chamada 'marcs' na entidade.
+Linha 11: Ja existe coluna chamada 'peso' na entidade.
 Fim da compilacao
