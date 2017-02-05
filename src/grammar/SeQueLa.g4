@@ -126,12 +126,12 @@ WS
 
 fragment
 LETRA_MIN
-		:		'a'..'z'
+		:		'a'..'z' | 'ç'
 		;
 
 fragment
 LETRA_MAI
-		:		'A'..'Z'
+		:		'A'..'Z' | 'Ç'
 		;
 
 fragment
@@ -327,9 +327,43 @@ exibe
 		;
 
 
-insrt           :               IDENT '(' colunas ')' INSERE '(' valores ')' (',' '(' valores ')')*;
+insrt           :               IDENT {if(!(tabela.existeSimbolo($IDENT.text))){MyErrorListener.erroSemantico2($IDENT.text, $IDENT.getLine());}}
+                                '(' colunas ')' INSERE valores1
+                                { geradorInsertCabesalho($IDENT.text, $colunas.text, $valores1.text);}
+                ;
 
-colunas           :               coluna (',' coluna)*;
+valores1 returns[ArrayList<String> text] : (TABULACAO)? '(' valores ')'
+                                        {$text = new ArrayList<>();
+                                        $text.add($valores.text);}
+                                        (',' valores2
+                                        {$text.addAll($valores2.text);}
+                                        )?;
+
+
+valores2 returns[ArrayList<String> text] : (TABULACAO)? '(' valores ')'
+                                        {$text = new ArrayList<>();
+                                        $text.add($valores.text);}
+                                        (',' valores1
+                                        {$text.addAll($valores1.text);}
+                                        )?;
+
+colunas returns[ArrayList<String> text]
+                :               IDENT 
+                                {$text = new ArrayList<>();
+                                $text.add($IDENT.text);}
+                                (',' colunas2
+                                {$text.addAll($colunas2.text);}
+                                )?
+                ;
+
+colunas2 returns[ArrayList<String> text]
+                :               IDENT 
+                                {$text = new ArrayList<>();
+                                $text.add($IDENT.text);}
+                                (',' colunas
+                                {$text.addAll($colunas.text);}
+                                )?
+                ;
 
 coluna          :               IDENT ('.' IDENT)?;
 

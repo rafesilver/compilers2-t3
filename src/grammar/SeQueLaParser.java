@@ -1,4 +1,4 @@
-// Generated from C:\Users\Gabriel\Documents\NetBeansProjects\compilers2-t3\src\grammar\SeQueLa.g4 by ANTLR 4.5.3
+// Generated from SeQueLa.g4 by ANTLR 4.5.3
 package grammar;
 
     import t3.*;
@@ -35,14 +35,15 @@ public class SeQueLaParser extends Parser {
 		RULE_declaracao = 8, RULE_dec_composto = 9, RULE_rel = 10, RULE_rel_binaria = 11, 
 		RULE_rel_n = 12, RULE_rel_esq = 13, RULE_rel_dir = 14, RULE_participacao = 15, 
 		RULE_alt = 16, RULE_alt_alt = 17, RULE_alt_add = 18, RULE_alt_drop = 19, 
-		RULE_excl = 20, RULE_exibe = 21, RULE_insrt = 22, RULE_colunas = 23, RULE_coluna = 24, 
-		RULE_from = 25, RULE_slct = 26, RULE_expressao = 27;
+		RULE_excl = 20, RULE_exibe = 21, RULE_insrt = 22, RULE_valores1 = 23, 
+		RULE_valores2 = 24, RULE_colunas = 25, RULE_colunas2 = 26, RULE_coluna = 27, 
+		RULE_from = 28, RULE_slct = 29, RULE_expressao = 30;
 	public static final String[] ruleNames = {
 		"booleano", "valor", "valores", "programa", "ent", "modificador_ent", 
 		"atributos", "mais_declaracao", "declaracao", "dec_composto", "rel", "rel_binaria", 
 		"rel_n", "rel_esq", "rel_dir", "participacao", "alt", "alt_alt", "alt_add", 
-		"alt_drop", "excl", "exibe", "insrt", "colunas", "coluna", "from", "slct", 
-		"expressao"
+		"alt_drop", "excl", "exibe", "insrt", "valores1", "valores2", "colunas", 
+		"colunas2", "coluna", "from", "slct", "expressao"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
@@ -134,7 +135,7 @@ public class SeQueLaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(56);
+			setState(62);
 			_la = _input.LA(1);
 			if ( !(_la==VERDADEIRO || _la==FALSO) ) {
 			_errHandler.recoverInline(this);
@@ -181,26 +182,26 @@ public class SeQueLaParser extends Parser {
 		ValorContext _localctx = new ValorContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_valor);
 		try {
-			setState(64);
+			setState(70);
 			switch (_input.LA(1)) {
 			case LITERAL:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(58);
+				setState(64);
 				match(LITERAL);
 				}
 				break;
 			case INTEIRO:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(59);
+				setState(65);
 				match(INTEIRO);
 				}
 				break;
 			case REAL:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(60);
+				setState(66);
 				match(REAL);
 				}
 				break;
@@ -208,21 +209,21 @@ public class SeQueLaParser extends Parser {
 			case FALSO:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(61);
+				setState(67);
 				booleano();
 				}
 				break;
 			case DATA:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(62);
+				setState(68);
 				match(DATA);
 				}
 				break;
 			case HORA:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(63);
+				setState(69);
 				match(HORA);
 				}
 				break;
@@ -269,21 +270,21 @@ public class SeQueLaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(66);
+			setState(72);
 			valor();
-			setState(71);
+			setState(77);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__0) {
 				{
 				{
-				setState(67);
+				setState(73);
 				match(T__0);
-				setState(68);
+				setState(74);
 				valor();
 				}
 				}
-				setState(73);
+				setState(79);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -364,59 +365,59 @@ public class SeQueLaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(83);
+			setState(89);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ENTIDADE) | (1L << ALTERA) | (1L << EXCLUI) | (1L << SELECIONA) | (1L << EXIBE) | (1L << IDENT))) != 0)) {
 				{
-				setState(81);
+				setState(87);
 				_errHandler.sync(this);
 				switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
 				case 1:
 					{
-					setState(74);
+					setState(80);
 					ent();
 					}
 					break;
 				case 2:
 					{
-					setState(75);
+					setState(81);
 					rel();
 					}
 					break;
 				case 3:
 					{
-					setState(76);
+					setState(82);
 					alt();
 					}
 					break;
 				case 4:
 					{
-					setState(77);
+					setState(83);
 					excl();
 					}
 					break;
 				case 5:
 					{
-					setState(78);
+					setState(84);
 					exibe();
 					}
 					break;
 				case 6:
 					{
-					setState(79);
+					setState(85);
 					insrt();
 					}
 					break;
 				case 7:
 					{
-					setState(80);
+					setState(86);
 					slct();
 					}
 					break;
 				}
 				}
-				setState(85);
+				setState(91);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -465,9 +466,9 @@ public class SeQueLaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(88);
+			setState(94);
 			match(ENTIDADE);
-			setState(89);
+			setState(95);
 			((EntContext)_localctx).IDENT = match(IDENT);
 			if(!(tabela.existeSimbolo((((EntContext)_localctx).IDENT!=null?((EntContext)_localctx).IDENT.getText():null)))){
 			                                    tabela.adicionarSimbolo((((EntContext)_localctx).IDENT!=null?((EntContext)_localctx).IDENT.getText():null), "ENTIDADE");
@@ -477,10 +478,10 @@ public class SeQueLaParser extends Parser {
 			                                }
 			String aux=(((EntContext)_localctx).IDENT!=null?((EntContext)_localctx).IDENT.getText():null);
 			                                 demarcador("nome-ent",aux);
-			setState(92);
+			setState(98);
 			modificador_ent();
 			demarcador("abre-parent","");
-			setState(94);
+			setState(100);
 			((EntContext)_localctx).atributos = atributos();
 			demarcador("atributos",((EntContext)_localctx).atributos.atrib);
 			}
@@ -516,21 +517,21 @@ public class SeQueLaParser extends Parser {
 		Modificador_entContext _localctx = new Modificador_entContext(_ctx, getState());
 		enterRule(_localctx, 10, RULE_modificador_ent);
 		try {
-			setState(101);
+			setState(107);
 			switch (_input.LA(1)) {
 			case T__1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(97);
+				setState(103);
 				match(T__1);
-				setState(98);
+				setState(104);
 				match(IDENT);
 				}
 				break;
 			case T__2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(99);
+				setState(105);
 				match(T__2);
 				}
 				break;
@@ -584,9 +585,9 @@ public class SeQueLaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(103);
+			setState(109);
 			((AtributosContext)_localctx).declaracao = declaracao();
-			setState(104);
+			setState(110);
 			((AtributosContext)_localctx).mais_declaracao = mais_declaracao();
 
 			                    ((AtributosContext)_localctx).atrib =  ((AtributosContext)_localctx).declaracao.dec + ((AtributosContext)_localctx).mais_declaracao.mais_dec;
@@ -629,12 +630,12 @@ public class SeQueLaParser extends Parser {
 		enterRule(_localctx, 14, RULE_mais_declaracao);
 		((Mais_declaracaoContext)_localctx).mais_dec =  new ArrayList<>();
 		try {
-			setState(111);
+			setState(117);
 			switch (_input.LA(1)) {
 			case TABULACAO:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(107);
+				setState(113);
 				((Mais_declaracaoContext)_localctx).atributos = atributos();
 
 				                    _localctx.mais_dec.add(((Mais_declaracaoContext)_localctx).atributos.atrib);
@@ -702,29 +703,29 @@ public class SeQueLaParser extends Parser {
 		enterRule(_localctx, 16, RULE_declaracao);
 		int _la;
 		try {
-			setState(127);
+			setState(133);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(113);
-				match(TABULACAO);
-				setState(114);
-				((DeclaracaoContext)_localctx).IDENT = match(IDENT);
-				setState(115);
-				((DeclaracaoContext)_localctx).TIPO = match(TIPO);
 				setState(119);
+				match(TABULACAO);
+				setState(120);
+				((DeclaracaoContext)_localctx).IDENT = match(IDENT);
+				setState(121);
+				((DeclaracaoContext)_localctx).TIPO = match(TIPO);
+				setState(125);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==RESTRICAO) {
 					{
 					{
-					setState(116);
+					setState(122);
 					((DeclaracaoContext)_localctx).RESTRICAO = match(RESTRICAO);
 					}
 					}
-					setState(121);
+					setState(127);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -743,13 +744,13 @@ public class SeQueLaParser extends Parser {
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(123);
+				setState(129);
 				match(TABULACAO);
-				setState(124);
+				setState(130);
 				match(IDENT);
-				setState(125);
+				setState(131);
 				match(COMPOSTO);
-				setState(126);
+				setState(132);
 				dec_composto();
 				}
 				break;
@@ -825,20 +826,20 @@ public class SeQueLaParser extends Parser {
 		RelContext _localctx = new RelContext(_ctx, getState());
 		enterRule(_localctx, 20, RULE_rel);
 		try {
-			setState(133);
+			setState(139);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(131);
+				setState(137);
 				rel_binaria();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(132);
+				setState(138);
 				rel_n();
 				}
 				break;
@@ -892,19 +893,19 @@ public class SeQueLaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(135);
+			setState(141);
 			((Rel_binariaContext)_localctx).rel_esq = rel_esq();
-			setState(136);
+			setState(142);
 			((Rel_binariaContext)_localctx).IDENT = match(IDENT);
-			setState(137);
+			setState(143);
 			((Rel_binariaContext)_localctx).rel_dir = rel_dir();
-			setState(138);
+			setState(144);
 			((Rel_binariaContext)_localctx).TIPO_MAPEAMENTO = match(TIPO_MAPEAMENTO);
-			setState(140);
+			setState(146);
 			_la = _input.LA(1);
 			if (_la==TABULACAO) {
 				{
-				setState(139);
+				setState(145);
 				atributos();
 				}
 			}
@@ -993,35 +994,35 @@ public class SeQueLaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(144);
+			setState(150);
 			((Rel_nContext)_localctx).IDENT = match(IDENT);
 
 			                    if(!(tabela.existeSimbolo((((Rel_nContext)_localctx).IDENT!=null?((Rel_nContext)_localctx).IDENT.getText():null))))
 			                        MyErrorListener.erroSemantico2((((Rel_nContext)_localctx).IDENT!=null?((Rel_nContext)_localctx).IDENT.getText():null), ((Rel_nContext)_localctx).IDENT.getLine());
 			                    
-			setState(146);
+			setState(152);
 			rel_esq();
-			setState(151);
+			setState(157);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__0) {
 				{
 				{
-				setState(147);
+				setState(153);
 				match(T__0);
-				setState(148);
+				setState(154);
 				rel_esq();
 				}
 				}
-				setState(153);
+				setState(159);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(155);
+			setState(161);
 			_la = _input.LA(1);
 			if (_la==TABULACAO) {
 				{
-				setState(154);
+				setState(160);
 				atributos();
 				}
 			}
@@ -1069,17 +1070,17 @@ public class SeQueLaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(157);
+			setState(163);
 			((Rel_esqContext)_localctx).IDENT = match(IDENT);
 
 			                    ((Rel_esqContext)_localctx).nomeEnt =  (((Rel_esqContext)_localctx).IDENT!=null?((Rel_esqContext)_localctx).IDENT.getText():null);
 			                    if(!(tabela.existeSimbolo((((Rel_esqContext)_localctx).IDENT!=null?((Rel_esqContext)_localctx).IDENT.getText():null))))
 			                        MyErrorListener.erroSemantico2((((Rel_esqContext)_localctx).IDENT!=null?((Rel_esqContext)_localctx).IDENT.getText():null), ((Rel_esqContext)_localctx).IDENT.getLine());
 			                
-			setState(159);
+			setState(165);
 			((Rel_esqContext)_localctx).CARDINALIDADE = match(CARDINALIDADE);
 			((Rel_esqContext)_localctx).card =  (((Rel_esqContext)_localctx).CARDINALIDADE!=null?((Rel_esqContext)_localctx).CARDINALIDADE.getText():null);
-			setState(161);
+			setState(167);
 			participacao();
 			}
 		}
@@ -1124,12 +1125,12 @@ public class SeQueLaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(163);
+			setState(169);
 			participacao();
-			setState(164);
+			setState(170);
 			((Rel_dirContext)_localctx).CARDINALIDADE = match(CARDINALIDADE);
 			((Rel_dirContext)_localctx).card =  (((Rel_dirContext)_localctx).CARDINALIDADE!=null?((Rel_dirContext)_localctx).CARDINALIDADE.getText():null);
-			setState(166);
+			setState(172);
 			((Rel_dirContext)_localctx).IDENT = match(IDENT);
 
 			                    ((Rel_dirContext)_localctx).nomeEnt =  (((Rel_dirContext)_localctx).IDENT!=null?((Rel_dirContext)_localctx).IDENT.getText():null);
@@ -1168,19 +1169,19 @@ public class SeQueLaParser extends Parser {
 		ParticipacaoContext _localctx = new ParticipacaoContext(_ctx, getState());
 		enterRule(_localctx, 30, RULE_participacao);
 		try {
-			setState(172);
+			setState(178);
 			switch (_input.LA(1)) {
 			case T__3:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(169);
+				setState(175);
 				match(T__3);
 				}
 				break;
 			case T__4:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(170);
+				setState(176);
 				match(T__4);
 				}
 				break;
@@ -1259,35 +1260,35 @@ public class SeQueLaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(174);
+			setState(180);
 			match(ALTERA);
-			setState(175);
+			setState(181);
 			match(IDENT);
-			setState(182); 
+			setState(188); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(176);
+				setState(182);
 				match(TABULACAO);
-				setState(180);
+				setState(186);
 				switch (_input.LA(1)) {
 				case ALTERA:
 					{
-					setState(177);
+					setState(183);
 					alt_alt();
 					}
 					break;
 				case ADD:
 					{
-					setState(178);
+					setState(184);
 					alt_add();
 					}
 					break;
 				case EXCLUI:
 					{
-					setState(179);
+					setState(185);
 					alt_drop();
 					}
 					break;
@@ -1296,7 +1297,7 @@ public class SeQueLaParser extends Parser {
 				}
 				}
 				}
-				setState(184); 
+				setState(190); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==TABULACAO );
@@ -1339,20 +1340,20 @@ public class SeQueLaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(186);
+			setState(192);
 			match(ALTERA);
-			setState(188);
+			setState(194);
 			_la = _input.LA(1);
 			if (_la==COLUMN) {
 				{
-				setState(187);
+				setState(193);
 				match(COLUMN);
 				}
 			}
 
-			setState(190);
+			setState(196);
 			match(IDENT);
-			setState(191);
+			setState(197);
 			match(TIPO);
 			}
 		}
@@ -1391,11 +1392,11 @@ public class SeQueLaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(193);
+			setState(199);
 			match(ADD);
-			setState(194);
+			setState(200);
 			match(IDENT);
-			setState(195);
+			setState(201);
 			match(TIPO);
 			}
 		}
@@ -1435,18 +1436,18 @@ public class SeQueLaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(197);
+			setState(203);
 			match(EXCLUI);
-			setState(199);
+			setState(205);
 			_la = _input.LA(1);
 			if (_la==COLUMN) {
 				{
-				setState(198);
+				setState(204);
 				match(COLUMN);
 				}
 			}
 
-			setState(201);
+			setState(207);
 			match(IDENT);
 			}
 		}
@@ -1484,9 +1485,9 @@ public class SeQueLaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(203);
+			setState(209);
 			match(EXCLUI);
-			setState(204);
+			setState(210);
 			match(IDENT);
 			}
 		}
@@ -1524,9 +1525,9 @@ public class SeQueLaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(206);
+			setState(212);
 			match(EXIBE);
-			setState(207);
+			setState(213);
 			match(IDENT);
 			}
 		}
@@ -1542,16 +1543,16 @@ public class SeQueLaParser extends Parser {
 	}
 
 	public static class InsrtContext extends ParserRuleContext {
+		public Token IDENT;
+		public ColunasContext colunas;
+		public Valores1Context valores1;
 		public TerminalNode IDENT() { return getToken(SeQueLaParser.IDENT, 0); }
 		public ColunasContext colunas() {
 			return getRuleContext(ColunasContext.class,0);
 		}
 		public TerminalNode INSERE() { return getToken(SeQueLaParser.INSERE, 0); }
-		public List<ValoresContext> valores() {
-			return getRuleContexts(ValoresContext.class);
-		}
-		public ValoresContext valores(int i) {
-			return getRuleContext(ValoresContext.class,i);
+		public Valores1Context valores1() {
+			return getRuleContext(Valores1Context.class,0);
 		}
 		public InsrtContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1570,46 +1571,171 @@ public class SeQueLaParser extends Parser {
 	public final InsrtContext insrt() throws RecognitionException {
 		InsrtContext _localctx = new InsrtContext(_ctx, getState());
 		enterRule(_localctx, 44, RULE_insrt);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(215);
+			((InsrtContext)_localctx).IDENT = match(IDENT);
+			if(!(tabela.existeSimbolo((((InsrtContext)_localctx).IDENT!=null?((InsrtContext)_localctx).IDENT.getText():null)))){MyErrorListener.erroSemantico2((((InsrtContext)_localctx).IDENT!=null?((InsrtContext)_localctx).IDENT.getText():null), ((InsrtContext)_localctx).IDENT.getLine());}
+			setState(217);
+			match(T__5);
+			setState(218);
+			((InsrtContext)_localctx).colunas = colunas();
+			setState(219);
+			match(T__6);
+			setState(220);
+			match(INSERE);
+			setState(221);
+			((InsrtContext)_localctx).valores1 = valores1();
+			 geradorInsertCabesalho((((InsrtContext)_localctx).IDENT!=null?((InsrtContext)_localctx).IDENT.getText():null), ((InsrtContext)_localctx).colunas.text, ((InsrtContext)_localctx).valores1.text);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Valores1Context extends ParserRuleContext {
+		public ArrayList<String> text;
+		public ValoresContext valores;
+		public Valores2Context valores2;
+		public ValoresContext valores() {
+			return getRuleContext(ValoresContext.class,0);
+		}
+		public TerminalNode TABULACAO() { return getToken(SeQueLaParser.TABULACAO, 0); }
+		public Valores2Context valores2() {
+			return getRuleContext(Valores2Context.class,0);
+		}
+		public Valores1Context(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_valores1; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).enterValores1(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).exitValores1(this);
+		}
+	}
+
+	public final Valores1Context valores1() throws RecognitionException {
+		Valores1Context _localctx = new Valores1Context(_ctx, getState());
+		enterRule(_localctx, 46, RULE_valores1);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(209);
-			match(IDENT);
-			setState(210);
-			match(T__5);
-			setState(211);
-			colunas();
-			setState(212);
-			match(T__6);
-			setState(213);
-			match(INSERE);
-			setState(214);
-			match(T__5);
-			setState(215);
-			valores();
-			setState(216);
-			match(T__6);
-			setState(224);
-			_errHandler.sync(this);
+			setState(225);
 			_la = _input.LA(1);
-			while (_la==T__0) {
+			if (_la==TABULACAO) {
 				{
-				{
-				setState(217);
-				match(T__0);
-				setState(218);
-				match(T__5);
-				setState(219);
-				valores();
-				setState(220);
-				match(T__6);
+				setState(224);
+				match(TABULACAO);
 				}
-				}
-				setState(226);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
 			}
+
+			setState(227);
+			match(T__5);
+			setState(228);
+			((Valores1Context)_localctx).valores = valores();
+			setState(229);
+			match(T__6);
+			((Valores1Context)_localctx).text =  new ArrayList<>();
+			                                        _localctx.text.add((((Valores1Context)_localctx).valores!=null?_input.getText(((Valores1Context)_localctx).valores.start,((Valores1Context)_localctx).valores.stop):null));
+			setState(235);
+			_la = _input.LA(1);
+			if (_la==T__0) {
+				{
+				setState(231);
+				match(T__0);
+				setState(232);
+				((Valores1Context)_localctx).valores2 = valores2();
+				_localctx.text.addAll(((Valores1Context)_localctx).valores2.text);
+				}
+			}
+
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Valores2Context extends ParserRuleContext {
+		public ArrayList<String> text;
+		public ValoresContext valores;
+		public Valores1Context valores1;
+		public ValoresContext valores() {
+			return getRuleContext(ValoresContext.class,0);
+		}
+		public TerminalNode TABULACAO() { return getToken(SeQueLaParser.TABULACAO, 0); }
+		public Valores1Context valores1() {
+			return getRuleContext(Valores1Context.class,0);
+		}
+		public Valores2Context(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_valores2; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).enterValores2(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).exitValores2(this);
+		}
+	}
+
+	public final Valores2Context valores2() throws RecognitionException {
+		Valores2Context _localctx = new Valores2Context(_ctx, getState());
+		enterRule(_localctx, 48, RULE_valores2);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(238);
+			_la = _input.LA(1);
+			if (_la==TABULACAO) {
+				{
+				setState(237);
+				match(TABULACAO);
+				}
+			}
+
+			setState(240);
+			match(T__5);
+			setState(241);
+			((Valores2Context)_localctx).valores = valores();
+			setState(242);
+			match(T__6);
+			((Valores2Context)_localctx).text =  new ArrayList<>();
+			                                        _localctx.text.add((((Valores2Context)_localctx).valores!=null?_input.getText(((Valores2Context)_localctx).valores.start,((Valores2Context)_localctx).valores.stop):null));
+			setState(248);
+			_la = _input.LA(1);
+			if (_la==T__0) {
+				{
+				setState(244);
+				match(T__0);
+				setState(245);
+				((Valores2Context)_localctx).valores1 = valores1();
+				_localctx.text.addAll(((Valores2Context)_localctx).valores1.text);
+				}
+			}
+
 			}
 		}
 		catch (RecognitionException re) {
@@ -1624,11 +1750,12 @@ public class SeQueLaParser extends Parser {
 	}
 
 	public static class ColunasContext extends ParserRuleContext {
-		public List<ColunaContext> coluna() {
-			return getRuleContexts(ColunaContext.class);
-		}
-		public ColunaContext coluna(int i) {
-			return getRuleContext(ColunaContext.class,i);
+		public ArrayList<String> text;
+		public Token IDENT;
+		public Colunas2Context colunas2;
+		public TerminalNode IDENT() { return getToken(SeQueLaParser.IDENT, 0); }
+		public Colunas2Context colunas2() {
+			return getRuleContext(Colunas2Context.class,0);
 		}
 		public ColunasContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1646,29 +1773,85 @@ public class SeQueLaParser extends Parser {
 
 	public final ColunasContext colunas() throws RecognitionException {
 		ColunasContext _localctx = new ColunasContext(_ctx, getState());
-		enterRule(_localctx, 46, RULE_colunas);
+		enterRule(_localctx, 50, RULE_colunas);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(227);
-			coluna();
-			setState(232);
-			_errHandler.sync(this);
+			setState(250);
+			((ColunasContext)_localctx).IDENT = match(IDENT);
+			((ColunasContext)_localctx).text =  new ArrayList<>();
+			                                _localctx.text.add((((ColunasContext)_localctx).IDENT!=null?((ColunasContext)_localctx).IDENT.getText():null));
+			setState(256);
 			_la = _input.LA(1);
-			while (_la==T__0) {
+			if (_la==T__0) {
 				{
-				{
-				setState(228);
+				setState(252);
 				match(T__0);
-				setState(229);
-				coluna();
+				setState(253);
+				((ColunasContext)_localctx).colunas2 = colunas2();
+				_localctx.text.addAll(((ColunasContext)_localctx).colunas2.text);
 				}
-				}
-				setState(234);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
 			}
+
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Colunas2Context extends ParserRuleContext {
+		public ArrayList<String> text;
+		public Token IDENT;
+		public ColunasContext colunas;
+		public TerminalNode IDENT() { return getToken(SeQueLaParser.IDENT, 0); }
+		public ColunasContext colunas() {
+			return getRuleContext(ColunasContext.class,0);
+		}
+		public Colunas2Context(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_colunas2; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).enterColunas2(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SeQueLaListener ) ((SeQueLaListener)listener).exitColunas2(this);
+		}
+	}
+
+	public final Colunas2Context colunas2() throws RecognitionException {
+		Colunas2Context _localctx = new Colunas2Context(_ctx, getState());
+		enterRule(_localctx, 52, RULE_colunas2);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(258);
+			((Colunas2Context)_localctx).IDENT = match(IDENT);
+			((Colunas2Context)_localctx).text =  new ArrayList<>();
+			                                _localctx.text.add((((Colunas2Context)_localctx).IDENT!=null?((Colunas2Context)_localctx).IDENT.getText():null));
+			setState(264);
+			_la = _input.LA(1);
+			if (_la==T__0) {
+				{
+				setState(260);
+				match(T__0);
+				setState(261);
+				((Colunas2Context)_localctx).colunas = colunas();
+				_localctx.text.addAll(((Colunas2Context)_localctx).colunas.text);
+				}
+			}
+
 			}
 		}
 		catch (RecognitionException re) {
@@ -1703,20 +1886,20 @@ public class SeQueLaParser extends Parser {
 
 	public final ColunaContext coluna() throws RecognitionException {
 		ColunaContext _localctx = new ColunaContext(_ctx, getState());
-		enterRule(_localctx, 48, RULE_coluna);
+		enterRule(_localctx, 54, RULE_coluna);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(235);
+			setState(266);
 			match(IDENT);
-			setState(238);
+			setState(269);
 			_la = _input.LA(1);
 			if (_la==T__7) {
 				{
-				setState(236);
+				setState(267);
 				match(T__7);
-				setState(237);
+				setState(268);
 				match(IDENT);
 				}
 			}
@@ -1755,26 +1938,26 @@ public class SeQueLaParser extends Parser {
 
 	public final FromContext from() throws RecognitionException {
 		FromContext _localctx = new FromContext(_ctx, getState());
-		enterRule(_localctx, 50, RULE_from);
+		enterRule(_localctx, 56, RULE_from);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(240);
+			setState(271);
 			match(IDENT);
-			setState(245);
+			setState(276);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__0) {
 				{
 				{
-				setState(241);
+				setState(272);
 				match(T__0);
-				setState(242);
+				setState(273);
 				match(IDENT);
 				}
 				}
-				setState(247);
+				setState(278);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1821,41 +2004,41 @@ public class SeQueLaParser extends Parser {
 
 	public final SlctContext slct() throws RecognitionException {
 		SlctContext _localctx = new SlctContext(_ctx, getState());
-		enterRule(_localctx, 52, RULE_slct);
+		enterRule(_localctx, 58, RULE_slct);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(248);
+			setState(279);
 			match(SELECIONA);
-			setState(251);
+			setState(282);
 			switch (_input.LA(1)) {
 			case IDENT:
 				{
-				setState(249);
+				setState(280);
 				colunas();
 				}
 				break;
 			case TUDO:
 				{
-				setState(250);
+				setState(281);
 				match(TUDO);
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
-			setState(253);
+			setState(284);
 			match(DE);
-			setState(254);
+			setState(285);
 			from();
-			setState(257);
+			setState(288);
 			_la = _input.LA(1);
 			if (_la==ONDE) {
 				{
-				setState(255);
+				setState(286);
 				match(ONDE);
-				setState(256);
+				setState(287);
 				expressao();
 				}
 			}
@@ -1910,20 +2093,20 @@ public class SeQueLaParser extends Parser {
 
 	public final ExpressaoContext expressao() throws RecognitionException {
 		ExpressaoContext _localctx = new ExpressaoContext(_ctx, getState());
-		enterRule(_localctx, 54, RULE_expressao);
+		enterRule(_localctx, 60, RULE_expressao);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(259);
+			setState(290);
 			coluna();
-			setState(260);
+			setState(291);
 			match(OP);
-			setState(263);
+			setState(294);
 			switch (_input.LA(1)) {
 			case IDENT:
 				{
-				setState(261);
+				setState(292);
 				coluna();
 				}
 				break;
@@ -1935,32 +2118,32 @@ public class SeQueLaParser extends Parser {
 			case DATA:
 			case HORA:
 				{
-				setState(262);
+				setState(293);
 				valores();
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
-			setState(274);
+			setState(305);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==LOGICO) {
 				{
 				{
 				{
-				setState(265);
+				setState(296);
 				match(LOGICO);
 				}
-				setState(266);
+				setState(297);
 				coluna();
-				setState(267);
+				setState(298);
 				match(OP);
-				setState(270);
+				setState(301);
 				switch (_input.LA(1)) {
 				case IDENT:
 					{
-					setState(268);
+					setState(299);
 					coluna();
 					}
 					break;
@@ -1972,7 +2155,7 @@ public class SeQueLaParser extends Parser {
 				case DATA:
 				case HORA:
 					{
-					setState(269);
+					setState(300);
 					valores();
 					}
 					break;
@@ -1981,7 +2164,7 @@ public class SeQueLaParser extends Parser {
 				}
 				}
 				}
-				setState(276);
+				setState(307);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1999,99 +2182,110 @@ public class SeQueLaParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3,\u0118\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3,\u0137\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
-		"\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3"+
-		"\3\5\3C\n\3\3\4\3\4\3\4\7\4H\n\4\f\4\16\4K\13\4\3\5\3\5\3\5\3\5\3\5\3"+
-		"\5\3\5\7\5T\n\5\f\5\16\5W\13\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6"+
-		"\3\6\3\7\3\7\3\7\3\7\5\7h\n\7\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\5\tr\n\t"+
-		"\3\n\3\n\3\n\3\n\7\nx\n\n\f\n\16\n{\13\n\3\n\3\n\3\n\3\n\3\n\5\n\u0082"+
-		"\n\n\3\13\3\13\3\f\3\f\5\f\u0088\n\f\3\r\3\r\3\r\3\r\3\r\5\r\u008f\n\r"+
-		"\3\r\3\r\3\16\3\16\3\16\3\16\3\16\7\16\u0098\n\16\f\16\16\16\u009b\13"+
-		"\16\3\16\5\16\u009e\n\16\3\17\3\17\3\17\3\17\3\17\3\17\3\20\3\20\3\20"+
-		"\3\20\3\20\3\20\3\21\3\21\3\21\5\21\u00af\n\21\3\22\3\22\3\22\3\22\3\22"+
-		"\3\22\5\22\u00b7\n\22\6\22\u00b9\n\22\r\22\16\22\u00ba\3\23\3\23\5\23"+
-		"\u00bf\n\23\3\23\3\23\3\23\3\24\3\24\3\24\3\24\3\25\3\25\5\25\u00ca\n"+
-		"\25\3\25\3\25\3\26\3\26\3\26\3\27\3\27\3\27\3\30\3\30\3\30\3\30\3\30\3"+
-		"\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\7\30\u00e1\n\30\f\30\16\30\u00e4"+
-		"\13\30\3\31\3\31\3\31\7\31\u00e9\n\31\f\31\16\31\u00ec\13\31\3\32\3\32"+
-		"\3\32\5\32\u00f1\n\32\3\33\3\33\3\33\7\33\u00f6\n\33\f\33\16\33\u00f9"+
-		"\13\33\3\34\3\34\3\34\5\34\u00fe\n\34\3\34\3\34\3\34\3\34\5\34\u0104\n"+
-		"\34\3\35\3\35\3\35\3\35\5\35\u010a\n\35\3\35\3\35\3\35\3\35\3\35\5\35"+
-		"\u0111\n\35\7\35\u0113\n\35\f\35\16\35\u0116\13\35\3\35\2\2\36\2\4\6\b"+
-		"\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\668\2\3\3\2\'(\u0121"+
-		"\2:\3\2\2\2\4B\3\2\2\2\6D\3\2\2\2\bU\3\2\2\2\nZ\3\2\2\2\fg\3\2\2\2\16"+
-		"i\3\2\2\2\20q\3\2\2\2\22\u0081\3\2\2\2\24\u0083\3\2\2\2\26\u0087\3\2\2"+
-		"\2\30\u0089\3\2\2\2\32\u0092\3\2\2\2\34\u009f\3\2\2\2\36\u00a5\3\2\2\2"+
-		" \u00ae\3\2\2\2\"\u00b0\3\2\2\2$\u00bc\3\2\2\2&\u00c3\3\2\2\2(\u00c7\3"+
-		"\2\2\2*\u00cd\3\2\2\2,\u00d0\3\2\2\2.\u00d3\3\2\2\2\60\u00e5\3\2\2\2\62"+
-		"\u00ed\3\2\2\2\64\u00f2\3\2\2\2\66\u00fa\3\2\2\28\u0105\3\2\2\2:;\t\2"+
-		"\2\2;\3\3\2\2\2<C\7$\2\2=C\7%\2\2>C\7&\2\2?C\5\2\2\2@C\7)\2\2AC\7+\2\2"+
-		"B<\3\2\2\2B=\3\2\2\2B>\3\2\2\2B?\3\2\2\2B@\3\2\2\2BA\3\2\2\2C\5\3\2\2"+
-		"\2DI\5\4\3\2EF\7\3\2\2FH\5\4\3\2GE\3\2\2\2HK\3\2\2\2IG\3\2\2\2IJ\3\2\2"+
-		"\2J\7\3\2\2\2KI\3\2\2\2LT\5\n\6\2MT\5\26\f\2NT\5\"\22\2OT\5*\26\2PT\5"+
-		",\27\2QT\5.\30\2RT\5\66\34\2SL\3\2\2\2SM\3\2\2\2SN\3\2\2\2SO\3\2\2\2S"+
-		"P\3\2\2\2SQ\3\2\2\2SR\3\2\2\2TW\3\2\2\2US\3\2\2\2UV\3\2\2\2VX\3\2\2\2"+
-		"WU\3\2\2\2XY\b\5\1\2Y\t\3\2\2\2Z[\7\r\2\2[\\\7\37\2\2\\]\b\6\1\2]^\b\6"+
-		"\1\2^_\5\f\7\2_`\b\6\1\2`a\5\16\b\2ab\b\6\1\2b\13\3\2\2\2cd\7\4\2\2dh"+
-		"\7\37\2\2eh\7\5\2\2fh\3\2\2\2gc\3\2\2\2ge\3\2\2\2gf\3\2\2\2h\r\3\2\2\2"+
-		"ij\5\22\n\2jk\5\20\t\2kl\b\b\1\2l\17\3\2\2\2mn\5\16\b\2no\b\t\1\2or\3"+
-		"\2\2\2pr\3\2\2\2qm\3\2\2\2qp\3\2\2\2r\21\3\2\2\2st\7 \2\2tu\7\37\2\2u"+
-		"y\7\31\2\2vx\7\33\2\2wv\3\2\2\2x{\3\2\2\2yw\3\2\2\2yz\3\2\2\2z|\3\2\2"+
-		"\2{y\3\2\2\2|\u0082\b\n\1\2}~\7 \2\2~\177\7\37\2\2\177\u0080\7\32\2\2"+
-		"\u0080\u0082\5\24\13\2\u0081s\3\2\2\2\u0081}\3\2\2\2\u0082\23\3\2\2\2"+
-		"\u0083\u0084\3\2\2\2\u0084\25\3\2\2\2\u0085\u0088\5\30\r\2\u0086\u0088"+
-		"\5\32\16\2\u0087\u0085\3\2\2\2\u0087\u0086\3\2\2\2\u0088\27\3\2\2\2\u0089"+
-		"\u008a\5\34\17\2\u008a\u008b\7\37\2\2\u008b\u008c\5\36\20\2\u008c\u008e"+
-		"\7\34\2\2\u008d\u008f\5\16\b\2\u008e\u008d\3\2\2\2\u008e\u008f\3\2\2\2"+
-		"\u008f\u0090\3\2\2\2\u0090\u0091\b\r\1\2\u0091\31\3\2\2\2\u0092\u0093"+
-		"\7\37\2\2\u0093\u0094\b\16\1\2\u0094\u0099\5\34\17\2\u0095\u0096\7\3\2"+
-		"\2\u0096\u0098\5\34\17\2\u0097\u0095\3\2\2\2\u0098\u009b\3\2\2\2\u0099"+
-		"\u0097\3\2\2\2\u0099\u009a\3\2\2\2\u009a\u009d\3\2\2\2\u009b\u0099\3\2"+
-		"\2\2\u009c\u009e\5\16\b\2\u009d\u009c\3\2\2\2\u009d\u009e\3\2\2\2\u009e"+
-		"\33\3\2\2\2\u009f\u00a0\7\37\2\2\u00a0\u00a1\b\17\1\2\u00a1\u00a2\7\36"+
-		"\2\2\u00a2\u00a3\b\17\1\2\u00a3\u00a4\5 \21\2\u00a4\35\3\2\2\2\u00a5\u00a6"+
-		"\5 \21\2\u00a6\u00a7\7\36\2\2\u00a7\u00a8\b\20\1\2\u00a8\u00a9\7\37\2"+
-		"\2\u00a9\u00aa\b\20\1\2\u00aa\37\3\2\2\2\u00ab\u00af\7\6\2\2\u00ac\u00af"+
-		"\7\7\2\2\u00ad\u00af\3\2\2\2\u00ae\u00ab\3\2\2\2\u00ae\u00ac\3\2\2\2\u00ae"+
-		"\u00ad\3\2\2\2\u00af!\3\2\2\2\u00b0\u00b1\7\17\2\2\u00b1\u00b8\7\37\2"+
-		"\2\u00b2\u00b6\7 \2\2\u00b3\u00b7\5$\23\2\u00b4\u00b7\5&\24\2\u00b5\u00b7"+
-		"\5(\25\2\u00b6\u00b3\3\2\2\2\u00b6\u00b4\3\2\2\2\u00b6\u00b5\3\2\2\2\u00b7"+
-		"\u00b9\3\2\2\2\u00b8\u00b2\3\2\2\2\u00b9\u00ba\3\2\2\2\u00ba\u00b8\3\2"+
-		"\2\2\u00ba\u00bb\3\2\2\2\u00bb#\3\2\2\2\u00bc\u00be\7\17\2\2\u00bd\u00bf"+
-		"\7\23\2\2\u00be\u00bd\3\2\2\2\u00be\u00bf\3\2\2\2\u00bf\u00c0\3\2\2\2"+
-		"\u00c0\u00c1\7\37\2\2\u00c1\u00c2\7\31\2\2\u00c2%\3\2\2\2\u00c3\u00c4"+
-		"\7\22\2\2\u00c4\u00c5\7\37\2\2\u00c5\u00c6\7\31\2\2\u00c6\'\3\2\2\2\u00c7"+
-		"\u00c9\7\20\2\2\u00c8\u00ca\7\23\2\2\u00c9\u00c8\3\2\2\2\u00c9\u00ca\3"+
-		"\2\2\2\u00ca\u00cb\3\2\2\2\u00cb\u00cc\7\37\2\2\u00cc)\3\2\2\2\u00cd\u00ce"+
-		"\7\20\2\2\u00ce\u00cf\7\37\2\2\u00cf+\3\2\2\2\u00d0\u00d1\7\30\2\2\u00d1"+
-		"\u00d2\7\37\2\2\u00d2-\3\2\2\2\u00d3\u00d4\7\37\2\2\u00d4\u00d5\7\b\2"+
-		"\2\u00d5\u00d6\5\60\31\2\u00d6\u00d7\7\t\2\2\u00d7\u00d8\7\21\2\2\u00d8"+
-		"\u00d9\7\b\2\2\u00d9\u00da\5\6\4\2\u00da\u00e2\7\t\2\2\u00db\u00dc\7\3"+
-		"\2\2\u00dc\u00dd\7\b\2\2\u00dd\u00de\5\6\4\2\u00de\u00df\7\t\2\2\u00df"+
-		"\u00e1\3\2\2\2\u00e0\u00db\3\2\2\2\u00e1\u00e4\3\2\2\2\u00e2\u00e0\3\2"+
-		"\2\2\u00e2\u00e3\3\2\2\2\u00e3/\3\2\2\2\u00e4\u00e2\3\2\2\2\u00e5\u00ea"+
-		"\5\62\32\2\u00e6\u00e7\7\3\2\2\u00e7\u00e9\5\62\32\2\u00e8\u00e6\3\2\2"+
-		"\2\u00e9\u00ec\3\2\2\2\u00ea\u00e8\3\2\2\2\u00ea\u00eb\3\2\2\2\u00eb\61"+
-		"\3\2\2\2\u00ec\u00ea\3\2\2\2\u00ed\u00f0\7\37\2\2\u00ee\u00ef\7\n\2\2"+
-		"\u00ef\u00f1\7\37\2\2\u00f0\u00ee\3\2\2\2\u00f0\u00f1\3\2\2\2\u00f1\63"+
-		"\3\2\2\2\u00f2\u00f7\7\37\2\2\u00f3\u00f4\7\3\2\2\u00f4\u00f6\7\37\2\2"+
-		"\u00f5\u00f3\3\2\2\2\u00f6\u00f9\3\2\2\2\u00f7\u00f5\3\2\2\2\u00f7\u00f8"+
-		"\3\2\2\2\u00f8\65\3\2\2\2\u00f9\u00f7\3\2\2\2\u00fa\u00fd\7\25\2\2\u00fb"+
-		"\u00fe\5\60\31\2\u00fc\u00fe\7\24\2\2\u00fd\u00fb\3\2\2\2\u00fd\u00fc"+
-		"\3\2\2\2\u00fe\u00ff\3\2\2\2\u00ff\u0100\7\26\2\2\u0100\u0103\5\64\33"+
-		"\2\u0101\u0102\7\27\2\2\u0102\u0104\58\35\2\u0103\u0101\3\2\2\2\u0103"+
-		"\u0104\3\2\2\2\u0104\67\3\2\2\2\u0105\u0106\5\62\32\2\u0106\u0109\7\""+
-		"\2\2\u0107\u010a\5\62\32\2\u0108\u010a\5\6\4\2\u0109\u0107\3\2\2\2\u0109"+
-		"\u0108\3\2\2\2\u010a\u0114\3\2\2\2\u010b\u010c\7\35\2\2\u010c\u010d\5"+
-		"\62\32\2\u010d\u0110\7\"\2\2\u010e\u0111\5\62\32\2\u010f\u0111\5\6\4\2"+
-		"\u0110\u010e\3\2\2\2\u0110\u010f\3\2\2\2\u0111\u0113\3\2\2\2\u0112\u010b"+
-		"\3\2\2\2\u0113\u0116\3\2\2\2\u0114\u0112\3\2\2\2\u0114\u0115\3\2\2\2\u0115"+
-		"9\3\2\2\2\u0116\u0114\3\2\2\2\34BISUgqy\u0081\u0087\u008e\u0099\u009d"+
-		"\u00ae\u00b6\u00ba\u00be\u00c9\u00e2\u00ea\u00f0\u00f7\u00fd\u0103\u0109"+
-		"\u0110\u0114";
+		"\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36\4\37\t\37\4 \t \3\2"+
+		"\3\2\3\3\3\3\3\3\3\3\3\3\3\3\5\3I\n\3\3\4\3\4\3\4\7\4N\n\4\f\4\16\4Q\13"+
+		"\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\7\5Z\n\5\f\5\16\5]\13\5\3\5\3\5\3\6\3\6"+
+		"\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\5\7n\n\7\3\b\3\b\3\b\3\b"+
+		"\3\t\3\t\3\t\3\t\5\tx\n\t\3\n\3\n\3\n\3\n\7\n~\n\n\f\n\16\n\u0081\13\n"+
+		"\3\n\3\n\3\n\3\n\3\n\5\n\u0088\n\n\3\13\3\13\3\f\3\f\5\f\u008e\n\f\3\r"+
+		"\3\r\3\r\3\r\3\r\5\r\u0095\n\r\3\r\3\r\3\16\3\16\3\16\3\16\3\16\7\16\u009e"+
+		"\n\16\f\16\16\16\u00a1\13\16\3\16\5\16\u00a4\n\16\3\17\3\17\3\17\3\17"+
+		"\3\17\3\17\3\20\3\20\3\20\3\20\3\20\3\20\3\21\3\21\3\21\5\21\u00b5\n\21"+
+		"\3\22\3\22\3\22\3\22\3\22\3\22\5\22\u00bd\n\22\6\22\u00bf\n\22\r\22\16"+
+		"\22\u00c0\3\23\3\23\5\23\u00c5\n\23\3\23\3\23\3\23\3\24\3\24\3\24\3\24"+
+		"\3\25\3\25\5\25\u00d0\n\25\3\25\3\25\3\26\3\26\3\26\3\27\3\27\3\27\3\30"+
+		"\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\31\5\31\u00e4\n\31\3\31\3\31"+
+		"\3\31\3\31\3\31\3\31\3\31\3\31\5\31\u00ee\n\31\3\32\5\32\u00f1\n\32\3"+
+		"\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\5\32\u00fb\n\32\3\33\3\33\3\33"+
+		"\3\33\3\33\3\33\5\33\u0103\n\33\3\34\3\34\3\34\3\34\3\34\3\34\5\34\u010b"+
+		"\n\34\3\35\3\35\3\35\5\35\u0110\n\35\3\36\3\36\3\36\7\36\u0115\n\36\f"+
+		"\36\16\36\u0118\13\36\3\37\3\37\3\37\5\37\u011d\n\37\3\37\3\37\3\37\3"+
+		"\37\5\37\u0123\n\37\3 \3 \3 \3 \5 \u0129\n \3 \3 \3 \3 \3 \5 \u0130\n"+
+		" \7 \u0132\n \f \16 \u0135\13 \3 \2\2!\2\4\6\b\n\f\16\20\22\24\26\30\32"+
+		"\34\36 \"$&(*,.\60\62\64\668:<>\2\3\3\2\'(\u0141\2@\3\2\2\2\4H\3\2\2\2"+
+		"\6J\3\2\2\2\b[\3\2\2\2\n`\3\2\2\2\fm\3\2\2\2\16o\3\2\2\2\20w\3\2\2\2\22"+
+		"\u0087\3\2\2\2\24\u0089\3\2\2\2\26\u008d\3\2\2\2\30\u008f\3\2\2\2\32\u0098"+
+		"\3\2\2\2\34\u00a5\3\2\2\2\36\u00ab\3\2\2\2 \u00b4\3\2\2\2\"\u00b6\3\2"+
+		"\2\2$\u00c2\3\2\2\2&\u00c9\3\2\2\2(\u00cd\3\2\2\2*\u00d3\3\2\2\2,\u00d6"+
+		"\3\2\2\2.\u00d9\3\2\2\2\60\u00e3\3\2\2\2\62\u00f0\3\2\2\2\64\u00fc\3\2"+
+		"\2\2\66\u0104\3\2\2\28\u010c\3\2\2\2:\u0111\3\2\2\2<\u0119\3\2\2\2>\u0124"+
+		"\3\2\2\2@A\t\2\2\2A\3\3\2\2\2BI\7$\2\2CI\7%\2\2DI\7&\2\2EI\5\2\2\2FI\7"+
+		")\2\2GI\7+\2\2HB\3\2\2\2HC\3\2\2\2HD\3\2\2\2HE\3\2\2\2HF\3\2\2\2HG\3\2"+
+		"\2\2I\5\3\2\2\2JO\5\4\3\2KL\7\3\2\2LN\5\4\3\2MK\3\2\2\2NQ\3\2\2\2OM\3"+
+		"\2\2\2OP\3\2\2\2P\7\3\2\2\2QO\3\2\2\2RZ\5\n\6\2SZ\5\26\f\2TZ\5\"\22\2"+
+		"UZ\5*\26\2VZ\5,\27\2WZ\5.\30\2XZ\5<\37\2YR\3\2\2\2YS\3\2\2\2YT\3\2\2\2"+
+		"YU\3\2\2\2YV\3\2\2\2YW\3\2\2\2YX\3\2\2\2Z]\3\2\2\2[Y\3\2\2\2[\\\3\2\2"+
+		"\2\\^\3\2\2\2][\3\2\2\2^_\b\5\1\2_\t\3\2\2\2`a\7\r\2\2ab\7\37\2\2bc\b"+
+		"\6\1\2cd\b\6\1\2de\5\f\7\2ef\b\6\1\2fg\5\16\b\2gh\b\6\1\2h\13\3\2\2\2"+
+		"ij\7\4\2\2jn\7\37\2\2kn\7\5\2\2ln\3\2\2\2mi\3\2\2\2mk\3\2\2\2ml\3\2\2"+
+		"\2n\r\3\2\2\2op\5\22\n\2pq\5\20\t\2qr\b\b\1\2r\17\3\2\2\2st\5\16\b\2t"+
+		"u\b\t\1\2ux\3\2\2\2vx\3\2\2\2ws\3\2\2\2wv\3\2\2\2x\21\3\2\2\2yz\7 \2\2"+
+		"z{\7\37\2\2{\177\7\31\2\2|~\7\33\2\2}|\3\2\2\2~\u0081\3\2\2\2\177}\3\2"+
+		"\2\2\177\u0080\3\2\2\2\u0080\u0082\3\2\2\2\u0081\177\3\2\2\2\u0082\u0088"+
+		"\b\n\1\2\u0083\u0084\7 \2\2\u0084\u0085\7\37\2\2\u0085\u0086\7\32\2\2"+
+		"\u0086\u0088\5\24\13\2\u0087y\3\2\2\2\u0087\u0083\3\2\2\2\u0088\23\3\2"+
+		"\2\2\u0089\u008a\3\2\2\2\u008a\25\3\2\2\2\u008b\u008e\5\30\r\2\u008c\u008e"+
+		"\5\32\16\2\u008d\u008b\3\2\2\2\u008d\u008c\3\2\2\2\u008e\27\3\2\2\2\u008f"+
+		"\u0090\5\34\17\2\u0090\u0091\7\37\2\2\u0091\u0092\5\36\20\2\u0092\u0094"+
+		"\7\34\2\2\u0093\u0095\5\16\b\2\u0094\u0093\3\2\2\2\u0094\u0095\3\2\2\2"+
+		"\u0095\u0096\3\2\2\2\u0096\u0097\b\r\1\2\u0097\31\3\2\2\2\u0098\u0099"+
+		"\7\37\2\2\u0099\u009a\b\16\1\2\u009a\u009f\5\34\17\2\u009b\u009c\7\3\2"+
+		"\2\u009c\u009e\5\34\17\2\u009d\u009b\3\2\2\2\u009e\u00a1\3\2\2\2\u009f"+
+		"\u009d\3\2\2\2\u009f\u00a0\3\2\2\2\u00a0\u00a3\3\2\2\2\u00a1\u009f\3\2"+
+		"\2\2\u00a2\u00a4\5\16\b\2\u00a3\u00a2\3\2\2\2\u00a3\u00a4\3\2\2\2\u00a4"+
+		"\33\3\2\2\2\u00a5\u00a6\7\37\2\2\u00a6\u00a7\b\17\1\2\u00a7\u00a8\7\36"+
+		"\2\2\u00a8\u00a9\b\17\1\2\u00a9\u00aa\5 \21\2\u00aa\35\3\2\2\2\u00ab\u00ac"+
+		"\5 \21\2\u00ac\u00ad\7\36\2\2\u00ad\u00ae\b\20\1\2\u00ae\u00af\7\37\2"+
+		"\2\u00af\u00b0\b\20\1\2\u00b0\37\3\2\2\2\u00b1\u00b5\7\6\2\2\u00b2\u00b5"+
+		"\7\7\2\2\u00b3\u00b5\3\2\2\2\u00b4\u00b1\3\2\2\2\u00b4\u00b2\3\2\2\2\u00b4"+
+		"\u00b3\3\2\2\2\u00b5!\3\2\2\2\u00b6\u00b7\7\17\2\2\u00b7\u00be\7\37\2"+
+		"\2\u00b8\u00bc\7 \2\2\u00b9\u00bd\5$\23\2\u00ba\u00bd\5&\24\2\u00bb\u00bd"+
+		"\5(\25\2\u00bc\u00b9\3\2\2\2\u00bc\u00ba\3\2\2\2\u00bc\u00bb\3\2\2\2\u00bd"+
+		"\u00bf\3\2\2\2\u00be\u00b8\3\2\2\2\u00bf\u00c0\3\2\2\2\u00c0\u00be\3\2"+
+		"\2\2\u00c0\u00c1\3\2\2\2\u00c1#\3\2\2\2\u00c2\u00c4\7\17\2\2\u00c3\u00c5"+
+		"\7\23\2\2\u00c4\u00c3\3\2\2\2\u00c4\u00c5\3\2\2\2\u00c5\u00c6\3\2\2\2"+
+		"\u00c6\u00c7\7\37\2\2\u00c7\u00c8\7\31\2\2\u00c8%\3\2\2\2\u00c9\u00ca"+
+		"\7\22\2\2\u00ca\u00cb\7\37\2\2\u00cb\u00cc\7\31\2\2\u00cc\'\3\2\2\2\u00cd"+
+		"\u00cf\7\20\2\2\u00ce\u00d0\7\23\2\2\u00cf\u00ce\3\2\2\2\u00cf\u00d0\3"+
+		"\2\2\2\u00d0\u00d1\3\2\2\2\u00d1\u00d2\7\37\2\2\u00d2)\3\2\2\2\u00d3\u00d4"+
+		"\7\20\2\2\u00d4\u00d5\7\37\2\2\u00d5+\3\2\2\2\u00d6\u00d7\7\30\2\2\u00d7"+
+		"\u00d8\7\37\2\2\u00d8-\3\2\2\2\u00d9\u00da\7\37\2\2\u00da\u00db\b\30\1"+
+		"\2\u00db\u00dc\7\b\2\2\u00dc\u00dd\5\64\33\2\u00dd\u00de\7\t\2\2\u00de"+
+		"\u00df\7\21\2\2\u00df\u00e0\5\60\31\2\u00e0\u00e1\b\30\1\2\u00e1/\3\2"+
+		"\2\2\u00e2\u00e4\7 \2\2\u00e3\u00e2\3\2\2\2\u00e3\u00e4\3\2\2\2\u00e4"+
+		"\u00e5\3\2\2\2\u00e5\u00e6\7\b\2\2\u00e6\u00e7\5\6\4\2\u00e7\u00e8\7\t"+
+		"\2\2\u00e8\u00ed\b\31\1\2\u00e9\u00ea\7\3\2\2\u00ea\u00eb\5\62\32\2\u00eb"+
+		"\u00ec\b\31\1\2\u00ec\u00ee\3\2\2\2\u00ed\u00e9\3\2\2\2\u00ed\u00ee\3"+
+		"\2\2\2\u00ee\61\3\2\2\2\u00ef\u00f1\7 \2\2\u00f0\u00ef\3\2\2\2\u00f0\u00f1"+
+		"\3\2\2\2\u00f1\u00f2\3\2\2\2\u00f2\u00f3\7\b\2\2\u00f3\u00f4\5\6\4\2\u00f4"+
+		"\u00f5\7\t\2\2\u00f5\u00fa\b\32\1\2\u00f6\u00f7\7\3\2\2\u00f7\u00f8\5"+
+		"\60\31\2\u00f8\u00f9\b\32\1\2\u00f9\u00fb\3\2\2\2\u00fa\u00f6\3\2\2\2"+
+		"\u00fa\u00fb\3\2\2\2\u00fb\63\3\2\2\2\u00fc\u00fd\7\37\2\2\u00fd\u0102"+
+		"\b\33\1\2\u00fe\u00ff\7\3\2\2\u00ff\u0100\5\66\34\2\u0100\u0101\b\33\1"+
+		"\2\u0101\u0103\3\2\2\2\u0102\u00fe\3\2\2\2\u0102\u0103\3\2\2\2\u0103\65"+
+		"\3\2\2\2\u0104\u0105\7\37\2\2\u0105\u010a\b\34\1\2\u0106\u0107\7\3\2\2"+
+		"\u0107\u0108\5\64\33\2\u0108\u0109\b\34\1\2\u0109\u010b\3\2\2\2\u010a"+
+		"\u0106\3\2\2\2\u010a\u010b\3\2\2\2\u010b\67\3\2\2\2\u010c\u010f\7\37\2"+
+		"\2\u010d\u010e\7\n\2\2\u010e\u0110\7\37\2\2\u010f\u010d\3\2\2\2\u010f"+
+		"\u0110\3\2\2\2\u01109\3\2\2\2\u0111\u0116\7\37\2\2\u0112\u0113\7\3\2\2"+
+		"\u0113\u0115\7\37\2\2\u0114\u0112\3\2\2\2\u0115\u0118\3\2\2\2\u0116\u0114"+
+		"\3\2\2\2\u0116\u0117\3\2\2\2\u0117;\3\2\2\2\u0118\u0116\3\2\2\2\u0119"+
+		"\u011c\7\25\2\2\u011a\u011d\5\64\33\2\u011b\u011d\7\24\2\2\u011c\u011a"+
+		"\3\2\2\2\u011c\u011b\3\2\2\2\u011d\u011e\3\2\2\2\u011e\u011f\7\26\2\2"+
+		"\u011f\u0122\5:\36\2\u0120\u0121\7\27\2\2\u0121\u0123\5> \2\u0122\u0120"+
+		"\3\2\2\2\u0122\u0123\3\2\2\2\u0123=\3\2\2\2\u0124\u0125\58\35\2\u0125"+
+		"\u0128\7\"\2\2\u0126\u0129\58\35\2\u0127\u0129\5\6\4\2\u0128\u0126\3\2"+
+		"\2\2\u0128\u0127\3\2\2\2\u0129\u0133\3\2\2\2\u012a\u012b\7\35\2\2\u012b"+
+		"\u012c\58\35\2\u012c\u012f\7\"\2\2\u012d\u0130\58\35\2\u012e\u0130\5\6"+
+		"\4\2\u012f\u012d\3\2\2\2\u012f\u012e\3\2\2\2\u0130\u0132\3\2\2\2\u0131"+
+		"\u012a\3\2\2\2\u0132\u0135\3\2\2\2\u0133\u0131\3\2\2\2\u0133\u0134\3\2"+
+		"\2\2\u0134?\3\2\2\2\u0135\u0133\3\2\2\2 HOY[mw\177\u0087\u008d\u0094\u009f"+
+		"\u00a3\u00b4\u00bc\u00c0\u00c4\u00cf\u00e3\u00ed\u00f0\u00fa\u0102\u010a"+
+		"\u010f\u0116\u011c\u0122\u0128\u012f\u0133";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

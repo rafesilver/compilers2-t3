@@ -1,4 +1,4 @@
-// Generated from C:\Users\Gabriel\Documents\NetBeansProjects\compilers2-t3\src\grammar\SeQueLa.g4 by ANTLR 4.5.3
+// Generated from SeQueLa.g4 by ANTLR 4.5.3
 package grammar;
 
     import t3.*;
@@ -298,6 +298,30 @@ public class SeQueLaBaseListener implements SeQueLaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterValores1(SeQueLaParser.Valores1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitValores1(SeQueLaParser.Valores1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterValores2(SeQueLaParser.Valores2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitValores2(SeQueLaParser.Valores2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterColunas(SeQueLaParser.ColunasContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -305,6 +329,18 @@ public class SeQueLaBaseListener implements SeQueLaListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitColunas(SeQueLaParser.ColunasContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterColunas2(SeQueLaParser.Colunas2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitColunas2(SeQueLaParser.Colunas2Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
