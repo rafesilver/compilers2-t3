@@ -170,13 +170,10 @@ LITERAL : '"' ~('\r' | '\n' | '"')* '"' ;
 
 INTEIRO : (DIGITO)+;
           
-REAL : (DIGITO)+ (('.'|',') (DIGITO)+)?;
+REAL : (DIGITO)+ (('.') (DIGITO)+)?;
 
-booleano : VERDADEIRO | FALSO ;
-
-VERDADEIRO : 'verdadeiro' | 'Verdadeiro' | 'VERDADEIRO';
-
-FALSO : 'falso' | 'Falso' | 'FALSO';
+booleano : 'verdadeiro' | 'Verdadeiro' | 'VERDADEIRO'
+         | 'falso' | 'Falso' | 'FALSO';
 
 DATA : DIGITO DIGITO SEP1 DIGITO DIGITO SEP1 DIGITO DIGITO DIGITO DIGITO;
 
@@ -186,7 +183,9 @@ HORA : DIGITO DIGITO SEP2 DIGITO DIGITO SEP2 DIGITO DIGITO DIGITO DIGITO;
 
 SEP2 : ':' | '-';
 
-valor : LITERAL | INTEIRO | REAL | booleano | DATA | HORA ;
+valor : LITERAL | INTEIRO | REAL | DATA | HORA 
+      | booleano
+      ;
 
 valores : valor (',' valor)* ;
 
@@ -336,18 +335,18 @@ participacao
 
 alt 	
 		:		ALTERA IDENT {if(!(tabela.existeSimbolo($IDENT.text))){MyErrorListener.erroSemantico2($IDENT.text, $IDENT.getLine());}}
-                                {geradorAltera("altera",$IDENT.text,"");}
+                                {geradorAltera("altera",$IDENT.text,"",$IDENT.getLine());}
                                 (TABULACAO (alt_alt | alt_add | alt_drop))+
 		;
 
     alt_alt : ALTERA (COLUMN)? IDENT TIPO               
-              {geradorAltera("coluna",$IDENT.text,$TIPO.text);}
+              {geradorAltera("coluna",$IDENT.text,$TIPO.text,$IDENT.getLine());}
             ;
     alt_add : ADD IDENT TIPO 
-            {geradorAltera("adiciona",$IDENT.text,$TIPO.text);}
+            {geradorAltera("adiciona",$IDENT.text,$TIPO.text,$IDENT.getLine());}
             ;    
     alt_drop : EXCLUI (COLUMN)? IDENT            
-            {geradorAltera("exclui",$IDENT.text,null);}
+            {geradorAltera("exclui",$IDENT.text,null,$IDENT.getLine());}
             ;
 
 excl 	
@@ -362,7 +361,7 @@ exibe
 
 insrt           :               IDENT {if(!(tabela.existeSimbolo($IDENT.text))){MyErrorListener.erroSemantico2($IDENT.text, $IDENT.getLine());}}
                                 '(' colunas ')' INSERE valores1
-                                { geradorInsert($IDENT.text, $colunas.text, $valores1.text);}
+                                { geradorInsert($IDENT.text, $colunas.text, $valores1.text, $IDENT.getLine());}
                 ;
 
 colunas returns[ArrayList<String> text]
@@ -385,7 +384,7 @@ colunas2 returns[ArrayList<String> text]
 
 valores1 returns[ArrayList<String> text] : (TABULACAO)? '(' valores ')'
                                         {$text = new ArrayList<>();
-                                        $text.add($valores.text);}
+                                        $text.add(f($valores.text));}
                                         (',' valores2
                                         {$text.addAll($valores2.text);}
                                         )?;
@@ -393,7 +392,7 @@ valores1 returns[ArrayList<String> text] : (TABULACAO)? '(' valores ')'
 
 valores2 returns[ArrayList<String> text] : (TABULACAO)? '(' valores ')'
                                         {$text = new ArrayList<>();
-                                        $text.add($valores.text);}
+                                        $text.add(f($valores.text));}
                                         (',' valores1
                                         {$text.addAll($valores1.text);}
                                         )?;
@@ -464,5 +463,5 @@ expressao2 returns[ArrayList<String> text] :
 
 algo returns[String text] :
                             (coluna {$text = $coluna.text;}
-                            | valores {$text = $valores.text;})
+                            | valores {$text = f($valores.text);})
                             ;

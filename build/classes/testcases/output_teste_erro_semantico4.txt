@@ -1,0 +1,2 @@
+Linha 7: Numero incompativel de colunas e valores.
+Fim da compilacao

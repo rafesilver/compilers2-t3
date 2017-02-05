@@ -1,0 +1,2 @@
+Linha 7: O valor 22.2 nao eh compativel com idade (INTEGER).
+Fim da compilacao

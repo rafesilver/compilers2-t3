@@ -1,0 +1,2 @@
+Linha 10: Nao existe coluna chamada 'sobrenome_empregado' na entidade.
+Fim da compilacao
