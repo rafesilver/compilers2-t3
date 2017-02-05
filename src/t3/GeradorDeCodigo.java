@@ -66,11 +66,11 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
                     break;
             case "exclui":
                      novaLinha = "\n\t"; 
-                     tempOutput.getUltimaEntrada().append(novaLinha+"DROP COLUMN ");
-                     tempOutput.getUltimaEntrada().append(ent); 
+                     otherOutput.getUltimaEntrada().append(novaLinha+"DROP COLUMN ");
+                     otherOutput.getUltimaEntrada().append(ent); 
                     break;
             case "fim":
-                    tempOutput.getUltimaEntrada().append(";");
+                    otherOutput.getUltimaEntrada().append(";");
                 break;
                     
         }
@@ -99,7 +99,7 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
                 break;
                           
             case "fim":
-                    out.printCodigo(tempOutput.getStringBuffer().toString());
+                    out.printCodigo(tempOutput.getStringBuffer().getString));
                     out.printCodigo(otherOutput.getStringBuffer().toString());
                     break;                 
          }
