@@ -62,7 +62,7 @@ public class BufferTabela {
         for(i = 0; i<tabelas.size(); i++){
             buffer.append(tabelas.get(i).getTextoCodigo());
             // Fecha as tabelas com );
-            buffer.append("\n"+end+"\n\n");
+            buffer.append(end+"\n\n");
         }
         return buffer;
     }

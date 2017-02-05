@@ -406,6 +406,18 @@ public class SeQueLaBaseListener implements SeQueLaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterView(SeQueLaParser.ViewContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitView(SeQueLaParser.ViewContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterSlct(SeQueLaParser.SlctContext ctx) { }
 	/**
 	 * {@inheritDoc}

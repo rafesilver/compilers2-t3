@@ -88,6 +88,23 @@ EXIBE
                                 | 'Exibir' | 'exibir' | 'EXIBIR'
 		;
 
+VIEW            :               'View' | 'view' | 'VIEW'
+                                | 'Visao' | 'visao' | 'VISAO';
+
+GROUP           :               'Agrupa' | 'agrupa' | 'AGRUPA'
+                                | 'Agrupe' | 'agrupe' | 'AGRUPE'
+                                | 'Agrupar' | 'agrupar' | 'AGRUPAR'
+                                | 'Agrupado' | 'agrupado' | 'AGRUPADO'
+                ;
+
+DISTINCT        :               'Distinto' | 'distinto' | 'DISTINTO'
+                                | 'Distinguir' | 'distinguir' | 'DISTINGUIR'
+                                | 'Distingua' | 'distingua' | 'DISTINGUA'
+                                | 'Distinguido' | 'distinguido' | 'DISTINGUIDO'
+                ;
+
+COMO            :               'Como' | 'como' | 'COMO';
+
 TIPO
 		:		'inteiro' | 'real' | 'data' | 'hora' | 'booleano' | 'literal' 
 		;
@@ -182,7 +199,7 @@ logico returns[String text] :
 // Parser
 
 programa
-		:		( ent | rel | alt | excl | exibe | insrt | slct )* {demarcador("fim", "");}
+		:		( ent | rel | alt | excl | exibe | insrt | slct | view )* {demarcador("fim", "");}
 		;
 
 ent
@@ -403,11 +420,28 @@ from2 returns[ArrayList<String> text] :
                                 {$text.addAll($from.text);}
                                 )?;
 
-slct            :               SELECIONA
+view :  VIEW IDENT
+                {if(!(tabela.existeSimbolo($IDENT.text))){
+                                            tabela.adicionarSimbolo($IDENT.text, "VIEW");
+                                        }
+                                        else{
+                                            MyErrorListener.erroSemantico1($IDENT.text, $IDENT.getLine());
+                 }}
+            COMO 
+            SELECIONA (DISTINCT {setDistinct();})?
+            (colunas {geradorViewCabesalho($IDENT.text, $colunas.text);}
+            | TUDO {geradorViewCabesalho($IDENT.text, new ArrayList<>());})
+            (TABULACAO)? DE from {geradorViewFrom($from.text);}
+            ((TABULACAO)? ONDE expressao {geradorViewWhere($expressao.text);})?
+            ((TABULACAO)? GROUP colunas {geradorViewGroup($colunas.text);})?
+            ;
+
+slct            :               SELECIONA (DISTINCT {setDistinct();})?
                                 (colunas {geradorSelectCabesalho($colunas.text);}
                                 | TUDO {geradorSelectCabesalho(new ArrayList<>());})
-                                DE from {geradorSelectFrom($from.text);}
-                                (ONDE expressao {geradorSelectWhere($expressao.text);})?
+                                (TABULACAO)? DE from {geradorSelectFrom($from.text);}
+                                ((TABULACAO)? ONDE expressao {geradorSelectWhere($expressao.text);})?
+                                ((TABULACAO)? GROUP colunas {geradorSelectGroup($colunas.text);})?
                                 ;
 
 expressao returns[ArrayList<String> text] :
@@ -417,17 +451,18 @@ expressao returns[ArrayList<String> text] :
                                 (expressao1 {$text.addAll($expressao1.text);})?;
 
 expressao1 returns[ArrayList<String> text] :
-                                 (logico) coluna OP algo
+                                 (TABULACAO)? logico coluna OP algo
                                  {$text = new ArrayList<String>();
                                  $text.add($logico.text +" "+ $coluna.text +" "+ $OP.text + " " + $algo.text);}
                                  (expressao2 {$text.addAll($expressao2.text);})?;
 
 expressao2 returns[ArrayList<String> text] :
-                                 (logico) coluna OP algo
+                                 (TABULACAO)? logico coluna OP algo
                                  {$text = new ArrayList<String>();
                                  $text.add($logico.text +" "+ $coluna.text +" "+ $OP.text + " " + $algo.text);}
                                  (expressao1 {$text.addAll($expressao1.text);})?;
 
 algo returns[String text] :
                             (coluna {$text = $coluna.text;}
-                            | valores {$text = $valores.text;});
+                            | valores {$text = $valores.text;})
+                            ;
