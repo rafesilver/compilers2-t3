@@ -29,16 +29,14 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
     }
     
      public static void geradorIndice(String tipo, String ent, ArrayList<String> colunas){
-        String novaLinha;
+        String novaLinha = "\n";
         switch (tipo) {
             case "indice":
-                novaLinha = "\n";
 		otherOutput.adicionarTabela("CREATE INDEX");
-                otherOutput.getUltimaEntrada().append(novaLinha+"CREATE INDEX ");
+                otherOutput.getUltimaEntrada().append("CREATE INDEX ");
                 otherOutput.getUltimaEntrada().append(ent);
                 break;
             case "em":
-                novaLinha = "\n";
                 otherOutput.getUltimaEntrada().append(novaLinha+"ON ");
                 otherOutput.getUltimaEntrada().append(ent+ "( ");
                 for(int i = 0; i < colunas.size(); i++){
@@ -57,9 +55,8 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
     public static void geradorExclui(String tipo, String ent){
         switch (tipo) {
             case "exclui": 
-                    String novaLinha = "\n";
 		    otherOutput.adicionarTabela("DROP TABLE");
-                    otherOutput.getUltimaEntrada().append(novaLinha+"DROP TABLE ");
+                    otherOutput.getUltimaEntrada().append("DROP TABLE ");
                     otherOutput.getUltimaEntrada().append(ent);
                     break;
                      

@@ -2,5 +2,7 @@ CREATE TABLE presunto(
 	peso REAL ,
 	marca VARCHAR(255) );
 
-DROP TABLE presunto;
+
+CREATE INDEX marcaIndice
+ON presunto( peso, marca );
 

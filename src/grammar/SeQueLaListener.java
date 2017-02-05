@@ -244,6 +244,16 @@ public interface SeQueLaListener extends ParseTreeListener {
 	 */
 	void exitExibe(SeQueLaParser.ExibeContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#indce}.
+	 * @param ctx the parse tree
+	 */
+	void enterIndce(SeQueLaParser.IndceContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#indce}.
+	 * @param ctx the parse tree
+	 */
+	void exitIndce(SeQueLaParser.IndceContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SeQueLaParser#insrt}.
 	 * @param ctx the parse tree
 	 */
