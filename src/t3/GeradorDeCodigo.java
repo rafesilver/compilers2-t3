@@ -20,7 +20,8 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
     public static BufferTabela tempOutput = new BufferTabela();
     public static BufferTabela otherOutput = new BufferTabela();
     
-
+    public static Boolean distinct = false;
+    
     public GeradorDeCodigo() {
     }
     public GeradorDeCodigo(Saida out) {
@@ -96,10 +97,11 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
                    
                 for(String o:aux2)
                     tempOutput.getUltimaEntrada().append("\n\t"+o);
+                tempOutput.getUltimaEntrada().append(")");
                 break;
                           
             case "fim":
-                    out.printCodigo(tempOutput.getStringBuffer(");").toString());
+                    out.printCodigo(tempOutput.getStringBuffer(";").toString());
                     out.printCodigo(otherOutput.getStringBuffer(";").toString());
                     break;                 
          }
@@ -151,6 +153,7 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
                     // Cria os atributos e faz as restricoes de Foreign Key
                     tempOutput.getUltimaEntrada().append("(\n\t"+varFK1+novaLinha+varFK2);
                     tempOutput.getUltimaEntrada().append(novaLinha+foreignKey1+novaLinha+foreignKey2);
+                    tempOutput.getUltimaEntrada().append(")");
                     break;
             }
         }
@@ -224,6 +227,10 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
     public static void geradorSelectCabesalho(ArrayList<String> colunas){
         otherOutput.adicionarTabela("SELECT");
         otherOutput.getUltimaEntrada().append("SELECT ");
+        if(distinct){
+            otherOutput.getUltimaEntrada().append("DISTINCT ");
+            distinct = false;
+        }
         if(!colunas.isEmpty())
             for(int i = 0; i < colunas.size(); i++){
                 if(i > 0)
@@ -251,5 +258,61 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
             otherOutput.getUltimaEntrada().append(where.get(i));
         }
     };
+
+    public static void geradorSelectGroup(ArrayList<String> from){
+        otherOutput.getUltimaEntrada().append("\nGROUP BY ");
+        for(int i = 0; i < from.size(); i++){
+            if(i > 0)
+                otherOutput.getUltimaEntrada().append(", ");
+            otherOutput.getUltimaEntrada().append(from.get(i));
+        }
+    };    
+    
+    public static void geradorViewCabesalho(String view, ArrayList<String> colunas){
+        tempOutput.adicionarTabela(view);
+        tempOutput.getUltimaEntrada().append("VIEW "+view+" AS");
+        tempOutput.getUltimaEntrada().append("\nSELECT ");
+        if(distinct){
+            otherOutput.getUltimaEntrada().append("DISTINCT ");
+            distinct = false;
+        }
+        if(!colunas.isEmpty())
+            for(int i = 0; i < colunas.size(); i++){
+                if(i > 0)
+                    tempOutput.getUltimaEntrada().append(", ");
+                tempOutput.getUltimaEntrada().append(colunas.get(i));
+            }
+        else
+            tempOutput.getUltimaEntrada().append("*");
+    };
+    
+    public static void geradorViewFrom(ArrayList<String> from){
+        tempOutput.getUltimaEntrada().append("\nFROM ");
+        for(int i = 0; i < from.size(); i++){
+            if(i > 0)
+                tempOutput.getUltimaEntrada().append(", ");
+            tempOutput.getUltimaEntrada().append(from.get(i));
+        }
+    };
+    
+    public static void geradorViewWhere(ArrayList<String> where){
+        tempOutput.getUltimaEntrada().append("\nWHERE ");
+        for(int i = 0; i < where.size(); i++){
+            if(i > 0)
+                tempOutput.getUltimaEntrada().append("\n ");
+            tempOutput.getUltimaEntrada().append(where.get(i));
+        }
+    };
+    
+    public static void geradorViewGroup(ArrayList<String> from){
+        tempOutput.getUltimaEntrada().append("\nGROUP BY ");
+        for(int i = 0; i < from.size(); i++){
+            if(i > 0)
+                tempOutput.getUltimaEntrada().append(", ");
+            tempOutput.getUltimaEntrada().append(from.get(i));
+        }
+    };    
+    
+    public static void setDistinct(){distinct = true;};
     
 }

@@ -1,2 +1,9 @@
-Linha 2: Entidade presunto nao declarada
-Fim da compilacao
+CREATE TABLE presunto( 
+	peso REAL ,
+	marca VARCHAR(255) 
+);
+
+
+DROP TABLE presunto
+;
+
