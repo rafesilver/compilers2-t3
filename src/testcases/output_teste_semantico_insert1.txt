@@ -1,0 +1,2 @@
+Linha 6: Entidade loja nao declarada
+Fim da compilacao

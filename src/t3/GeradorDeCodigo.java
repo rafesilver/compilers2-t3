@@ -7,6 +7,7 @@ package t3;
 
 import t3.Saida;
 import grammar.SeQueLaBaseListener;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,6 +18,7 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
 
     private static Saida out;
     public static BufferTabela tempOutput = new BufferTabela();
+    public static BufferTabela otherOutput = new BufferTabela();
     
 
     public GeradorDeCodigo() {
@@ -75,6 +77,7 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
                           
             case "fim":
                     out.printCodigo(tempOutput.getStringBuffer().toString());
+                    out.printCodigo(otherOutput.getStringBuffer().toString());
                     break;                 
          }
     }
@@ -177,4 +180,22 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
         tempOutput.getUltimaEntrada().setTipoPK(tipo);
     }
 
+    public static void geradorInsertCabesalho(String ent, ArrayList<String> colunas, ArrayList<String> valores){
+        otherOutput.adicionarTabela(ent);
+        otherOutput.getUltimaEntrada().append("INSERT INTO " + ent + "(");
+        for(int i = 0; i < colunas.size(); i++){
+            if(i > 0)
+                otherOutput.getUltimaEntrada().append(", ");
+            otherOutput.getUltimaEntrada().append(colunas.get(i));
+        }
+        otherOutput.getUltimaEntrada().append(")");
+        
+        for(int i = 0; i < valores.size(); i++){
+            if(i > 0)
+                otherOutput.getUltimaEntrada().append(", ");
+            otherOutput.getUltimaEntrada().append("\n\t(" + valores.get(i) + ")");
+        }
+
+    };
+    
 }

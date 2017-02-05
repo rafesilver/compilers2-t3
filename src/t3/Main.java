@@ -31,7 +31,7 @@ public class Main {
         if(args.length==0){  
             String path = "src\\testcases\\";
             // nome do arquivo de entrada para teste
-            String name = "teste_select1";
+            String name = "teste_semantico_insert2";
             
             args = new String[]{"", ""};
             args[0] = path + name + ".txt";
@@ -64,8 +64,10 @@ public class Main {
         else if(o.isSemantico()){
             o.printlnSemantico("Fim da compilacao");
             pw.print(o.getTextoSemantico());
+            System.out.print(o.getTextoSemantico()); //para testar
         }else{
             pw.print(o.getTextoCodigo());
+            System.out.print(o.getTextoCodigo()); //para testar
         }
         
         pw.flush();

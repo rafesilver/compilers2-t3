@@ -1,4 +1,4 @@
-// Generated from C:\Users\Gabriel\Documents\NetBeansProjects\compilers2-t3\src\grammar\SeQueLa.g4 by ANTLR 4.5.3
+// Generated from SeQueLa.g4 by ANTLR 4.5.3
 package grammar;
 
     import t3.*;
@@ -244,6 +244,26 @@ public interface SeQueLaListener extends ParseTreeListener {
 	 */
 	void exitInsrt(SeQueLaParser.InsrtContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#valores1}.
+	 * @param ctx the parse tree
+	 */
+	void enterValores1(SeQueLaParser.Valores1Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#valores1}.
+	 * @param ctx the parse tree
+	 */
+	void exitValores1(SeQueLaParser.Valores1Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#valores2}.
+	 * @param ctx the parse tree
+	 */
+	void enterValores2(SeQueLaParser.Valores2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#valores2}.
+	 * @param ctx the parse tree
+	 */
+	void exitValores2(SeQueLaParser.Valores2Context ctx);
+	/**
 	 * Enter a parse tree produced by {@link SeQueLaParser#colunas}.
 	 * @param ctx the parse tree
 	 */
@@ -253,6 +273,16 @@ public interface SeQueLaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitColunas(SeQueLaParser.ColunasContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#colunas2}.
+	 * @param ctx the parse tree
+	 */
+	void enterColunas2(SeQueLaParser.Colunas2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#colunas2}.
+	 * @param ctx the parse tree
+	 */
+	void exitColunas2(SeQueLaParser.Colunas2Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link SeQueLaParser#coluna}.
 	 * @param ctx the parse tree
