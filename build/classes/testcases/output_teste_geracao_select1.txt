@@ -27,6 +27,6 @@ WHERE sexo = "homem"
 ;
 
 SELECT *
-FROM empregado
+FROM loja
 ;
 

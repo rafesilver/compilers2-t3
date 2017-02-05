@@ -28,28 +28,51 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
     }
     
     // NEW: Cria o Exclui no buffer
-    public static void geradorExclui(String tipo, String aux){
+    
+ 
+    public static void geradorExclui(String tipo, String ent){
         switch (tipo) {
             case "exclui": 
                     String novaLinha = "\n";
-                    tempOutput.getUltimaEntrada().append(novaLinha+"DROP TABLE ");
+		    otherOutput.adicionarTabela("DROP TABLE");
+                    otherOutput.getUltimaEntrada().append(novaLinha+"DROP TABLE ");
+                    otherOutput.getUltimaEntrada().append(ent);
                     break;
-            case "nome-ent": 
-                    tempOutput.getUltimaEntrada().append(aux+";");
-                    break;             
+                     
         }
     }
     
      // NEW: Cria o Altera no buffer
-    public static void geradorAltera(String tipo, String aux){
+    public static void geradorAltera(String tipo, String ent, String aux){
+        String novaLinha;
         switch (tipo) {
             case "altera": 
-                    String novaLinha = "\n";
-                    tempOutput.getUltimaEntrada().append(novaLinha+"ALTER TABLE ");                    
+                    novaLinha = "\n";
+                    otherOutput.adicionarTabela("ALTER TABLE");
+                    otherOutput.getUltimaEntrada().append(novaLinha+"ALTER TABLE ");  
+                    otherOutput.getUltimaEntrada().append(ent);                    
                     break;
-            case "nome-ent":                      
-                    tempOutput.getUltimaEntrada().append(aux+";");
-                    break;             
+            case "coluna":
+                    novaLinha = "\n\t";                    
+                    otherOutput.getUltimaEntrada().append(novaLinha+"ALTER COLUMN ");  
+                    otherOutput.getUltimaEntrada().append(ent+" ");   
+                    otherOutput.getUltimaEntrada().append(aux);   
+                break;
+            case "adiciona":
+                    novaLinha = "\n\t";
+                    otherOutput.getUltimaEntrada().append(novaLinha+"ADD ");  
+                    otherOutput.getUltimaEntrada().append(ent+" ");   
+                    otherOutput.getUltimaEntrada().append(aux);   
+                    break;
+            case "exclui":
+                     novaLinha = "\n\t"; 
+                     otherOutput.getUltimaEntrada().append(novaLinha+"DROP COLUMN ");
+                     otherOutput.getUltimaEntrada().append(ent); 
+                    break;
+            case "fim":
+                    otherOutput.getUltimaEntrada().append(";");
+                break;
+                    
         }
     }
     
