@@ -28,28 +28,51 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
     }
     
     // NEW: Cria o Exclui no buffer
-    public static void geradorExclui(String tipo, String aux){
+    
+ 
+    public static void geradorExclui(String tipo, String ent){
         switch (tipo) {
             case "exclui": 
                     String novaLinha = "\n";
-                    tempOutput.getUltimaEntrada().append(novaLinha+"DROP TABLE ");
+		    otherOutput.adicionarTabela("DROP TABLE");
+                    otherOutput.getUltimaEntrada().append(novaLinha+"DROP TABLE ");
+                    otherOutput.getUltimaEntrada().append(ent);
                     break;
-            case "nome-ent": 
-                    tempOutput.getUltimaEntrada().append(aux+";");
-                    break;             
+                     
         }
     }
     
      // NEW: Cria o Altera no buffer
-    public static void geradorAltera(String tipo, String aux){
+    public static void geradorAltera(String tipo, String ent, String aux){
+        String novaLinha;
         switch (tipo) {
             case "altera": 
-                    String novaLinha = "\n";
-                    tempOutput.getUltimaEntrada().append(novaLinha+"ALTER TABLE ");                    
+                    novaLinha = "\n";
+                    otherOutput.adicionarTabela("ALTER TABLE");
+                    otherOutput.getUltimaEntrada().append(novaLinha+"ALTER TABLE ");  
+                    otherOutput.getUltimaEntrada().append(ent);                    
                     break;
-            case "nome-ent":                      
-                    tempOutput.getUltimaEntrada().append(aux+";");
-                    break;             
+            case "coluna":
+                    novaLinha = "\n\t";                    
+                    otherOutput.getUltimaEntrada().append(novaLinha+"ALTER COLUMN ");  
+                    otherOutput.getUltimaEntrada().append(ent+" ");   
+                    otherOutput.getUltimaEntrada().append(aux);   
+                break;
+            case "adiciona":
+                    novaLinha = "\n\t";
+                    otherOutput.getUltimaEntrada().append(novaLinha+"ADD ");  
+                    otherOutput.getUltimaEntrada().append(ent+" ");   
+                    otherOutput.getUltimaEntrada().append(aux);   
+                    break;
+            case "exclui":
+                     novaLinha = "\n\t"; 
+                     tempOutput.getUltimaEntrada().append(novaLinha+"DROP COLUMN ");
+                     tempOutput.getUltimaEntrada().append(ent); 
+                    break;
+            case "fim":
+                    tempOutput.getUltimaEntrada().append(";");
+                break;
+                    
         }
     }
     
@@ -76,8 +99,8 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
                 break;
                           
             case "fim":
-                    out.printCodigo(tempOutput.getStringBuffer(");").toString());
-                    out.printCodigo(otherOutput.getStringBuffer(";").toString());
+                    out.printCodigo(tempOutput.getStringBuffer().toString());
+                    out.printCodigo(otherOutput.getStringBuffer().toString());
                     break;                 
          }
     }
@@ -180,8 +203,8 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
         tempOutput.getUltimaEntrada().setTipoPK(tipo);
     }
 
-    public static void geradorInsert(String ent, ArrayList<String> colunas, ArrayList<String> valores){
-        otherOutput.adicionarTabela("INSERT");
+    public static void geradorInsertCabesalho(String ent, ArrayList<String> colunas, ArrayList<String> valores){
+        otherOutput.adicionarTabela(ent);
         otherOutput.getUltimaEntrada().append("INSERT INTO " + ent + "(");
         for(int i = 0; i < colunas.size(); i++){
             if(i > 0)
@@ -196,37 +219,6 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
             otherOutput.getUltimaEntrada().append("\n\t(" + valores.get(i) + ")");
         }
 
-    };
-    
-    public static void geradorSelectCabesalho(ArrayList<String> colunas){
-        otherOutput.adicionarTabela("SELECT");
-        otherOutput.getUltimaEntrada().append("SELECT ");
-        if(!colunas.isEmpty())
-            for(int i = 0; i < colunas.size(); i++){
-                if(i > 0)
-                    otherOutput.getUltimaEntrada().append(", ");
-                otherOutput.getUltimaEntrada().append(colunas.get(i));
-            }
-        else
-            otherOutput.getUltimaEntrada().append("*");
-    };
-    
-    public static void geradorSelectFrom(ArrayList<String> from){
-        otherOutput.getUltimaEntrada().append("\nFROM ");
-        for(int i = 0; i < from.size(); i++){
-            if(i > 0)
-                otherOutput.getUltimaEntrada().append(", ");
-            otherOutput.getUltimaEntrada().append(from.get(i));
-        }
-    };
-    
-    public static void geradorSelectWhere(ArrayList<String> where){
-        otherOutput.getUltimaEntrada().append("\nWHERE ");
-        for(int i = 0; i < where.size(); i++){
-            if(i > 0)
-                otherOutput.getUltimaEntrada().append("\n ");
-            otherOutput.getUltimaEntrada().append(where.get(i));
-        }
     };
     
 }
