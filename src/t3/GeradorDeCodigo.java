@@ -29,16 +29,14 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
     }
     
      public static void geradorIndice(String tipo, String ent, ArrayList<String> colunas){
-        String novaLinha;
+        String novaLinha = "\n";
         switch (tipo) {
             case "indice":
-                novaLinha = "\n";
 		otherOutput.adicionarTabela("CREATE INDEX");
-                otherOutput.getUltimaEntrada().append(novaLinha+"CREATE INDEX ");
+                otherOutput.getUltimaEntrada().append("CREATE INDEX ");
                 otherOutput.getUltimaEntrada().append(ent);
                 break;
             case "em":
-                novaLinha = "\n";
                 otherOutput.getUltimaEntrada().append(novaLinha+"ON ");
                 otherOutput.getUltimaEntrada().append(ent+ "( ");
                 for(int i = 0; i < colunas.size(); i++){
@@ -93,9 +91,8 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
     public static void geradorExclui(String tipo, String ent){
         switch (tipo) {
             case "exclui": 
-                    String novaLinha = "\n";
 		    otherOutput.adicionarTabela("DROP TABLE");
-                    otherOutput.getUltimaEntrada().append(novaLinha+"DROP TABLE ");
+                    otherOutput.getUltimaEntrada().append("DROP TABLE ");
                     otherOutput.getUltimaEntrada().append(ent);
                     break;
                      
@@ -156,9 +153,11 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
                 aux2[tam-1] = aux2[tam-1].replace(",","");
                    
                 for(String o:aux2){
-                    if(!tempOutput.getUltimaEntrada().checkCol(o.split(" ")[0]))
+                    if(!tempOutput.getUltimaEntrada().checkCol(o.split(" ")[0])){
                         if(o.split(" ").length > 1)
                             tempOutput.getUltimaEntrada().setColunas(o.split(" ")[0],o.split(" ")[1]);
+                        
+                        }
                     else
                         out.printlnSemantico("Erro Semantico: Ja existe uma coluna chamada '"+o.split(" ")[0]+"' na entidade.");
                         

@@ -1,0 +1,12 @@
+CREATE TABLE presunto( 
+	peso REAL ,
+	marca VARCHAR(255) 
+);
+
+
+ALTER TABLE presunto
+	ALTER COLUMN peso real
+	DROP COLUMN marca
+	ADD fabricante literal
+;
+

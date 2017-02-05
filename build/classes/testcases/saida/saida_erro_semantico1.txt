@@ -1,0 +1,5 @@
+CREATE TABLE EMPREGADO( 
+	cpf_empregado INTEGER PRIMARY KEY,
+	nome_empregado VARCHAR(255) ,
+	nome_empregado VARCHAR(255) );
+

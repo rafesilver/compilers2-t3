@@ -1,0 +1,4 @@
+Entidade EMPREGADO forte
+	cpf_empregado inteiro chave primaria
+	nome_empregado literal
+	nome_empregado literal

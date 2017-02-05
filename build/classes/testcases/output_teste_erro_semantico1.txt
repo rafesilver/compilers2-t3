@@ -1,2 +1,2 @@
-Erro Semantico: Ja existe uma coluna chamada nome_empregado na entidade.
+Erro Semantico: Ja existe uma coluna chamada 'nome_empregado' na entidade.
 Fim da compilacao

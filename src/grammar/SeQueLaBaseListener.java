@@ -298,6 +298,18 @@ public class SeQueLaBaseListener implements SeQueLaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterIndce(SeQueLaParser.IndceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIndce(SeQueLaParser.IndceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterInsrt(SeQueLaParser.InsrtContext ctx) { }
 	/**
 	 * {@inheritDoc}

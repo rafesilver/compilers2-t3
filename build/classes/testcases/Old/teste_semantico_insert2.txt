@@ -1,0 +1,8 @@
+ENTIDADE empregado forte
+	cpf_empregado inteiro chave primaria
+	nome_empregado literal
+
+empregado (nome_empregado, cpf_empregado, idade, sexo) INSERE
+	("Fernando", 61232465976, 33, "indefinido"),
+	("Vinicius", 52132165168, 22, "homem")
+empregado (nome_empregado, cpf_empregado, idade, sexo) INSERE ("Carolina", 65165948875, 21, "f")
