@@ -44,6 +44,16 @@ public interface SeQueLaListener extends ParseTreeListener {
 	 */
 	void exitValores(SeQueLaParser.ValoresContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#logico}.
+	 * @param ctx the parse tree
+	 */
+	void enterLogico(SeQueLaParser.LogicoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#logico}.
+	 * @param ctx the parse tree
+	 */
+	void exitLogico(SeQueLaParser.LogicoContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SeQueLaParser#programa}.
 	 * @param ctx the parse tree
 	 */
@@ -244,26 +254,6 @@ public interface SeQueLaListener extends ParseTreeListener {
 	 */
 	void exitInsrt(SeQueLaParser.InsrtContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SeQueLaParser#valores1}.
-	 * @param ctx the parse tree
-	 */
-	void enterValores1(SeQueLaParser.Valores1Context ctx);
-	/**
-	 * Exit a parse tree produced by {@link SeQueLaParser#valores1}.
-	 * @param ctx the parse tree
-	 */
-	void exitValores1(SeQueLaParser.Valores1Context ctx);
-	/**
-	 * Enter a parse tree produced by {@link SeQueLaParser#valores2}.
-	 * @param ctx the parse tree
-	 */
-	void enterValores2(SeQueLaParser.Valores2Context ctx);
-	/**
-	 * Exit a parse tree produced by {@link SeQueLaParser#valores2}.
-	 * @param ctx the parse tree
-	 */
-	void exitValores2(SeQueLaParser.Valores2Context ctx);
-	/**
 	 * Enter a parse tree produced by {@link SeQueLaParser#colunas}.
 	 * @param ctx the parse tree
 	 */
@@ -284,6 +274,26 @@ public interface SeQueLaListener extends ParseTreeListener {
 	 */
 	void exitColunas2(SeQueLaParser.Colunas2Context ctx);
 	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#valores1}.
+	 * @param ctx the parse tree
+	 */
+	void enterValores1(SeQueLaParser.Valores1Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#valores1}.
+	 * @param ctx the parse tree
+	 */
+	void exitValores1(SeQueLaParser.Valores1Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#valores2}.
+	 * @param ctx the parse tree
+	 */
+	void enterValores2(SeQueLaParser.Valores2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#valores2}.
+	 * @param ctx the parse tree
+	 */
+	void exitValores2(SeQueLaParser.Valores2Context ctx);
+	/**
 	 * Enter a parse tree produced by {@link SeQueLaParser#coluna}.
 	 * @param ctx the parse tree
 	 */
@@ -294,6 +304,16 @@ public interface SeQueLaListener extends ParseTreeListener {
 	 */
 	void exitColuna(SeQueLaParser.ColunaContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#atr}.
+	 * @param ctx the parse tree
+	 */
+	void enterAtr(SeQueLaParser.AtrContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#atr}.
+	 * @param ctx the parse tree
+	 */
+	void exitAtr(SeQueLaParser.AtrContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SeQueLaParser#from}.
 	 * @param ctx the parse tree
 	 */
@@ -303,6 +323,16 @@ public interface SeQueLaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFrom(SeQueLaParser.FromContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#from2}.
+	 * @param ctx the parse tree
+	 */
+	void enterFrom2(SeQueLaParser.From2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#from2}.
+	 * @param ctx the parse tree
+	 */
+	void exitFrom2(SeQueLaParser.From2Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link SeQueLaParser#slct}.
 	 * @param ctx the parse tree
@@ -323,4 +353,34 @@ public interface SeQueLaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExpressao(SeQueLaParser.ExpressaoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#expressao1}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressao1(SeQueLaParser.Expressao1Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#expressao1}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressao1(SeQueLaParser.Expressao1Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#expressao2}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressao2(SeQueLaParser.Expressao2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#expressao2}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressao2(SeQueLaParser.Expressao2Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link SeQueLaParser#algo}.
+	 * @param ctx the parse tree
+	 */
+	void enterAlgo(SeQueLaParser.AlgoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SeQueLaParser#algo}.
+	 * @param ctx the parse tree
+	 */
+	void exitAlgo(SeQueLaParser.AlgoContext ctx);
 }

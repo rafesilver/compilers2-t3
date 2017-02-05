@@ -58,6 +58,18 @@ public class SeQueLaBaseListener implements SeQueLaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterLogico(SeQueLaParser.LogicoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLogico(SeQueLaParser.LogicoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterPrograma(SeQueLaParser.ProgramaContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -298,30 +310,6 @@ public class SeQueLaBaseListener implements SeQueLaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterValores1(SeQueLaParser.Valores1Context ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitValores1(SeQueLaParser.Valores1Context ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterValores2(SeQueLaParser.Valores2Context ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitValores2(SeQueLaParser.Valores2Context ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterColunas(SeQueLaParser.ColunasContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -346,6 +334,30 @@ public class SeQueLaBaseListener implements SeQueLaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterValores1(SeQueLaParser.Valores1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitValores1(SeQueLaParser.Valores1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterValores2(SeQueLaParser.Valores2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitValores2(SeQueLaParser.Valores2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterColuna(SeQueLaParser.ColunaContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -358,6 +370,18 @@ public class SeQueLaBaseListener implements SeQueLaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterAtr(SeQueLaParser.AtrContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAtr(SeQueLaParser.AtrContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterFrom(SeQueLaParser.FromContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -365,6 +389,18 @@ public class SeQueLaBaseListener implements SeQueLaListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitFrom(SeQueLaParser.FromContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFrom2(SeQueLaParser.From2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFrom2(SeQueLaParser.From2Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -389,6 +425,42 @@ public class SeQueLaBaseListener implements SeQueLaListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitExpressao(SeQueLaParser.ExpressaoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExpressao1(SeQueLaParser.Expressao1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpressao1(SeQueLaParser.Expressao1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExpressao2(SeQueLaParser.Expressao2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpressao2(SeQueLaParser.Expressao2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAlgo(SeQueLaParser.AlgoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAlgo(SeQueLaParser.AlgoContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

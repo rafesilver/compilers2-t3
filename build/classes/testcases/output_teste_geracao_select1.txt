@@ -1,0 +1,32 @@
+CREATE TABLE empregado( 
+	cpf_empregado INTEGER PRIMARY KEY,
+	nome_empregado VARCHAR(255) ,
+	idade INTEGER ,
+	sexo VARCHAR(255) ,
+	salario REAL 
+);
+
+CREATE TABLE loja( 
+	codigo INTEGER PRIMARY KEY,
+	cidade VARCHAR(255) ,
+	endereco VARCHAR(255) 
+);
+
+SELECT nome, cpf, idade
+FROM empregado, loja
+WHERE sexo = "sim"
+ AND salario > 1200
+ AND idade > 21
+ OR idade < 60
+;
+
+SELECT *
+FROM empregado
+WHERE sexo = "homem"
+ OR sexo = "m"
+;
+
+SELECT *
+FROM empregado
+;
+
