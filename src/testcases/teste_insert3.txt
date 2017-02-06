@@ -1,1 +1,0 @@
-empregado (nome, cpf, idade, sexo) INSERE ("Fernando", 61232465976, 33, "indefinido"), ("Robertão", 45135216516, 36, "cabra macho"), ("Aline", 32654785422, 19, "feminino"), ("Shoppincenterson", 98432654721, 14, "masculino")

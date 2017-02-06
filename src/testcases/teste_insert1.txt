@@ -1,1 +1,0 @@
-empregado (nome, cpf, idade, sexo) INSERE ("Fernando", 61232465976, 33, "indefinido")

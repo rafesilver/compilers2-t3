@@ -1,1 +1,0 @@
-SELECIONA nome, endereco DE empregado, loja ONDE empregado.loja = loja.id

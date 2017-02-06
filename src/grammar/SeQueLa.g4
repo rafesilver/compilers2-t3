@@ -205,11 +205,11 @@ logico returns[String text] :
 // Parser
 
 programa
-		:		( ent | rel | alt | excl | exibe | insrt | slct | view | indce )* {demarcador("fim", "");}
+		:		( ent | rel | alt | excl | exibe | insrt | slct | view | indce )* {demarcador("fim", "",0);}
 		;
 
 ent
-		:		ENTIDADE //{demarcador("entidade","");} 
+		:		ENTIDADE 
 		        	IDENT 
                                 {if(!(tabela.existeSimbolo($IDENT.text))){
                                     tabela.adicionarSimbolo($IDENT.text, "ENTIDADE");
@@ -218,9 +218,9 @@ ent
                                     MyErrorListener.erroSemantico1($IDENT.text, $IDENT.getLine());
                                 }}
                                 {String aux=$IDENT.text;
-                                 demarcador("nome-ent",aux);}
-		        	modificador_ent {demarcador("abre-parent","");} 
-		        	atributos {demarcador("atributos",$atributos.atrib);}
+                                 demarcador("nome-ent",aux,$IDENT.getLine());}
+		        	modificador_ent {demarcador("abre-parent","",$IDENT.getLine());} 
+		        	atributos {demarcador("atributos",$atributos.atrib,$IDENT.getLine());}
 		        				
 		;
 		

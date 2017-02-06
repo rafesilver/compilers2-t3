@@ -1,0 +1,19 @@
+ENTIDADE empregado
+	cpf_empregado inteiro
+	nome_empregado literal
+	idade inteiro
+	sexo literal
+	salario real
+
+ENTIDADE loja
+	codigo inteiro
+	cidade literal
+	endereco literal	
+
+SELECIONA DISTINTO nome, cpf, idade
+DE empregado, loja
+ONDE sexo = "sim"
+	E salario > 1200
+	E idade > 21
+	OU idade < 60
+	AGRUPA salario

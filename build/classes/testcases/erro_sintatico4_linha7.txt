@@ -1,0 +1,7 @@
+ENTIDADE empregado forte
+	cpf_empregado inteiro chave primaria
+	nome_empregado literal
+	idade inteiro
+	sexo literal
+
+empregado INSERE ("Carolina", 65165948875, 21, "f")

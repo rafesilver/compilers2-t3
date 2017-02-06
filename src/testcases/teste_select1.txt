@@ -1,1 +1,0 @@
-SELECIONA nome DE EMPREGADO ONDE sexo = "sim" E salario > 1200 OU loja = "campinas"

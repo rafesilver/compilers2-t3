@@ -1,5 +1,0 @@
-ENTIDADE presunto forte
-	peso real
-	marca literal
-
-EXCLUIR presunto

@@ -1,0 +1,15 @@
+ENTIDADE empregado forte
+	cpf_empregado inteiro chave primaria
+	nome_empregado literal
+	idade inteiro
+	sexo literal
+	salario real
+
+VIEW vizao COMO
+SELECIONA nome, cpf, idade
+DE empregaod
+ONDE sexo = "sim"
+	E salario > 1200
+	E idade > 21
+	OU idade < 60
+AGRUPA nome, cpf

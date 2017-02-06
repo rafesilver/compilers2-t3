@@ -1,5 +1,0 @@
-CREATE TABLE empregado( 
-	cpf_empregado INTEGER PRIMARY KEY,
-	nome_empregado VARCHAR(255) 
-);
-

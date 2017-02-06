@@ -1,0 +1,2 @@
+Linha 5: Nao existe coluna chamada 'idade' na entidade.
+Fim da compilacao
