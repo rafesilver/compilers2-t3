@@ -19,8 +19,6 @@ public class Saida {
     private boolean primeiroErroSintatico = true;
     
     public void printlnSintatico(String txt) {
-        if(sintaticoUsado)
-            return;
         textoSintatico.append(txt).append("\n");
         sintaticoUsado = true;
     }

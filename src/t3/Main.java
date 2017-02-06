@@ -25,13 +25,11 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 public class Main {
     
-
-    
     public static void main(String[] args) throws IOException {
         if(args.length==0){  
             String path = "src\\testcases\\";
             // nome do arquivo de entrada para teste
-            String name = "teste_sem_erro12";
+            String name = "erro_sintatico10_linha5";
             
             args = new String[]{"", ""};
             args[0] = path + name + ".txt";
