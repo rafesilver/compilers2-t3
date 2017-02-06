@@ -39,3 +39,5 @@ ALTER TABLE empregado
 	DROP COLUMN sobrenome_empregado
 	ADD sobrenome literal;
 
+DROP TABLE projeto;
+
