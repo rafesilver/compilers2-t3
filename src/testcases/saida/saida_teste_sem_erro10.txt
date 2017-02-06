@@ -1,0 +1,15 @@
+CREATE TABLE empregado( 
+	nome VARCHAR(255) ,
+	cpf INTEGER ,
+	idade INTEGER ,
+	sexo VARCHAR(255) );
+
+INSERT INTO empregado(nome, cpf, idade, sexo)
+	("Fernando",61232465976,33,"indefinido");
+
+INSERT INTO empregado(nome, cpf, idade, sexo)
+	("Robert�o",45135216516,36,"cabra macho");
+
+INSERT INTO empregado(nome, cpf, idade, sexo)
+	("Aline",32654785422,19,"feminino");
+

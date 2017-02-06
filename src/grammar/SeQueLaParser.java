@@ -1001,7 +1001,7 @@ public class SeQueLaParser extends Parser {
 			}
 
 
-			                                        
+			                                       
 			                    String tipoMap = (((Rel_binariaContext)_localctx).TIPO_MAPEAMENTO!=null?((Rel_binariaContext)_localctx).TIPO_MAPEAMENTO.getText():null);
 			                                        
 			                    // Mapeamento de relacoes com Cardinalidade 1 para 1
@@ -1014,7 +1014,7 @@ public class SeQueLaParser extends Parser {
 			                    }
 			            
 			                    // Mapeamento de relacoes com Cardinalidade 1 para n
-			                    if((((Rel_binariaContext)_localctx).rel_esq.card+((Rel_binariaContext)_localctx).rel_dir.card).equals("1n")){
+			                    if((((Rel_binariaContext)_localctx).rel_esq.card+((Rel_binariaContext)_localctx).rel_dir.card).toLowerCase().equals("1n")){
 			                        if(!tipoMap.equals("map4"))
 			                            MyErrorListener.erroSemantico3(((Rel_binariaContext)_localctx).IDENT.getLine());  
 			                    else
@@ -1022,7 +1022,7 @@ public class SeQueLaParser extends Parser {
 			                    }
 			            
 			                    // Mapeamento de relacoes com Cardinalidade n para 1
-			                    if((((Rel_binariaContext)_localctx).rel_esq.card+((Rel_binariaContext)_localctx).rel_dir.card).equals("n1")){
+			                    if((((Rel_binariaContext)_localctx).rel_esq.card+((Rel_binariaContext)_localctx).rel_dir.card).toLowerCase().equals("n1")){
 			                        if(!tipoMap.equals("map4"))
 			                            MyErrorListener.erroSemantico3(((Rel_binariaContext)_localctx).IDENT.getLine());  
 			                        else
@@ -1030,11 +1030,12 @@ public class SeQueLaParser extends Parser {
 			                    }
 			            
 			                    // Mapeamento de relacoes com Cardinalidade m para n
-			                    if((((Rel_binariaContext)_localctx).rel_esq.card+((Rel_binariaContext)_localctx).rel_dir.card).equals("mn")||(((Rel_binariaContext)_localctx).rel_esq.card+((Rel_binariaContext)_localctx).rel_dir.card).equals("nm")){
+			                    if((((Rel_binariaContext)_localctx).rel_esq.card+((Rel_binariaContext)_localctx).rel_dir.card).toLowerCase().equals("mn")||(((Rel_binariaContext)_localctx).rel_esq.card+((Rel_binariaContext)_localctx).rel_dir.card).equals("nm")){
 			                        if(!tipoMap.equals("map5"))
 			                            MyErrorListener.erroSemantico3(((Rel_binariaContext)_localctx).IDENT.getLine());  
 			                        else
 			                            geradorRelacao(tipoMap, ((Rel_binariaContext)_localctx).rel_esq.nomeEnt, ((Rel_binariaContext)_localctx).rel_dir.nomeEnt, (((Rel_binariaContext)_localctx).IDENT!=null?((Rel_binariaContext)_localctx).IDENT.getText():null));
+
 			                    }
 			                                        
 							

@@ -1,0 +1,9 @@
+ENTIDADE empregado forte
+	nome literal
+	cpf inteiro
+	idade inteiro
+	sexo literal
+
+empregado (nome, cpf, idade, sexo) INSERE ("Fernando", 61232465976, 33, "indefinido")
+empregado (nome, cpf, idade, sexo) INSERE ("Robertão", 45135216516, 36, "cabra macho")
+empregado (nome, cpf, idade, sexo) INSERE ("Aline", 32654785422, 19, "feminino")

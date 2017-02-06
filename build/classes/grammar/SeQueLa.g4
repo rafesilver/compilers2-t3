@@ -269,7 +269,7 @@ rel
 
 rel_binaria	
 		:		rel_esq IDENT rel_dir TIPO_MAPEAMENTO (atributos)? {
-                                        
+                                       
                     String tipoMap = $TIPO_MAPEAMENTO.text;
                                         
                     // Mapeamento de relacoes com Cardinalidade 1 para 1
@@ -282,7 +282,7 @@ rel_binaria
                     }
             
                     // Mapeamento de relacoes com Cardinalidade 1 para n
-                    if(($rel_esq.card+$rel_dir.card).equals("1n")){
+                    if(($rel_esq.card+$rel_dir.card).toLowerCase().equals("1n")){
                         if(!tipoMap.equals("map4"))
                             MyErrorListener.erroSemantico3($IDENT.getLine());  
                     else
@@ -290,7 +290,7 @@ rel_binaria
                     }
             
                     // Mapeamento de relacoes com Cardinalidade n para 1
-                    if(($rel_esq.card+$rel_dir.card).equals("n1")){
+                    if(($rel_esq.card+$rel_dir.card).toLowerCase().equals("n1")){
                         if(!tipoMap.equals("map4"))
                             MyErrorListener.erroSemantico3($IDENT.getLine());  
                         else
@@ -298,11 +298,12 @@ rel_binaria
                     }
             
                     // Mapeamento de relacoes com Cardinalidade m para n
-                    if(($rel_esq.card+$rel_dir.card).equals("mn")||($rel_esq.card+$rel_dir.card).equals("nm")){
+                    if(($rel_esq.card+$rel_dir.card).toLowerCase().equals("mn")||($rel_esq.card+$rel_dir.card).equals("nm")){
                         if(!tipoMap.equals("map5"))
                             MyErrorListener.erroSemantico3($IDENT.getLine());  
                         else
                             geradorRelacao(tipoMap, $rel_esq.nomeEnt, $rel_dir.nomeEnt, $IDENT.text);
+
                     }
                                         
 				}

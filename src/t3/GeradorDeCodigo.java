@@ -361,7 +361,7 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
         tempOutput.getUltimaEntrada().append("VIEW "+view+" AS");
         tempOutput.getUltimaEntrada().append("\nSELECT ");
         if(distinct){
-            otherOutput.getUltimaEntrada().append("DISTINCT ");
+            tempOutput.getUltimaEntrada().append("DISTINCT ");
             distinct = false;
         }
         if(!colunas.isEmpty())
