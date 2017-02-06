@@ -1,0 +1,43 @@
+CREATE TABLE empregado( 
+	CPF_empregado INTEGER PRIMARY KEY,
+	nome_empregado VARCHAR(255) ,
+	sobrenome_empregado VARCHAR(255) ,
+	idade INTEGER ,
+	salario REAL );
+
+CREATE TABLE projeto( 
+	nro_projeto INTEGER PRIMARY KEY,
+	nome_empregado VARCHAR(255) );
+
+CREATE TABLE DESENVOLVE(
+	CPF_empregado INTEGER,
+	nro_projeto INTEGER,
+	FOREIGN KEY (CPF_empregado) REFERENCES empregado(CPF_empregado),
+	FOREIGN KEY (nro_projeto) REFERENCES projeto(nro_projeto));
+
+VIEW empregados_top AS
+SELECT DISTINCT salario
+FROM empregado
+WHERE salario > 1800
+GROUP BY salario;
+
+INSERT INTO empregado(CPF_empregado, nome_empregado, sobrenome_empregado, idade, salario)
+	(65148932164,"Joseh","da Silva",33,1600), 
+	(14854132198,"Matheus","Rocha",31,1850), 
+	(65165471035,"Augusto","Moraes",28,1900), 
+	(45651651685,"Camilo","Barbosa",34,2200), 
+	(98546516210,"Aline","Cruz",23,1999.99);
+
+INSERT INTO projeto(nro_projeto, nome_empregado)
+	(65125,"Joseh"), 
+	(36149,"Aline"), 
+	(59875,"Camilo"), 
+	(98463,"Camilo");
+
+ALTER TABLE empregado
+	ALTER COLUMN salario inteiro
+	DROP COLUMN sobrenome_empregado
+	ADD sobrenome literal;
+
+DROP TABLE projeto;
+

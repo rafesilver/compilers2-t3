@@ -1,4 +1,0 @@
-Entdade EMPREGADO
-	cpf inteiro chave primaria
-	nome literal
-

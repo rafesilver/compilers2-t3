@@ -1,0 +1,10 @@
+ENTIDADE empregado forte
+	cpf_empregado inteiro chave primaria
+	nome_empregado literal
+	idade inteiro
+	sexo literal
+	salario real
+
+VIEW vizao COMO
+SELECIONA nome_empregado, cpf_empregado, idade
+DE empregado

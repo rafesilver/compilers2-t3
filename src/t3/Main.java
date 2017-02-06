@@ -31,7 +31,7 @@ public class Main {
         if(args.length==0){  
             String path = "src\\testcases\\";
             // nome do arquivo de entrada para teste
-            String name = "erro_sintatico10_linha5";
+            String name = "teste_sem_erro12";
             
             args = new String[]{"", ""};
             args[0] = path + name + ".txt";

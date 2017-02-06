@@ -1,7 +1,0 @@
-Entidade EMPREGADO
-	cpf inteiro chave primaria
-	nome literal
-
-Entidade CHEFE
-	cpf inteiro chave primaria
-	nome literal

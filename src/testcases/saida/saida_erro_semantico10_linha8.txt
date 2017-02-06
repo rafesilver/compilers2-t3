@@ -1,0 +1,2 @@
+Linha 8: Entidade empregado ja declarada anteriormente
+Fim da compilacao

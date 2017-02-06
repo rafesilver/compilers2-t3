@@ -1,0 +1,16 @@
+CREATE TABLE empregado( 
+	cpf_empregado INTEGER PRIMARY KEY,
+	nome_empregado VARCHAR(255) ,
+	idade INTEGER ,
+	sexo VARCHAR(255) ,
+	salario REAL );
+
+VIEW vizao AS
+SELECT nome_empregado, cpf_empregado, idade
+FROM empregado
+WHERE sexo = "sim"
+ AND salario > 1200
+ AND idade > 21
+ OR idade < 60
+GROUP BY nome_empregado, cpf_empregado;
+

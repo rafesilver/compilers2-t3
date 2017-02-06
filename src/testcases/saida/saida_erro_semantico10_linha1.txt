@@ -1,2 +1,0 @@
-Linha 1: Entidade presunto nao declarada
-Fim da compilacao

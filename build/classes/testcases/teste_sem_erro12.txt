@@ -1,0 +1,36 @@
+ENTIDADE empregado
+	CPF_empregado inteiro chave primaria
+	nome_empregado literal
+	sobrenome_empregado literal
+	idade inteiro
+	salario real
+
+ENTIDADE projeto
+	nro_projeto inteiro chave primaria
+	nome_empregado literal
+
+empregado M desenvolve N projeto map5
+	horas_trabalhadas inteiro
+
+empregado (CPF_empregado, nome_empregado, sobrenome_empregado, idade, salario) INSERE
+	(65148932164, "Joseh", "da Silva", 33, 1600),
+	(14854132198, "Matheus", "Rocha", 31, 1850),
+	(65165471035, "Augusto", "Moraes", 28, 1900),
+	(45651651685, "Camilo", "Barbosa", 34, 2200),
+	(98546516210, "Aline", "Cruz", 23, 1999.99)
+
+projeto (nro_projeto, nome_empregado) INSERE
+	(65125, "Joseh"), (36149, "Aline"), (59875, "Camilo"), (98463, "Camilo")
+
+VIEW empregados_top COMO
+SELECIONA DISTINTO salario
+DE empregado
+ONDE salario > 1800
+AGRUPA salario
+
+ALTERA empregado
+	ALTERA COLUNA salario inteiro
+	EXCLUI COLUNA sobrenome_empregado
+	ADICIONA sobrenome literal
+
+EXCLUIR projeto
