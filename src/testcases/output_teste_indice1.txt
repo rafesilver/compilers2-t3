@@ -1,7 +1,0 @@
-CREATE TABLE presunto( 
-	peso REAL ,
-	marca VARCHAR(255) );
-
-CREATE INDEX marcaIndice
-ON presunto( peso, marca );
-

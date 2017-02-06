@@ -509,7 +509,7 @@ public class SeQueLaParser extends Parser {
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			demarcador("fim", "");
+			demarcador("fim", "",0);
 			}
 		}
 		catch (RecognitionException re) {
@@ -565,13 +565,13 @@ public class SeQueLaParser extends Parser {
 			                                    MyErrorListener.erroSemantico1((((EntContext)_localctx).IDENT!=null?((EntContext)_localctx).IDENT.getText():null), ((EntContext)_localctx).IDENT.getLine());
 			                                }
 			String aux=(((EntContext)_localctx).IDENT!=null?((EntContext)_localctx).IDENT.getText():null);
-			                                 demarcador("nome-ent",aux);
+			                                 demarcador("nome-ent",aux,((EntContext)_localctx).IDENT.getLine());
 			setState(122);
 			modificador_ent();
-			demarcador("abre-parent","");
+			demarcador("abre-parent","",((EntContext)_localctx).IDENT.getLine());
 			setState(124);
 			((EntContext)_localctx).atributos = atributos();
-			demarcador("atributos",((EntContext)_localctx).atributos.atrib);
+			demarcador("atributos",((EntContext)_localctx).atributos.atrib,((EntContext)_localctx).IDENT.getLine());
 			}
 		}
 		catch (RecognitionException re) {

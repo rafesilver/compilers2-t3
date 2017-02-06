@@ -1,6 +1,0 @@
-ENTIDADE presunto forte
-	peso real
-	marca literal
-
-INDICE marcaIndice
-EM presunto (peso,marca)

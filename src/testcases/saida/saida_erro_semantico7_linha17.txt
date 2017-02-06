@@ -1,0 +1,2 @@
+Linha 17: Entidade cidade nao declarada
+Fim da compilacao

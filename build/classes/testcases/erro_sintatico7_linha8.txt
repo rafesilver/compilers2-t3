@@ -1,0 +1,8 @@
+ENTIDADE presunto forte
+	peso real
+	marca literal
+
+ALTERAR presunto
+	ALTERA COLUNA peso real
+	EXCLUI COLUNA marca
+	ADICIONA COLUNA fabricante literal

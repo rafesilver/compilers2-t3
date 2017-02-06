@@ -69,6 +69,7 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
     }
     
     public static Boolean compareType(String type1, String type2){
+        //System.out.print("\n["+type1+" - "+type2+"]");
         if(type1.equals(type2))
             return true;
         else
@@ -135,7 +136,7 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
     }
     
     // Cria uma entidade no buffer tempOut
-    public static void demarcador(String tipo, String aux){
+    public static void demarcador(String tipo, String aux, int line){
          switch (tipo) {
             case "nome-ent":
                 tempOutput.adicionarTabela(aux);
@@ -159,7 +160,7 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
                         
                         }
                     else
-                        out.printlnSemantico("Erro Semantico: Ja existe uma coluna chamada '"+o.split(" ")[0]+"' na entidade.");
+                        out.printlnSemantico("Linha "+line+": Ja existe uma coluna chamada '"+o.split(" ")[0]+"' na entidade.");
                         
                     tempOutput.getUltimaEntrada().append("\n\t"+o);
                     }
@@ -277,11 +278,15 @@ public class GeradorDeCodigo extends SeQueLaBaseListener {
     }
 
     public static void geradorInsert(String ent, ArrayList<String> colunas, ArrayList<String> valores, int line){
+        if(tempOutput.getIndex(ent) == -1)
+            return;
         otherOutput.adicionarTabela("INSERT");
         otherOutput.getUltimaEntrada().append("INSERT INTO " + ent + "(");
         for(int i = 0; i < colunas.size(); i++){
-            if(!tempOutput.getEntrada(tempOutput.getIndex(ent)).checkCol(colunas.get(i)))
+            if(!tempOutput.getEntrada(tempOutput.getIndex(ent)).checkCol(colunas.get(i))){
                 out.printlnSemantico("Linha "+line+": Nao existe coluna chamada '"+colunas.get(i)+"' na entidade.");
+                return;
+            }
             if(i > 0)
                 otherOutput.getUltimaEntrada().append(", ");
             otherOutput.getUltimaEntrada().append(colunas.get(i));

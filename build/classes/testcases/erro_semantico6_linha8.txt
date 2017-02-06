@@ -1,0 +1,8 @@
+ENTIDADE empregado forte
+	cpf_empregado inteiro chave primaria
+	nome_empregado literal
+	idade inteiro
+	sexo literal
+
+empregado (nome_empregado, cpf_empregado, idade, sexo) INSERE ("Fernando", 61232465976, 33, "indefinido")
+loja (cidade, endereco) INSERE ("São Carlos", "Av. São Carlos")

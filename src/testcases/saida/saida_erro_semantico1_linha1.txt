@@ -1,0 +1,2 @@
+Linha 1: Ja existe uma coluna chamada 'nome_empregado' na entidade.
+Fim da compilacao

@@ -1,0 +1,2 @@
+Linha 10: Entidade empregaod nao declarada
+Fim da compilacao
